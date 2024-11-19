@@ -1,0 +1,73 @@
+plugins {
+    id 'java'
+    id "maven-publish"
+}
+
+ext {
+    sbVer = "${springBootVersion}"
+    moduleVer = "${moduleVersion}"
+}
+
+allprojects {
+    group = 'common-module'
+    version = moduleVer
+}
+
+String parse(String key) { return properties.getOrDefault(key, "") }
+
+subprojects {
+    apply plugin: "maven-publish"
+
+    Boolean java = !project.name.contains("-dependencies")
+    apply plugin: java ? 'java-library' : 'java-platform'
+
+    boolean isProvider = project.name.contains("-provider")
+    boolean isCommonAll = project.name.equals("common-all")
+
+    dependencies {
+        if (java) {
+            if (sbVer == "2") {
+                api platform(project(":common-dependencies-sb2"))
+                annotationProcessor platform(project(":common-dependencies-sb2"))
+                if (!isProvider && !isCommonAll) {
+                    runtimeOnly project(":common-sb2-provider")
+                }
+            } else if (sbVer == "3") {
+                api platform(project(":common-dependencies"))
+                annotationProcessor platform(project(":common-dependencies"))
+                if (!isProvider && !isCommonAll) {
+                    runtimeOnly project(":common-sb3-provider")
+                }
+            }
+        }
+    }
+
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                from java ? components.java : components.javaPlatform
+                groupId = project.group
+                artifactId = project.name
+                version = project.version
+            }
+        }
+        repositories {
+            maven {
+                url version.endsWith('SNAPSHOT') ? parse("STA_NEXUS_URL_SNAPSHOT") : parse("STA_NEXUS_URL_RELEASE")
+                allowInsecureProtocol = true
+                credentials {
+                    username parse("STA_NEXUS_USERNAME")
+                    password parse("STA_NEXUS_PASSWORD")
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven { url "https://maven.aliyun.com/repository/public" }
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+}

@@ -1,0 +1,12 @@
+pluginManagement {
+    repositories {
+        maven { url "https://maven.aliyun.com/repository/public" }
+    }
+}
+
+rootProject.name = 'common-module'
+
+include("common-dependencies",
+        "common-sb3-provider",
+        "common-all",
+)
