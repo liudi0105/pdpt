@@ -1,9 +1,10 @@
 import { styled } from "@common-module/common-react";
 import { RouterMenuItem } from "@common-module/common-api";
 import { Tabs } from "antd";
+import { TorrentPage } from "./TorrentPage";
 
 const SBackground = styled.div`
-  background-color: #006633;
+  /* background-color: #006633; */
   height: 100%;
   width: 100%;
   display: flex;
@@ -13,8 +14,9 @@ const SBackground = styled.div`
 const SHomeBox = styled.div`
   width: 80%;
   height: 100%;
-  margin-top: 100px;
-  background-color: #c6e3c6;
+  /* margin-top: 100px; */
+  border-radius: 8px;
+  /* background-color: #c6e3c6; */
 `;
 
 const SMainMenuBox = styled.div`
@@ -84,11 +86,11 @@ export const Layout = () => {
       <SHomeBox>
         <SMainMenuBox>
           <Tabs
-            type="card"
+            // type="card"
             items={r.map((v) => ({
               key: v.path,
               label: v.name,
-              children: "sssss",
+              children: <TorrentPage />,
             }))}
           ></Tabs>
         </SMainMenuBox>

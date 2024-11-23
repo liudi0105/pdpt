@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>影视分类icon/游戏</title>
+    <defs>
+        <linearGradient x1="40.9754082%" y1="23.362023%" x2="55.9861396%" y2="97.07944%" id="linearGradient-1">
+            <stop stop-color="#A650FF" offset="0%"></stop>
+            <stop stop-color="#7050FF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0.882320804%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#A8C3FB" offset="0%"></stop>
+            <stop stop-color="#B3A8F4" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="影视分类icon/游戏" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="手柄" transform="translate(8, 4)">
+            <rect id="矩形" fill="url(#linearGradient-1)" x="0" y="4.8" width="7.2" height="15.6"></rect>
+            <rect id="矩形备份-10" fill="url(#linearGradient-1)" transform="translate(20.4, 12.6) scale(-1, 1) translate(-20.4, -12.6)" x="16.8" y="4.8" width="7.2" height="15.6"></rect>
+            <rect id="矩形" fill="url(#linearGradient-2)" fill-rule="nonzero" x="0" y="0" width="24" height="16.8"></rect>
+            <path d="M6,6 C6.49705627,6 6.9,6.40294373 6.9,6.9 L6.9,7.5 L7.5,7.5 C7.99705627,7.5 8.4,7.90294373 8.4,8.4 C8.4,8.89705627 7.99705627,9.3 7.5,9.3 L6.9,9.3 L6.9,9.9 C6.9,10.3970563 6.49705627,10.8 6,10.8 C5.50294373,10.8 5.1,10.3970563 5.1,9.9 L5.099,9.3 L4.5,9.3 C4.00294373,9.3 3.6,8.89705627 3.6,8.4 C3.6,7.90294373 4.00294373,7.5 4.5,7.5 L5.099,7.5 L5.1,6.9 C5.1,6.40294373 5.50294373,6 6,6 Z" id="形状结合" fill="#FFFFFF"></path>
+            <rect id="形状结合备份-2" fill="#FFFFFF" x="14.4" y="7.2" width="4.8" height="2.4"></rect>
+        </g>
+        <text id="游-戏" font-family="AlimamaShuHeiTi-Bold, Alimama ShuHeiTi" font-size="8" font-weight="bold" fill="#7C50FF">
+            <tspan x="10.96" y="35">游 戏</tspan>
+        </text>
+    </g>
+</svg>

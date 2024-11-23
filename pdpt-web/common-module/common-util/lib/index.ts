@@ -10,3 +10,4 @@ export function deepCopy<T>(obj: T): T {
 }
 
 export * from "./HttpClient";
+export * from "./FileSizeConverter";

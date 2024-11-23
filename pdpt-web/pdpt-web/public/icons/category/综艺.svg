@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>影视分类icon/综艺</title>
+    <defs>
+        <linearGradient x1="41.5224913%" y1="0%" x2="56.4817624%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FF6800" offset="0%"></stop>
+            <stop stop-color="#FF4900" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="36.5264322%" y1="50%" x2="109.14376%" y2="50%" id="linearGradient-2">
+            <stop stop-color="#FF8EB7" offset="0%"></stop>
+            <stop stop-color="#FFA57F" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="影视分类icon/综艺" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="摄影" transform="translate(7.7778, 5)">
+            <path d="M23.2666667,1.77777778 C24.3466902,1.77777778 25.2222222,2.65330982 25.2222222,3.73333333 L25.2222222,14.9333333 C25.2222222,16.0133568 24.3466902,16.8888889 23.2666667,16.8888889 C23.2065891,16.8888889 23.1471442,16.8861798 23.0884476,16.880877 L23.0233585,16.8739007 C22.8498837,16.8523717 22.683456,16.8081224 22.527146,16.7442233 L19,15.8258932 L19,2.87305816 L22.4929381,1.93681009 C22.66206,1.8638749 22.8435252,1.81412194 23.0333305,1.79155441 L23.0888889,1.77777778 C23.1471442,1.78048691 23.2065891,1.77777778 23.2666667,1.77777778 Z" id="形状结合" fill="url(#linearGradient-1)"></path>
+            <rect id="矩形备份-7" fill="url(#linearGradient-2)" x="0" y="0" width="19" height="17.7777778" rx="3"></rect>
+            <rect id="矩形" fill="#FFFFFF" x="3.88888889" y="3.55555556" width="6.22222222" height="1.77777778"></rect>
+        </g>
+        <text id="综-艺" font-family="AlimamaShuHeiTi-Bold, Alimama ShuHeiTi" font-size="8" font-weight="bold" fill="#FF5A00">
+            <tspan x="10.96" y="35">综 艺</tspan>
+        </text>
+    </g>
+</svg>

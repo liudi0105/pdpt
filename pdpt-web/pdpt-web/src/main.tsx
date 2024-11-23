@@ -1,10 +1,10 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import { registerConfig } from "@common-module/common-api";
+import { createRoot } from "react-dom/client";
+import App from "./App.tsx";
+import "./index.css";
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+registerConfig({
+  apiUrl: "http://localhost:8080/api",
+});
+
+createRoot(document.getElementById("root")!).render(<App />);

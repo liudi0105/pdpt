@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>影视分类icon/动漫</title>
+    <defs>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="3.061617e-15%" id="linearGradient-1">
+            <stop stop-color="#FF364D" offset="0%"></stop>
+            <stop stop-color="#FF8B68" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="3.061617e-15%" id="linearGradient-2">
+            <stop stop-color="#FEEDE5" stop-opacity="0.5" offset="0%"></stop>
+            <stop stop-color="#FF635C" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="影视分类icon/动漫" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="热门" transform="translate(10, 1)">
+            <path d="M9.49206718,24 C14.7347637,24 18.3984591,20.2989474 19.122168,14.9393684 C20.391561,5.55031581 15.9770661,0.31200001 15.4971735,0 C13.0977111,6.22863157 10.024851,5.09052632 9.49206718,5.09052632 C9.96808957,4.08126316 12.0063426,2.47831579 11.6451333,2.70947368 C11.5548309,2.76631579 7.62538858,2.11705262 3.31151623,6.31957896 C0.490212756,9.06063158 0,12.5305263 0,14.5452632 C0,19.7684211 4.24808062,24 9.49206718,24 Z" id="形状" fill="url(#linearGradient-1)"></path>
+            <path d="M4.56671892,11.9330526 C4.56671892,11.9330526 3.38762823,15.5393684 5.83611198,15.2690526 C8.28072563,14.9987368 8.82769988,12.1098948 12.3611019,12.1098948 C12.3611019,12.1098948 9.40950505,16.6698948 11.2658634,17.5288421 C13.1235118,18.3877895 13.6124345,17.3469474 15.3423695,16.0825263 C15.1166136,18.1136842 14.3451736,22.2214737 8.63419485,21.7717895 C2.92579619,21.3170526 0.2154356,16.264421 4.56671892,11.9317895 L4.56671892,11.9330526 Z" id="路径" fill="url(#linearGradient-2)"></path>
+        </g>
+        <text id="动-漫" font-family="AlimamaShuHeiTi-Bold, Alimama ShuHeiTi" font-size="8" font-weight="bold" fill="#FF7360">
+            <tspan x="10.96" y="35">动 漫</tspan>
+        </text>
+    </g>
+</svg>

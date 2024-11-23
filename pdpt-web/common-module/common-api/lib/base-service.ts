@@ -2,8 +2,8 @@ import { AppPageParam, AppPageResult } from "@common-module/common-types";
 import { joinPath, RequestConfig } from "@common-module/common-util";
 import { getConfig } from "./app-config";
 
+
 export type BaseEntity = {
-  id: string;
 };
 
 export abstract class BaseService<T extends BaseEntity> {
