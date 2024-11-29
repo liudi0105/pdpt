@@ -10,7 +10,6 @@ import org.springframework.web.filter.CorsFilter;
 
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
-@Profile({"dev", "local"})
 public class AppCorsFilter extends CorsFilter {
 
     public AppCorsFilter() {

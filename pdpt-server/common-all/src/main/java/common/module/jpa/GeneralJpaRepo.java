@@ -21,7 +21,7 @@ public interface GeneralJpaRepo<E, D, I> extends Repository<E, I> {
 
     Class<D> getDtoClass();
 
-    D getByOneId(I id);
+    D getOneById(I id);
 
     List<D> listByIds(Collection<I> strings);
 

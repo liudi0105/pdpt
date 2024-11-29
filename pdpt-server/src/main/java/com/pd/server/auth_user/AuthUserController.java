@@ -1,4 +1,4 @@
-package com.pd.server.user;
+package com.pd.server.auth_user;
 
 import common.module.dto.AppPageParam;
 import common.module.jpa.AppPageResult;
@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.function.UnaryOperator;
 
-@ApiGroup("user")
-public class UserController {
+@ApiGroup("auth-user")
+public class AuthUserController {
 
     @Autowired
-    private UserRepo userRepo;
+    private AuthUserRepo authUserRepo;
 
     @Api("list-paged")
-    public AppPageResult<UserDTO> list(@RequestBody AppPageParam param) {
-        return userRepo.pageQuery(param, UnaryOperator.identity());
+    public AppPageResult<AuthUserDTO> list(@RequestBody AppPageParam param) {
+        return authUserRepo.pageQuery(param, UnaryOperator.identity());
     }
 }

@@ -130,7 +130,7 @@ public class BaseJpaRepositoryImpl<E, D, I> extends AbstractBaseJpaRepoImpl<E, D
     }
 
     @Override
-    public D getByOneId(I id) {
+    public D getOneById(I id) {
         if (id == null) {
             throw new AppWarning("getById with null id");
         }

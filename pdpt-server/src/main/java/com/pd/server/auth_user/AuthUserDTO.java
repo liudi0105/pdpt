@@ -1,4 +1,4 @@
-package com.pd.server.user;
+package com.pd.server.auth_user;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,7 +7,7 @@ import java.time.Instant;
 
 @Getter
 @Setter
-public class UserDTO {
+public class AuthUserDTO {
     private Integer id;
     private Integer userid;
     private String qq;

@@ -1,4 +1,4 @@
-package com.pd.server.user;
+package com.pd.server.auth_user;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -14,7 +14,7 @@ import java.time.Instant;
 @Accessors(chain = true)
 @Entity
 @Table(name = "user_auth")
-public class UserEntity {
+public class AuthUserEntity {
     @Id
     private Integer id;
     private Integer userid;

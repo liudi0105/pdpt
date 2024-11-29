@@ -1,6 +1,6 @@
 package com.pd.test;
 
-import com.pd.server.user.UserDTO;
+import com.pd.server.auth_user.AuthUserDTO;
 import common.module.dto.AppPageParam;
 import common.module.jpa.AppPageResult;
 import common.module.test.ApiTestClient;
@@ -13,7 +13,7 @@ public class UserTest {
 
     @Test
     public void listPaged() {
-        AppPageResult<UserDTO> user = apiTestClient.apiPostJsonForJson("list-paged", new AppPageParam()
+        AppPageResult<AuthUserDTO> user = apiTestClient.apiPostJsonForJson("list-paged", new AppPageParam()
                 .setPageIndex(1)
                 .setPageSize(10), new ParameterizedTypeReference<>() {
         });

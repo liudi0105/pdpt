@@ -1,8 +1,8 @@
-package com.pd.server.user;
+package com.pd.server.tag;
 
 import common.module.jpa.GeneralJpaRepo;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepo extends GeneralJpaRepo<UserEntity, UserDTO, Long> {
+public interface TagRepo extends GeneralJpaRepo<TagEntity, TagDTO, Short> {
 }
