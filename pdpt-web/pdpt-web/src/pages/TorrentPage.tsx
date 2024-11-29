@@ -1,46 +1,23 @@
 import { Table } from "@common-module/common-antd";
-import { AppPageResult } from "@common-module/common-types";
-import {
-  FileSizeConverter
-} from "@common-module/common-util";
+import { FileSizeConverter } from "@common-module/common-util";
+import { CategoryEntity, CategoryService, TorrentsService } from "../services";
 import { useEffect, useState } from "react";
-import { TorrentEntity, TorrentsService } from "../services";
 
 const torrentService = new TorrentsService();
-
-const categoryMap = new Map<number, string>();
-categoryMap.set(417, "animation");
-categoryMap.set(402, "film");
+const categoryService = new CategoryService();
 
 export const TorrentPage = () => {
-  const [data, setData] = useState<AppPageResult<TorrentEntity>>();
+  const [categories, setCategories] = useState<CategoryEntity[]>();
 
   useEffect(() => {
-    torrentService
-      .listPaged({
-        pageSize: 10,
-        pageIndex: 1,
-      })
-      .then((v) => setData(v));
+    categoryService.list().then(setCategories);
   }, []);
 
-  console.log(data);
   return (
     <div>
       <div>
-        {[
-          "sports",
-          "mv",
-          "game",
-          "mv",
-          "other",
-          "tv",
-          "book",
-          "animation",
-          "film",
-          "music",
-        ].map((v) => (
-          <img src={`/icons/category/${v}.svg`}></img>
+        {categories?.map((v) => (
+          <img src={`/icons/category/${v.className}.svg`}></img>
         ))}
       </div>
       <div>
@@ -62,21 +39,24 @@ export const TorrentPage = () => {
         ))}
       </div>
       <Table
+        request={async (params) => {
+          const data = await torrentService.listPaged({
+            pageSize: params.pageSize ?? 10,
+            pageIndex: params.current ?? 1,
+          });
+          return {
+            total: data.totalElements,
+            data: data.content,
+          };
+        }}
         size="small"
         search={false}
-        pagination={{
-          total: data?.totalElements,
-        }}
         columns={[
           {
             title: "类别",
             render: (_, entity) => {
               return (
-                <img
-                  src={`/icons/category/${categoryMap.get(
-                    entity.category
-                  )}.svg`}
-                ></img>
+                <img src={`/icons/category/${entity.categoryCode}.svg`}></img>
               );
             },
           },
@@ -100,7 +80,6 @@ export const TorrentPage = () => {
           { title: "做种数", dataIndex: "seeders" },
           { title: "上传者", dataIndex: "ownerName" },
         ]}
-        dataSource={data?.content}
       />
     </div>
   );

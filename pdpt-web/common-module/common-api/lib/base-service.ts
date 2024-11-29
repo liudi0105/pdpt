@@ -2,9 +2,7 @@ import { AppPageParam, AppPageResult } from "@common-module/common-types";
 import { joinPath, RequestConfig } from "@common-module/common-util";
 import { getConfig } from "./app-config";
 
-
-export type BaseEntity = {
-};
+export type BaseEntity = {};
 
 export abstract class BaseService<T extends BaseEntity> {
   protected abstract group: string;
@@ -31,7 +29,7 @@ export abstract class BaseService<T extends BaseEntity> {
     });
   };
 
-  postValueForJson = async <T>(url: string, data: string): Promise<T> => {
+  postValueForJson = async <T>(url: string, data: any): Promise<T> => {
     return getConfig().httpClient.postJsonForJson(this.preRequest(url), {
       value: data,
     });

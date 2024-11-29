@@ -1,7 +1,7 @@
-import { styled } from "@common-module/common-react";
 import { RouterMenuItem } from "@common-module/common-api";
+import { styled } from "@common-module/common-react";
 import { Tabs } from "antd";
-import { TorrentPage } from "./TorrentPage";
+import { DetailPage } from "./DetailPage";
 
 const SBackground = styled.div`
   /* background-color: #006633; */
@@ -87,10 +87,11 @@ export const Layout = () => {
         <SMainMenuBox>
           <Tabs
             // type="card"
+            centered
             items={r.map((v) => ({
               key: v.path,
               label: v.name,
-              children: <TorrentPage />,
+              children: <DetailPage />,
             }))}
           ></Tabs>
         </SMainMenuBox>

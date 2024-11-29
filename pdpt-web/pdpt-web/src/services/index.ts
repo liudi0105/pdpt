@@ -11,10 +11,17 @@ export interface TorrentEntity extends BaseEntity {
   descr: string;
   smallDescr: string;
   ownerName: string;
+  categoryCode: string;
+  filename: string
+  tags: string[]
 }
 
 export class TorrentsService extends BaseService<TorrentEntity> {
   group = "torrents";
+
+  getOneById = (id: number) => {
+    return this.postValueForJson<TorrentEntity>('get-one-by-id', id)
+  }
 
   listPaged = (param: AppPageParam) => {
     return this.postJsonForJson<AppPageResult<TorrentEntity>>(
@@ -22,4 +29,17 @@ export class TorrentsService extends BaseService<TorrentEntity> {
       param
     );
   };
+}
+
+export interface CategoryEntity extends BaseEntity {
+  id: number;
+  mode: number;
+  className: string;
+  name: string;
+}
+
+export class CategoryService extends BaseService<CategoryEntity> {
+  group = "category";
+
+  list = () => this.postJsonForJson<CategoryEntity[]>("list");
 }
