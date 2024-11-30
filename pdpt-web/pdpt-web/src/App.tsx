@@ -4,9 +4,10 @@ import {
   createGlobalStyle,
   RouterProvider,
 } from "@common-module/common-react";
-import { ConfigProvider } from "antd";
+import { ConfigProvider, theme } from "antd";
 import "./App.css";
 import { Layout } from "./pages/Home";
+import { LoginPage } from "./pages/LoginPage";
 
 const SGlobalStyle = createGlobalStyle`
   html, body, #root {
@@ -25,7 +26,7 @@ const SGlobalStyle = createGlobalStyle`
 const AppRouter = createBrowserRouter([
   {
     path: "login",
-    element: "login",
+    element: <LoginPage />,
   },
   {
     path: "/",
@@ -41,7 +42,7 @@ function App() {
   return (
     <ConfigProvider
       theme={{
-        algorithm: [],
+        algorithm: [theme.compactAlgorithm],
         token: {},
         components: {
           Button: {},

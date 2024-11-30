@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>影视分类icon/电子书</title>
+    <defs>
+        <linearGradient x1="46.9553571%" y1="0%" x2="63.663696%" y2="96.755713%" id="linearGradient-1">
+            <stop stop-color="#A250FF" offset="0%"></stop>
+            <stop stop-color="#7150FF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="35.4896029%" y1="32.7006022%" x2="78.7711878%" y2="59.7109304%" id="linearGradient-2">
+            <stop stop-color="#C89CFF" offset="0%"></stop>
+            <stop stop-color="#CBA7FF" offset="99.99727%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="影视分类icon/电子书" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <text id="电子书" font-family="AlimamaShuHeiTi-Bold, Alimama ShuHeiTi" font-size="8" font-weight="bold" fill="#8D50FF">
+            <tspan x="8" y="35">电子书</tspan>
+        </text>
+        <g id="文档" transform="translate(8, 3)">
+            <path d="M10.2691266,5.41168534 L12.0087667,0 L12.0087667,0 L20,0 C21.6568542,-3.04359188e-16 23,1.34314575 23,3 L23,18.1746032 C23,19.8314574 21.6568542,21.1746032 20,21.1746032 L15.6984129,21.1746032 C12.1699269,21.1746032 9.30952381,18.3142001 9.30952381,14.7857141 L9.30952381,11.5324104 C9.30952381,9.45470995 9.63327497,7.38969745 10.2691266,5.41168534 Z" id="矩形备份-4" fill="url(#linearGradient-1)"></path>
+            <rect id="矩形" fill="url(#linearGradient-2)" x="0" y="0" width="16.0634921" height="21.1746032" rx="3"></rect>
+            <rect id="矩形" fill="#FFFFFF" x="3.83333333" y="6.20634921" width="5.84126984" height="2.19047619"></rect>
+            <rect id="矩形备份-5" fill="#FFFFFF" x="3.83333333" y="12.4126984" width="4.1984127" height="2.19047619"></rect>
+        </g>
+    </g>
+</svg>
