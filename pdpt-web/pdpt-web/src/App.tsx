@@ -8,10 +8,11 @@ import {
 } from "@common-module/common-react";
 import { ConfigProvider } from "antd";
 import "./App.css";
-import { Layout } from "./pages/Home";
+import { Layout } from "./pages/Layout";
 import { LoginPage } from "./pages/LoginPage";
 import { TorrentPage } from "./pages/TorrentPage";
 import { DetailPage } from "./pages/DetailPage";
+import { HomePage } from "./pages/HomePage";
 
 const SGlobalStyle = createGlobalStyle`
   html, body, #root {
@@ -31,7 +32,7 @@ export const routers: RouterMenuItem[] = [
   {
     path: "home",
     name: "首页",
-    element: <TorrentPage />,
+    element: <HomePage />,
   },
   {
     path: "forum",

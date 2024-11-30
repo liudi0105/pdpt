@@ -1,5 +1,11 @@
+import { Ant } from "@common-module/common-antd";
 import { RouterMenuItem } from "@common-module/common-api";
-import { Outlet, styled, useNavigate } from "@common-module/common-react";
+import {
+  Outlet,
+  styled,
+  useLocation,
+  useNavigate,
+} from "@common-module/common-react";
 import { ConfigProvider, Menu, MenuProps, theme } from "antd";
 import { routers } from "../App";
 
@@ -23,6 +29,7 @@ const SMainMenuBox = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  padding: 12px 24px;
 `;
 
 function toMenu(router: RouterMenuItem): MenuItem {
@@ -40,13 +47,22 @@ export const Layout = () => {
 
   const naviate = useNavigate();
 
+  const location = useLocation();
+
+  const path = location.pathname.split("/");
+  const key = path[path.length - 1];
+
   return (
     <SBackground>
       <SHomeBox>
         <SMainMenuBox>
           <Menu
+            activeKey={key}
+            selectedKeys={path}
             style={{
+              lineHeight: "32px",
               borderBottom: 0,
+              marginBottom: 8,
               borderRadius: 8,
               display: "flex",
               justifyContent: "center",
@@ -63,6 +79,17 @@ export const Layout = () => {
               algorithm: [theme.compactAlgorithm],
             }}
           >
+            <Ant.Card style={{ marginBottom: 8 }}>
+              <div>
+                欢迎回来, bluegemld开站纪念 [ 控制面板 ] [收藏] 魔力值 [使用]:
+                104,760.5 [签到得魔力] [勋章] 邀请 [发送]: 0(0)
+              </div>
+              <div>
+                分享率: 1.353 上传量: 3.509 TB 下载量: 2.594 TB 当前活动:
+                Torrents seeding9 Torrents leeching1 可连接:是 连接数：无限制
+                H&R: [0/0/] 认领: [0/5000]
+              </div>
+            </Ant.Card>
             <Outlet />
           </ConfigProvider>
         </SMainMenuBox>
