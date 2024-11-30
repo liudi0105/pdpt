@@ -5,7 +5,7 @@ body #root {
   margin: 0;
 }
 
-#root {
+html {
   background-image: url("/images/background.png");
   overflow: auto;
 }

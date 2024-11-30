@@ -46,6 +46,8 @@ export const Layout = () => {
         <SMainMenuBox>
           <Menu
             style={{
+              borderBottom: 0,
+              borderRadius: 8,
               display: "flex",
               justifyContent: "center",
               backgroundColor: "#d8e2ef",

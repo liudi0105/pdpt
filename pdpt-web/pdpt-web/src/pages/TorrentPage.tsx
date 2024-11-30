@@ -5,7 +5,7 @@ import { CategoryEntity, CategoryService, TorrentsService } from "../services";
 
 export const SBox = styled.div`
   background-color: #fff;
-  margin: 24px;
+  margin: 1px 24px 24px 24px;
   padding: 24px;
   border-radius: 8px;
   box-sizing: content-box;
