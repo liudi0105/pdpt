@@ -12,8 +12,8 @@ const SBack = styled.div`
 
 const SFrame = styled.div`
   background-color: #fff;
-  height: 480px;
-  width: 960px;
+  height: 560px;
+  width: 1080px;
   border-radius: 16px;
   display: flex;
 `;
@@ -29,7 +29,8 @@ const SPicture = styled.div`
 
 const SFuncArea = styled.div`
   padding: 48px;
-  height: 100%;
+  padding-bottom: 0;
+  max-height: 100%;
   width: 50%;
 
   &::before {

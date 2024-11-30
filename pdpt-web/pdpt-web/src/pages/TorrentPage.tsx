@@ -1,10 +1,10 @@
-import { styled, Table } from "@common-module/common-antd";
+import { styled, Table, useNavigate } from "@common-module/common-antd";
 import { FileSizeConverter } from "@common-module/common-util";
-import { CategoryEntity, CategoryService, TorrentsService } from "../services";
 import { useEffect, useState } from "react";
+import { CategoryEntity, CategoryService, TorrentsService } from "../services";
 
-const SBox = styled.div`
-  background-color: #f2f6fe;
+export const SBox = styled.div`
+  background-color: #fff;
   margin: 24px;
   padding: 24px;
   border-radius: 8px;
@@ -17,6 +17,8 @@ const categoryService = new CategoryService();
 export const TorrentPage = () => {
   const [categories, setCategories] = useState<CategoryEntity[]>();
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     categoryService.list().then(setCategories);
   }, []);
@@ -25,28 +27,20 @@ export const TorrentPage = () => {
     <SBox>
       <div style={{ display: "flex", justifyContent: "center" }}>
         {categories?.map((v) => (
-          <img src={`/icons/category/${v.className}.svg`} alt={v.name}></img>
+          <img
+            key={v.id}
+            src={`/icons/category/${v.className}.svg`}
+            alt={v.name}
+          ></img>
         ))}
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        {[
-          "bd",
-          "cd",
-          "dvdr",
-          "encode",
-          "hddvd",
-          "hdtv",
-          "minibd",
-          "remux",
-          "track",
-          "uhdbd",
-          "uhdtv",
-          "webdl",
-        ].map((v) => (
-          <img src={`/icons/edition/${v}.svg`}></img>
+        {[0, 1, 2, 3, 7, 8].map((v) => (
+          <img key={v} src={`/icons/source/${v}.svg`}></img>
         ))}
       </div>
       <Table
+        pagination={{ defaultPageSize: 10 }}
         request={async (params) => {
           const data = await torrentService.listPaged({
             pageSize: params.pageSize ?? 10,
@@ -61,19 +55,19 @@ export const TorrentPage = () => {
         search={false}
         columns={[
           {
-            title: "序号",
-            width: 40,
-            render: (dom, enetity, index) => {
-              return index;
-            },
-          },
-          {
             title: "类别",
-            width: 60,
+            width: 48,
             render: (_, entity) => {
               return (
                 <img src={`/icons/category/${entity.categoryCode}.svg`}></img>
               );
+            },
+          },
+          {
+            title: "来源",
+            width: 48,
+            render: (_, entity) => {
+              return <img src={`/icons/source/${entity.source}.svg`}></img>;
             },
           },
           {
@@ -90,7 +84,24 @@ export const TorrentPage = () => {
               );
             },
           },
-          { title: "名称", dataIndex: "name", ellipsis: true },
+          {
+            title: "名称",
+            dataIndex: "name",
+            ellipsis: true,
+            render: (dom, entity) => {
+              return (
+                <div>
+                  <div
+                    style={{ fontWeight: "bold", cursor: "pointer" }}
+                    onClick={() => navigate(`/torrent/detail/${entity.id}`)}
+                  >
+                    {dom}
+                  </div>
+                  <div>{entity.smallDescr}</div>
+                </div>
+              );
+            },
+          },
           { title: "添加时间", dataIndex: "added", width: 160, ellipsis: true },
           {
             title: "大小",

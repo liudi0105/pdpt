@@ -12,16 +12,17 @@ export interface TorrentEntity extends BaseEntity {
   smallDescr: string;
   ownerName: string;
   categoryCode: string;
-  filename: string
-  tags: string[]
+  source: number;
+  filename: string;
+  tags: string[];
 }
 
 export class TorrentsService extends BaseService<TorrentEntity> {
   group = "torrents";
 
   getOneById = (id: number) => {
-    return this.postValueForJson<TorrentEntity>('get-one-by-id', id)
-  }
+    return this.postValueForJson<TorrentEntity>("get-one-by-id", id);
+  };
 
   listPaged = (param: AppPageParam) => {
     return this.postJsonForJson<AppPageResult<TorrentEntity>>(

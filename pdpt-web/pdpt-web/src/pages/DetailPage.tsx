@@ -1,19 +1,27 @@
-import { Table } from "@common-module/common-antd";
+import { Table, useParams } from "@common-module/common-antd";
 import { Button, Card, Space } from "antd";
 import { useEffect, useState } from "react";
 import { TorrentEntity, TorrentsService } from "../services";
+import { SBox } from "./TorrentPage";
 
 const torrentService = new TorrentsService();
 
 export const DetailPage = () => {
   const [torrent, setTorrent] = useState<TorrentEntity>();
 
+  const params = useParams();
+
+  console.log(params);
+
   useEffect(() => {
-    torrentService.getOneById(5).then(setTorrent);
+    if (!params.id) {
+      return;
+    }
+    torrentService.getOneById(params.id).then(setTorrent);
   }, []);
 
   return (
-    <div>
+    <SBox>
       <Card>
         <p style={{ textAlign: "center" }}>
           <div>Telegram 官方交流群</div>
@@ -73,6 +81,6 @@ export const DetailPage = () => {
           { name: "简介", value: torrent?.descr },
         ]}
       ></Table>
-    </div>
+    </SBox>
   );
 };

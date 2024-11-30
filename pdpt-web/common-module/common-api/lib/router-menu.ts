@@ -3,7 +3,8 @@ import { ReactNode } from "react";
 
 export type RouterMenuItem = {
   path: string;
-  name: string;
+  name?: string;
+  hidden?: boolean;
   element?: ReactNode;
   children?: RouterMenuItem[];
   routes?: RouterMenuItem[];

@@ -1,7 +1,9 @@
 import { RouterMenuItem } from "@common-module/common-api";
-import { styled } from "@common-module/common-react";
-import { Tabs } from "antd";
-import { TorrentPage } from "./TorrentPage";
+import { Outlet, styled, useNavigate } from "@common-module/common-react";
+import { ConfigProvider, Menu, MenuProps, theme } from "antd";
+import { routers } from "../App";
+
+type MenuItem = Required<MenuProps>["items"][number];
 
 const SBackground = styled.div`
   padding: 24px;
@@ -20,77 +22,47 @@ const SHomeBox = styled.div`
 const SMainMenuBox = styled.div`
   display: flex;
   justify-content: center;
+  flex-direction: column;
 `;
 
-const r: RouterMenuItem[] = [
-  {
-    path: "home",
-    name: "首页",
-  },
-  {
-    path: "forum",
-    name: "论坛",
-  },
-  {
-    path: "all",
-    name: "综合",
-  },
-  {
-    path: "official",
-    name: "官方",
-  },
-  {
-    path: "dead-torrents",
-    name: "断种",
-  },
-  {
-    path: "offers",
-    name: "候选",
-  },
-  {
-    path: "request",
-    name: "求种",
-  },
-  {
-    path: "subtitle",
-    name: "字幕",
-  },
-  {
-    path: "entertainment",
-    name: "娱乐",
-  },
-  {
-    path: "top",
-    name: "排行榜",
-  },
-  {
-    path: "log",
-    name: "日志",
-  },
-  {
-    path: "help",
-    name: "帮助",
-  },
-  {
-    path: "contact-us",
-    name: "联系管理组",
-  },
-];
+function toMenu(router: RouterMenuItem): MenuItem {
+  return {
+    key: router.path,
+    label: router.name,
+    children: router.children?.map((v) => toMenu(v)),
+  };
+}
 
 export const Layout = () => {
+  const items: MenuItem[] = routers
+    .filter((v) => !v.hidden)
+    .map((v) => toMenu(v));
+
+  const naviate = useNavigate();
+
   return (
     <SBackground>
       <SHomeBox>
         <SMainMenuBox>
-          <Tabs
-            // type="card"
-            centered
-            items={r.map((v) => ({
-              key: v.path,
-              label: v.name,
-              children: <TorrentPage />,
-            }))}
-          ></Tabs>
+          <Menu
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              backgroundColor: "#d8e2ef",
+            }}
+            onClick={(p) => {
+              naviate(p.keyPath.reverse().join("/"));
+            }}
+            mode="horizontal"
+            items={items}
+          ></Menu>
+          <ConfigProvider
+            theme={{
+              algorithm: [theme.compactAlgorithm],
+            }}
+          >
+            <Outlet />
+          </ConfigProvider>
         </SMainMenuBox>
       </SHomeBox>
     </SBackground>
