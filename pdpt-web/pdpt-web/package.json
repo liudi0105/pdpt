@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/happy-work-theme": "^1.0.0",
     "@common-module/common-antd": "workspace:*",
     "@common-module/common-api": "workspace:*",
     "@common-module/common-dev": "workspace:*",

@@ -1,4 +1,4 @@
-package com.pd.server.category;
+package com.pd.server.torrent;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -11,11 +11,9 @@ import lombok.experimental.Accessors;
 @Setter
 @Accessors(chain = true)
 @Entity
-@Table(name = "sources")
-public class SourceEntity {
+@Table(name = "tags")
+public class TagEntity {
     @Id
-    private Byte id;
+    private Long id;
     private String name;
-    private Byte sortIndex;
-    private Integer mode;
 }

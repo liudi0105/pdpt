@@ -11,8 +11,8 @@ import lombok.experimental.Accessors;
 @Setter
 @Accessors(chain = true)
 @Entity
-@Table(name = "sources")
-public class SourceEntity {
+@Table(name = "media")
+public class MediaEntity {
     @Id
     private Byte id;
     private String name;

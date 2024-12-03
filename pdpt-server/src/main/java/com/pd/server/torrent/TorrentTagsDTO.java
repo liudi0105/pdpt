@@ -1,6 +1,5 @@
-package com.pd.server.tag;
+package com.pd.server.torrent;
 
-import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 

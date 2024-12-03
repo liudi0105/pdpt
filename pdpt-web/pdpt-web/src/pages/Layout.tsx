@@ -40,6 +40,16 @@ function toMenu(router: RouterMenuItem): MenuItem {
   };
 }
 
+const SMenu = styled(Menu)`
+  line-height: 32px;
+  border-bottom: 0;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0);
+`;
+
 export const Layout = () => {
   const items: MenuItem[] = routers
     .filter((v) => !v.hidden)
@@ -56,24 +66,15 @@ export const Layout = () => {
     <SBackground>
       <SHomeBox>
         <SMainMenuBox>
-          <Menu
+          <SMenu
             activeKey={key}
             selectedKeys={path}
-            style={{
-              lineHeight: "32px",
-              borderBottom: 0,
-              marginBottom: 8,
-              borderRadius: 8,
-              display: "flex",
-              justifyContent: "center",
-              backgroundColor: "#d8e2ef",
-            }}
             onClick={(p) => {
               naviate(p.keyPath.reverse().join("/"));
             }}
             mode="horizontal"
             items={items}
-          ></Menu>
+          ></SMenu>
           <ConfigProvider
             theme={{
               algorithm: [theme.compactAlgorithm],

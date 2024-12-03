@@ -39,8 +39,20 @@ export interface CategoryEntity extends BaseEntity {
   name: string;
 }
 
+export interface AllCategory extends BaseEntity {
+  categories: CategoryEntity[];
+  encodings: CategoryEntity[];
+  medias: CategoryEntity[];
+  resolutions: CategoryEntity[];
+  sources: CategoryEntity[];
+  audioEncodings: CategoryEntity[];
+}
+
 export class CategoryService extends BaseService<CategoryEntity> {
   group = "category";
 
   list = () => this.postJsonForJson<CategoryEntity[]>("list");
+
+  listAllCategory = () =>
+    this.postJsonForJson<AllCategory>("list-all-category");
 }

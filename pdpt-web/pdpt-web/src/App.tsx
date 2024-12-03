@@ -13,6 +13,7 @@ import { LoginPage } from "./pages/LoginPage";
 import { TorrentPage } from "./pages/TorrentPage";
 import { DetailPage } from "./pages/DetailPage";
 import { HomePage } from "./pages/HomePage";
+import { HappyProvider } from "@ant-design/happy-work-theme";
 
 const SGlobalStyle = createGlobalStyle`
   html, body, #root {
@@ -74,6 +75,11 @@ export const routers: RouterMenuItem[] = [
   {
     path: "request",
     name: "求种",
+    element: <TorrentPage />,
+  },
+  {
+    path: "publish",
+    name: "发布",
     element: <TorrentPage />,
   },
   {
@@ -140,9 +146,11 @@ function App() {
         },
       }}
     >
-      <RouterProvider router={AppRouter} />
-      <SGlobalStyle />
-      <FloatButtonGroup />
+      <HappyProvider>
+        <RouterProvider router={AppRouter} />
+        <SGlobalStyle />
+        <FloatButtonGroup />
+      </HappyProvider>
     </ConfigProvider>
   );
 }

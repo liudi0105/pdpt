@@ -1,4 +1,4 @@
-package com.pd.server.tag;
+package com.pd.server.torrent;
 
 import common.module.jpa.GeneralJpaRepo;
 import org.springframework.stereotype.Repository;

@@ -1,4 +1,4 @@
-package com.pd.server.tag;
+package com.pd.server.category;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -11,9 +11,11 @@ import lombok.experimental.Accessors;
 @Setter
 @Accessors(chain = true)
 @Entity
-@Table(name = "tags")
-public class TagEntity {
+@Table(name = "codecs")
+public class EncodingEntity {
     @Id
-    private Long id;
+    private Byte id;
     private String name;
+    private Byte sortIndex;
+    private Integer mode;
 }

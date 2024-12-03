@@ -1,43 +1,104 @@
-import { styled, Table, useNavigate } from "@common-module/common-antd";
+import {
+  Ant,
+  CloudDownloadOutlined,
+  DownloadOutlined,
+  HeartFilled,
+  HeartOutlined,
+  Pro,
+  styled,
+  Table,
+  useNavigate,
+} from "@common-module/common-antd";
 import { FileSizeConverter } from "@common-module/common-util";
 import { useEffect, useState } from "react";
-import { CategoryEntity, CategoryService, TorrentsService } from "../services";
+import { AllCategory, CategoryService, TorrentsService } from "../services";
 
 export const SBox = styled.div`
   background-color: #fff;
   padding: 24px;
   border-radius: 8px;
   box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
 `;
 
 const torrentService = new TorrentsService();
 const categoryService = new CategoryService();
 
 export const TorrentPage = () => {
-  const [categories, setCategories] = useState<CategoryEntity[]>();
+  const [allCat, setAllCat] = useState<AllCategory>();
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    categoryService.list().then(setCategories);
+    categoryService.listAllCategory().then(setAllCat);
   }, []);
 
   return (
     <SBox>
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        {categories?.map((v) => (
-          <img
-            key={v.id}
-            src={`/icons/category/${v.className}.svg`}
-            alt={v.name}
-          ></img>
-        ))}
-      </div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        {[0, 1, 2, 3, 7, 8].map((v) => (
-          <img key={v} src={`/icons/source/${v}.svg`}></img>
-        ))}
-      </div>
+      <Ant.Collapse
+        bordered={false}
+        accordion
+        defaultActiveKey="simple"
+        items={[
+          {
+            key: "simple",
+            label: "简单搜索",
+            children: (
+              <Pro.ProForm layout="inline">
+                <Pro.ProFormText width="lg" />
+              </Pro.ProForm>
+            ),
+          },
+          {
+            key: "full",
+            label: "搜索工具箱",
+            children: (
+              <Pro.ProForm
+                layout="horizontal"
+                labelAlign="left"
+                labelCol={{
+                  span: 2,
+                }}
+                wrapperCol={{
+                  span: 24,
+                }}
+              >
+                <Pro.ProFormCheckbox.Group
+                  label="分类"
+                  options={allCat?.categories.map((v) => ({
+                    label: v.name,
+                    value: v.id,
+                  }))}
+                />
+                <Pro.ProFormCheckbox.Group
+                  label="音频编码"
+                  options={allCat?.audioEncodings.map((v) => ({
+                    label: v.name,
+                    value: v.id,
+                  }))}
+                />
+                <Pro.ProFormCheckbox.Group
+                  label="编码"
+                  options={allCat?.encodings.map((v) => ({
+                    label: v.name,
+                    value: v.id,
+                  }))}
+                />
+                <Pro.ProFormCheckbox.Group
+                  label="分辨率"
+                  options={allCat?.resolutions.map((v) => ({
+                    label: v.name,
+                    value: v.id,
+                  }))}
+                />
+                <Pro.ProFormText label="关键字" />
+              </Pro.ProForm>
+            ),
+          },
+        ]}
+      ></Ant.Collapse>
       <Table
         pagination={{ defaultPageSize: 10 }}
         request={async (params) => {
@@ -97,6 +158,23 @@ export const TorrentPage = () => {
                     {dom}
                   </div>
                   <div>{entity.smallDescr}</div>
+                </div>
+              );
+            },
+          },
+          {
+            title: "操作",
+            width: 40,
+            align: "center",
+            render: (dom, entity) => {
+              return (
+                <div>
+                  <div>
+                    <CloudDownloadOutlined style={{ cursor: "pointer" }} />
+                  </div>
+                  <div>
+                    <HeartOutlined style={{ cursor: "pointer" }} />
+                  </div>
                 </div>
               );
             },

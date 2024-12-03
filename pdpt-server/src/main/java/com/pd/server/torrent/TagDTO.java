@@ -1,4 +1,4 @@
-package com.pd.server.tag;
+package com.pd.server.torrent;
 
 import lombok.Getter;
 import lombok.Setter;
