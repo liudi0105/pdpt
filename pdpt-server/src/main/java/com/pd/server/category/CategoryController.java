@@ -38,12 +38,12 @@ public class CategoryController {
 
     @Api(path = "list-all-category")
     public AllCategoryDTO listAllCategory() {
-        List<EncodingDTO> list = encodingRepo.list(UnaryOperator.identity());
-        List<MediaDTO> list1 = mediaRepo.list(UnaryOperator.identity());
-        List<ResolutionDTO> list2 = resolutionRepo.list(UnaryOperator.identity());
-        List<SourceDTO> list3 = sourceRepo.list(UnaryOperator.identity());
-        List<AudioEncodingDTO> list4 = audioEncodingRepo.list(UnaryOperator.identity());
-        List<CategoryDTO> list5 = categoryRepo.list(UnaryOperator.identity());
+        List<EncodingDTO> list = encodingRepo.listQuery(v -> v.orderBy(EncodingEntity::getSortIndex).asc());
+        List<MediaDTO> list1 = mediaRepo.listQuery(v -> v.orderBy(MediaEntity::getSortIndex).asc());
+        List<ResolutionDTO> list2 = resolutionRepo.listQuery(v -> v.orderBy(ResolutionEntity::getSortIndex).asc());
+        List<SourceDTO> list3 = sourceRepo.listQuery(v -> v.orderBy(SourceEntity::getSortIndex).asc());
+        List<AudioEncodingDTO> list4 = audioEncodingRepo.listQuery(v -> v.orderBy(AudioEncodingEntity::getSortIndex).asc());
+        List<CategoryDTO> list5 = categoryRepo.listQuery(v -> v.orderBy(CategoryEntity::getSortIndex).asc());
         return new AllCategoryDTO()
                 .setMedias(list1)
                 .setCategories(list5)
