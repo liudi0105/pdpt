@@ -9,15 +9,13 @@ const torrentService = new TorrentsService();
 export const DetailPage = () => {
   const [torrent, setTorrent] = useState<TorrentEntity>();
 
-  const params = useParams();
-
-  console.log(params);
+  const params = useParams<{ id: string }>();
 
   useEffect(() => {
     if (!params.id) {
       return;
     }
-    torrentService.getOneById(params.id).then(setTorrent);
+    torrentService.getOneById(+params.id).then(setTorrent);
   }, []);
 
   return (

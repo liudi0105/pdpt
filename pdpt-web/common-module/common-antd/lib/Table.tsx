@@ -138,9 +138,9 @@ export const CrudTable = <
                 ))}
             </ButtonModalFrom>
             <Popconfirm
-              title={`确定要删除[${entity.id}]吗？`}
+              title={`确定要删除该数据吗？`}
               onConfirm={async () => {
-                await service.deleteById(entity.id);
+                // await service.deleteById(entity.id);
                 message.success("删除成功");
                 await action?.reload();
                 return true;

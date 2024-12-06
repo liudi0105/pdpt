@@ -1,19 +1,19 @@
+import { HappyProvider } from "@ant-design/happy-work-theme";
 import { FloatButtonGroup } from "@common-module/common-antd";
 import { RouterMenuItem } from "@common-module/common-api";
 import {
   createBrowserRouter,
   createGlobalStyle,
   Navigate,
-  RouterProvider,
+  RouterProvider
 } from "@common-module/common-react";
 import { ConfigProvider } from "antd";
 import "./App.css";
+import { DetailPage } from "./pages/DetailPage";
+import { HomePage } from "./pages/HomePage";
 import { Layout } from "./pages/Layout";
 import { LoginPage } from "./pages/LoginPage";
 import { TorrentPage } from "./pages/TorrentPage";
-import { DetailPage } from "./pages/DetailPage";
-import { HomePage } from "./pages/HomePage";
-import { HappyProvider } from "@ant-design/happy-work-theme";
 
 const SGlobalStyle = createGlobalStyle`
   html, body, #root {

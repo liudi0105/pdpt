@@ -1,6 +1,7 @@
 import { MenuButton, Pro } from "@common-module/common-antd";
 import { Form, styled } from "@common-module/common-react";
 import { Tabs } from "antd";
+import { useForm } from "antd/es/form/Form";
 
 const SBack = styled.div`
   height: 100%;
@@ -46,6 +47,8 @@ const SFuncArea = styled.div`
 `;
 
 export const LoginPage = () => {
+  const [form] = useForm();
+
   return (
     <SBack>
       <SFrame>
@@ -58,9 +61,18 @@ export const LoginPage = () => {
                 key: "login",
                 label: "登录",
                 children: (
-                  <Form>
-                    <Pro.ProFormText name="username" placeholder="账号" />
-                    <Pro.ProFormText name="password" placeholder="密码" />
+                  <Pro.ProForm form={form}>
+                    <Pro.ProFormText
+                      name="username"
+                      placeholder="账号"
+                      required
+                      rules={[{ required: true }]}
+                    />
+                    <Pro.ProFormText
+                      name="password"
+                      placeholder="密码"
+                      required
+                    />
                     <Pro.ProFormField
                       fieldProps={{
                         addonBefore: "二次验证",
@@ -77,11 +89,18 @@ export const LoginPage = () => {
                         addonAfter="限制只能使用本IP登录"
                       />
                     </Pro.ProFormGroup>
-                    <MenuButton style={{ marginBottom: 8 }} type="primary">
+                    <MenuButton
+                      style={{ marginBottom: 8 }}
+                      type="primary"
+                      onClick={async () => {
+                        const v = await form.validateFields();
+                        console.log(v);
+                      }}
+                    >
                       登录
                     </MenuButton>
                     <MenuButton type="default">重置</MenuButton>
-                  </Form>
+                  </Pro.ProForm>
                 ),
               },
               {

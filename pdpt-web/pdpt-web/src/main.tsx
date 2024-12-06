@@ -4,7 +4,7 @@ import App from "./App.tsx";
 import "./index.css";
 
 registerConfig({
-  apiUrl: "http://localhost:8080/api",
+  apiUrl: "/api",
 });
 
 createRoot(document.getElementById("root")!).render(<App />);

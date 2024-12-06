@@ -8,6 +8,7 @@ import {
 } from "@common-module/common-react";
 import { ConfigProvider, Menu, MenuProps, theme } from "antd";
 import { routers } from "../App";
+import { joinPath } from "@common-module/common-util";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -70,7 +71,8 @@ export const Layout = () => {
             activeKey={key}
             selectedKeys={path}
             onClick={(p) => {
-              naviate(p.keyPath.reverse().join("/"));
+              const s = ["/", ...p.keyPath.reverse()];
+              naviate(joinPath(...s));
             }}
             mode="horizontal"
             items={items}

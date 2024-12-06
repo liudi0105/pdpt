@@ -1,6 +1,13 @@
+buildscript {
+    dependencies {
+        classpath("org.springframework.boot:org.springframework.boot.gradle.plugin:3.4.0")
+    }
+}
+
 plugins {
     id 'java'
 }
+apply plugin: 'org.springframework.boot'
 
 group = 'app'
 version = '1.0'

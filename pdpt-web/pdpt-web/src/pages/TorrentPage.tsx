@@ -1,13 +1,11 @@
 import {
   Ant,
   CloudDownloadOutlined,
-  DownloadOutlined,
-  HeartFilled,
   HeartOutlined,
   Pro,
   styled,
   Table,
-  useNavigate,
+  useNavigate
 } from "@common-module/common-antd";
 import { FileSizeConverter } from "@common-module/common-util";
 import { useEffect, useState } from "react";
@@ -166,7 +164,7 @@ export const TorrentPage = () => {
             title: "操作",
             width: 40,
             align: "center",
-            render: (dom, entity) => {
+            render: () => {
               return (
                 <div>
                   <div>
