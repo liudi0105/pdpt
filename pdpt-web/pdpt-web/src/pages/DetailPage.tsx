@@ -1,8 +1,9 @@
-import { Table, useParams } from "@common-module/common-antd";
 import { Button, Card, Space } from "antd";
 import { useEffect, useState } from "react";
 import { TorrentEntity, TorrentsService } from "../services";
 import { SBox } from "./TorrentPage";
+import { useParams } from "@common-module/common-react";
+import { Table } from "@common-module/common-antd";
 
 const torrentService = new TorrentsService();
 

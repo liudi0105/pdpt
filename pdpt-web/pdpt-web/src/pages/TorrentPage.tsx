@@ -1,15 +1,13 @@
-import {
-  Ant,
-  CloudDownloadOutlined,
-  HeartOutlined,
-  Pro,
-  styled,
-  Table,
-  useNavigate
-} from "@common-module/common-antd";
+import { Ant, AntIcon, Pro, Table } from "@common-module/common-antd";
 import { FileSizeConverter } from "@common-module/common-util";
 import { useEffect, useState } from "react";
-import { AllCategory, CategoryService, TorrentsService } from "../services";
+import {
+  AllCategory,
+  CategoryService,
+  TorrentEntity,
+  TorrentsService,
+} from "../services";
+import { styled, useNavigate } from "@common-module/common-react";
 
 export const SBox = styled.div`
   background-color: #fff;
@@ -97,7 +95,7 @@ export const TorrentPage = () => {
           },
         ]}
       ></Ant.Collapse>
-      <Table
+      <Table<TorrentEntity, TorrentEntity>
         pagination={{ defaultPageSize: 10 }}
         request={async (params) => {
           const data = await torrentService.listPaged({
@@ -168,10 +166,12 @@ export const TorrentPage = () => {
               return (
                 <div>
                   <div>
-                    <CloudDownloadOutlined style={{ cursor: "pointer" }} />
+                    <AntIcon.CloudDownloadOutlined
+                      style={{ cursor: "pointer" }}
+                    />
                   </div>
                   <div>
-                    <HeartOutlined style={{ cursor: "pointer" }} />
+                    <AntIcon.HeartOutlined style={{ cursor: "pointer" }} />
                   </div>
                 </div>
               );

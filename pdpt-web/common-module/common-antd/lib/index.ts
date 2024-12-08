@@ -7,7 +7,7 @@ export * from "./Table";
 export * from "./ConfigProvider";
 export * from "./FloatButton";
 
-export * from "@ant-design/icons";
+export * as AntIcon from "@ant-design/icons";
 export * as Ant from "antd";
 export * as Pro from "@ant-design/pro-components";
-export * from "@common-module/common-react";
+export * as React from "@common-module/common-react";

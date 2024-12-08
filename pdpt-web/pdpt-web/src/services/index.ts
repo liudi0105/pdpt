@@ -1,5 +1,4 @@
-import { BaseEntity, BaseService } from "@common-module/common-api";
-import { AppPageParam, AppPageResult } from "@common-module/common-types";
+import { AppPageParam, AppPageResult, BaseEntity, BaseService } from "@common-module/common-api";
 
 export interface TorrentEntity extends BaseEntity {
   id: number;

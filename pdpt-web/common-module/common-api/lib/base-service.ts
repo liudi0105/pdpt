@@ -1,6 +1,6 @@
-import { AppPageParam, AppPageResult } from "@common-module/common-types";
 import { joinPath, RequestConfig } from "@common-module/common-util";
 import { getConfig } from "./app-config";
+import { AppPageParam, AppPageResult } from "./service-type";
 
 export type BaseEntity = {};
 
