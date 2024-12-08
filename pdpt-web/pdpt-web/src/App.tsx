@@ -5,7 +5,7 @@ import {
   createBrowserRouter,
   createGlobalStyle,
   Navigate,
-  RouterProvider
+  RouterProvider,
 } from "@common-module/common-react";
 import { ConfigProvider } from "antd";
 import "./App.css";
@@ -14,6 +14,7 @@ import { HomePage } from "./pages/HomePage";
 import { Layout } from "./pages/Layout";
 import { LoginPage } from "./pages/LoginPage";
 import { TorrentPage } from "./pages/TorrentPage";
+import { Forum } from "./pages/Forum";
 
 const SGlobalStyle = createGlobalStyle`
   html, body, #root {
@@ -38,7 +39,7 @@ export const routers: RouterMenuItem[] = [
   {
     path: "forum",
     name: "论坛",
-    element: <TorrentPage />,
+    element: <Forum />,
   },
   {
     path: "torrents",
