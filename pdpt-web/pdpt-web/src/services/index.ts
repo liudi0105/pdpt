@@ -83,10 +83,25 @@ export interface OverForumsEntity extends BaseEntity {
   forums: ForumsEntity[];
 }
 
+export interface TopicEntity extends BaseEntity {
+  id: number;
+  userid: number;
+  subject: string;
+  locked: string;
+  forumid: number;
+  firstpost: number;
+  lastpost: number;
+  sticky: string;
+  hlcolor: number;
+  views: number;
+}
+
 export class ForumsService extends BaseService<never> {
   group = "forums";
 
-  forumsStructure = () => {
-    return this.postJsonForJson<OverForumsEntity[]>("forum-structure");
-  };
+  forumsStructure = () =>
+    this.postJsonForJson<OverForumsEntity[]>("forum-structure");
+
+  listTopicByForumId = (id: number) =>
+    this.postValueForJson<TopicEntity[]>("list-topic-by-forum-id", id);
 }

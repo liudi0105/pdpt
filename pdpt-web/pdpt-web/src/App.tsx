@@ -15,6 +15,7 @@ import { Layout } from "./pages/Layout";
 import { LoginPage } from "./pages/LoginPage";
 import { TorrentPage } from "./pages/TorrentPage";
 import { Forum } from "./pages/Forum";
+import { Topic } from "./pages/Topic";
 
 const SGlobalStyle = createGlobalStyle`
   html, body, #root {
@@ -112,6 +113,11 @@ export const routers: RouterMenuItem[] = [
     path: "contact-us",
     name: "联系管理组",
     element: <TorrentPage />,
+  },
+  {
+    path: "topics/:id",
+    element: <Topic />,
+    hidden: true,
   },
   {
     path: "torrent/detail/:id",

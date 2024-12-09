@@ -5,6 +5,12 @@ import com.pd.server.forum.forums.ForumsDTO;
 import com.pd.server.forum.forums.ForumsRepo;
 import com.pd.server.forum.overforums.OverForumsDTO;
 import com.pd.server.forum.overforums.OverForumsRepo;
+import com.pd.server.forum.topics.TopicDTO;
+import com.pd.server.forum.topics.TopicEntity;
+import com.pd.server.forum.topics.TopicRepo;
+import com.pd.server.user_info.UserDTO;
+import com.pd.server.user_info.UserPO;
+import com.pd.server.user_info.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,12 +32,26 @@ public class ForumsService {
     @Autowired
     private ForumsModsRepo forumsModsRepo;
 
+    @Autowired
+    private TopicRepo topicRepo;
+
+    @Autowired
+    private UserRepo userRepo;
+
     public List<OverForumsDTO> dataStructure() {
         List<OverForumsDTO> list = overForumsRepo.list(UnaryOperator.identity());
         List<ForumsDTO> list1 = forumsRepo.list(UnaryOperator.identity());
         Map<Short, OverForumsDTO> collect = list.stream().collect(Collectors.toMap(OverForumsDTO::getId, Function.identity()));
         list1.stream().collect(Collectors.groupingBy(ForumsDTO::getForid))
-                .forEach((k,v) -> collect.get(k).setForums(v));
+                .forEach((k, v) -> collect.get(k).setForums(v));
         return list;
+    }
+
+    public List<TopicDTO> listTopicByForumId(Short id) {
+        List<TopicDTO> topicDTOS = topicRepo.listEq(TopicEntity::getForumid, id);
+        List<Long> list = topicDTOS.stream().map(TopicDTO::getUserid).map(Long::valueOf).toList();
+        Map<Integer, UserDTO> collect = userRepo.listIn(UserPO::getId, list).stream().collect(Collectors.toMap(v -> (int) (long) v.getId(), Function.identity()));
+        topicDTOS.forEach(v -> v.setAuthor(collect.get(v.getUserid()).getUsername()));
+        return topicDTOS;
     }
 }

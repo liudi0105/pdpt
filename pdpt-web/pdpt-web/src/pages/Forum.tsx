@@ -2,6 +2,7 @@ import { Ant, Table } from "@common-module/common-antd";
 import { ForumsEntity, ForumsService, OverForumsEntity } from "../services";
 import { useEffect, useState } from "react";
 import { ConfigProvider, theme } from "antd";
+import { useNavigate } from "@common-module/common-react";
 
 const forumsService = new ForumsService();
 
@@ -11,6 +12,8 @@ export const Forum = () => {
   useEffect(() => {
     forumsService.forumsStructure().then(setForums);
   }, []);
+
+  const navigate = useNavigate();
 
   return (
     <ConfigProvider theme={{ algorithm: [theme.defaultAlgorithm] }}>
@@ -27,8 +30,13 @@ export const Forum = () => {
                   render: (dom, entity) => {
                     return (
                       <div>
-                        <div style={{ cursor: "pointer", fontWeight: "bold" }}>
-                          {entity.name}
+                        <div>
+                          <span
+                            style={{ cursor: "pointer", fontWeight: "bold" }}
+                            onClick={() => navigate(`/topics/${entity.id}`)}
+                          >
+                            {entity.name}
+                          </span>
                         </div>
                         <div>{entity.description}</div>
                       </div>
