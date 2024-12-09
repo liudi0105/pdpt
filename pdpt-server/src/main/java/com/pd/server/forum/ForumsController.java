@@ -1,5 +1,8 @@
 package com.pd.server.forum;
 
+import com.pd.server.forum.forums.ForumsDTO;
+import com.pd.server.forum.forums.ForumsEntity;
+import com.pd.server.forum.forums.ForumsRepo;
 import com.pd.server.forum.overforums.OverForumsDTO;
 import com.pd.server.forum.overforums.OverForumsRepo;
 import com.pd.server.forum.topics.TopicDTO;
@@ -28,4 +31,10 @@ public class ForumsController {
     public List<TopicDTO> listTopicByForumId(@RequestBody @ValueWrapper.NotNull ValueWrapper<Short> id) {
         return forumsService.listTopicByForumId(id.getValue());
     }
+
+    @Api(path = "get-forum-by-forum-id")
+    public ForumsDTO getForumByForumId(@RequestBody @ValueWrapper.NotNull ValueWrapper<Short> id) {
+        return forumsService.getForumById(id.getValue());
+    }
+
 }

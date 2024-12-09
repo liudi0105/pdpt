@@ -2,8 +2,10 @@ package com.pd.server.forum;
 
 import com.pd.server.forum.forummods.ForumsModsRepo;
 import com.pd.server.forum.forums.ForumsDTO;
+import com.pd.server.forum.forums.ForumsEntity;
 import com.pd.server.forum.forums.ForumsRepo;
 import com.pd.server.forum.overforums.OverForumsDTO;
+import com.pd.server.forum.overforums.OverForumsEntity;
 import com.pd.server.forum.overforums.OverForumsRepo;
 import com.pd.server.forum.topics.TopicDTO;
 import com.pd.server.forum.topics.TopicEntity;
@@ -53,5 +55,12 @@ public class ForumsService {
         Map<Integer, UserDTO> collect = userRepo.listIn(UserPO::getId, list).stream().collect(Collectors.toMap(v -> (int) (long) v.getId(), Function.identity()));
         topicDTOS.forEach(v -> v.setAuthor(collect.get(v.getUserid()).getUsername()));
         return topicDTOS;
+    }
+
+    public ForumsDTO getForumById(Short id) {
+        ForumsDTO eq = forumsRepo.getEq(ForumsEntity::getId, id);
+        OverForumsDTO eq1 = overForumsRepo.getEq(OverForumsEntity::getId, eq.getForid());
+        eq.setBlockName(eq1.getName());
+        return eq;
     }
 }

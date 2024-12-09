@@ -16,4 +16,5 @@ public class ForumsDTO {
     private Byte minclasscreate;
     private Short forid;
     private Short sort;
+    private String blockName;
 }

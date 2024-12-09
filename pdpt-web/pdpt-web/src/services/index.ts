@@ -72,6 +72,7 @@ export interface ForumsEntity extends BaseEntity {
   postcount: number;
   topiccount: number;
   forid: number;
+  blockName: string;
 }
 
 export interface OverForumsEntity extends BaseEntity {
@@ -104,4 +105,7 @@ export class ForumsService extends BaseService<never> {
 
   listTopicByForumId = (id: number) =>
     this.postValueForJson<TopicEntity[]>("list-topic-by-forum-id", id);
+
+  getForumByForumId = (id: number) =>
+    this.postValueForJson<ForumsEntity>("get-forum-by-forum-id", id);
 }

@@ -115,7 +115,7 @@ export const routers: RouterMenuItem[] = [
     element: <TorrentPage />,
   },
   {
-    path: "topics/:id",
+    path: "forum/topics/:id",
     element: <Topic />,
     hidden: true,
   },
