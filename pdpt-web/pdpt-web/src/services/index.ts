@@ -1,4 +1,9 @@
-import { AppPageParam, AppPageResult, BaseEntity, BaseService } from "@common-module/common-api";
+import {
+  AppPageParam,
+  AppPageResult,
+  BaseEntity,
+  BaseService,
+} from "@common-module/common-api";
 
 export interface TorrentEntity extends BaseEntity {
   id: number;
@@ -54,4 +59,34 @@ export class CategoryService extends BaseService<CategoryEntity> {
 
   listAllCategory = () =>
     this.postJsonForJson<AllCategory>("list-all-category");
+}
+
+export interface ForumsEntity extends BaseEntity {
+  id: number;
+  sort: number;
+  name: string;
+  minclassread: string;
+  minclasswrite: string;
+  minclasscreate: string;
+  description: string;
+  postcount: number;
+  topiccount: number;
+  forid: number;
+}
+
+export interface OverForumsEntity extends BaseEntity {
+  id: number;
+  name: string;
+  description: string;
+  minclassview: number;
+  sort: number;
+  forums: ForumsEntity[];
+}
+
+export class ForumsService extends BaseService<never> {
+  group = "forums";
+
+  forumsStructure = () => {
+    return this.postJsonForJson<OverForumsEntity[]>("forum-structure");
+  };
 }
