@@ -1,4 +1,3 @@
-import { HappyProvider } from "@ant-design/happy-work-theme";
 import { FloatButtonGroup } from "@common-module/common-antd";
 import { RouterMenuItem } from "@common-module/common-api";
 import {
@@ -7,16 +6,21 @@ import {
   Navigate,
   RouterProvider,
 } from "@common-module/common-react";
-import { ConfigProvider } from "antd";
 import "./App.css";
 import { DetailPage } from "./pages/DetailPage";
+import { Forum } from "./pages/Forum";
 import { HomePage } from "./pages/HomePage";
 import { Layout } from "./pages/Layout";
 import { LoginPage } from "./pages/LoginPage";
-import { TorrentPage } from "./pages/TorrentPage";
-import { Forum } from "./pages/Forum";
-import { Topic } from "./pages/Topic";
 import { Posts } from "./pages/Posts";
+import { Topic } from "./pages/Topic";
+import { TorrentPage } from "./pages/TorrentPage";
+import { TorrentRequest } from "./pages/TorrentRequest";
+import { Subtitle } from "./pages/Subtitle";
+import { Publish } from "./pages/Publish";
+import { Entertain } from "./pages/Entertain";
+import { Top } from "./pages/Top";
+import { Log } from "./pages/Log";
 
 const SGlobalStyle = createGlobalStyle`
   html, body, #root {
@@ -47,18 +51,18 @@ export const routers: RouterMenuItem[] = [
     path: "torrents",
     name: "综合",
     element: <TorrentPage />,
-    children: [
-      {
-        path: "all",
-        name: "所有",
-        element: <TorrentPage />,
-      },
-      {
-        path: "film",
-        name: "电影",
-        element: <TorrentPage />,
-      },
-    ],
+    // children: [
+    //   {
+    //     path: "all",
+    //     name: "所有",
+    //     element: <TorrentPage />,
+    //   },
+    //   {
+    //     path: "film",
+    //     name: "电影",
+    //     element: <TorrentPage />,
+    //   },
+    // ],
   },
   {
     path: "official",
@@ -78,32 +82,32 @@ export const routers: RouterMenuItem[] = [
   {
     path: "request",
     name: "求种",
-    element: <TorrentPage />,
+    element: <TorrentRequest />,
   },
   {
     path: "publish",
     name: "发布",
-    element: <TorrentPage />,
+    element: <Publish />,
   },
   {
     path: "subtitle",
     name: "字幕",
-    element: <TorrentPage />,
+    element: <Subtitle />,
   },
   {
     path: "entertainment",
     name: "娱乐",
-    element: <TorrentPage />,
+    element: <Entertain />,
   },
   {
     path: "top",
     name: "排行榜",
-    element: <TorrentPage />,
+    element: <Top />,
   },
   {
     path: "log",
     name: "日志",
-    element: <TorrentPage />,
+    element: <Log />,
   },
   {
     path: "help",
