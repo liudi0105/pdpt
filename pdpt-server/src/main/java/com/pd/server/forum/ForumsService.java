@@ -7,6 +7,9 @@ import com.pd.server.forum.forums.ForumsRepo;
 import com.pd.server.forum.overforums.OverForumsDTO;
 import com.pd.server.forum.overforums.OverForumsEntity;
 import com.pd.server.forum.overforums.OverForumsRepo;
+import com.pd.server.forum.post.PostsDTO;
+import com.pd.server.forum.post.PostsEntity;
+import com.pd.server.forum.post.PostsRepo;
 import com.pd.server.forum.topics.TopicDTO;
 import com.pd.server.forum.topics.TopicEntity;
 import com.pd.server.forum.topics.TopicRepo;
@@ -40,6 +43,24 @@ public class ForumsService {
     @Autowired
     private UserRepo userRepo;
 
+    @Autowired
+    private PostsRepo postsRepo;
+
+    public List<PostsDTO> listPostsByTopicId(Integer id) {
+        List<PostsDTO> postsDTOS = postsRepo.listQuery(v -> v
+                .orderBy(PostsEntity::getAdded)
+                .asc()
+                .where(c -> c.eq(PostsEntity::getTopicid, id)));
+        setPostsUser(postsDTOS);
+        return postsDTOS;
+    }
+
+    private void setPostsUser(List<PostsDTO> postsDTOS) {
+        List<Long> list = postsDTOS.stream().map(PostsDTO::getUserid).map(Long::valueOf).toList();
+        Map<Long, UserDTO> collect = userRepo.listIn(UserPO::getId, list).stream().collect(Collectors.toMap(UserDTO::getId, Function.identity()));
+        postsDTOS.forEach(v -> v.setUsername(collect.get(v.getUserid().longValue()).getUsername()));
+    }
+
     public List<OverForumsDTO> dataStructure() {
         List<OverForumsDTO> list = overForumsRepo.list(UnaryOperator.identity());
         List<ForumsDTO> list1 = forumsRepo.list(UnaryOperator.identity());
@@ -55,6 +76,15 @@ public class ForumsService {
         Map<Integer, UserDTO> collect = userRepo.listIn(UserPO::getId, list).stream().collect(Collectors.toMap(v -> (int) (long) v.getId(), Function.identity()));
         topicDTOS.forEach(v -> v.setAuthor(collect.get(v.getUserid()).getUsername()));
         return topicDTOS;
+    }
+
+    public TopicDTO getTopicById(Short id) {
+        TopicDTO eq = topicRepo.getEq(TopicEntity::getId, id);
+        Short forumid = eq.getForumid();
+        ForumsDTO forumById = getForumById(forumid);
+        eq.setBlockName(forumById.getBlockName())
+                .setForumName(forumById.getName());
+        return eq;
     }
 
     public ForumsDTO getForumById(Short id) {

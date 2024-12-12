@@ -1,7 +1,7 @@
 import { Ant, Table } from "@common-module/common-antd";
 import { ForumsEntity, ForumsService, TopicEntity } from "../services";
 import { useEffect, useState } from "react";
-import { useParams } from "@common-module/common-react";
+import { useNavigate, useParams } from "@common-module/common-react";
 import { Card, ConfigProvider, Flex, theme } from "antd";
 
 const forumService = new ForumsService();
@@ -13,10 +13,12 @@ export const Topic = () => {
 
   const params = useParams<{ id: string }>();
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (params.id) {
       forumService.listTopicByForumId(+params.id).then(setTopics);
-      forumService.getForumByForumId(+params.id).then(setForum);
+      forumService.getForumById(+params.id).then(setForum);
     }
   }, []);
 
@@ -44,9 +46,14 @@ export const Topic = () => {
               {
                 title: "主题",
                 dataIndex: "subject",
-                render: (dom) => {
+                render: (dom, entity) => {
                   return (
-                    <span style={{ cursor: "pointer", fontWeight: "bold" }}>
+                    <span
+                      style={{ cursor: "pointer", fontWeight: "bold" }}
+                      onClick={() => {
+                        navigate(`/forum/posts/${entity.id}`);
+                      }}
+                    >
                       {dom}
                     </span>
                   );

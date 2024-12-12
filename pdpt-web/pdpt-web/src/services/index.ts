@@ -95,6 +95,20 @@ export interface TopicEntity extends BaseEntity {
   sticky: string;
   hlcolor: number;
   views: number;
+  blockName: string;
+  forumName: string;
+}
+
+export interface PostsEntity extends BaseEntity {
+  id: number;
+  topicid: number;
+  userid: number;
+  username: string;
+  added: number;
+  body: number;
+  oriBody: string;
+  editedby: number;
+  editdate: string;
 }
 
 export class ForumsService extends BaseService<never> {
@@ -106,6 +120,12 @@ export class ForumsService extends BaseService<never> {
   listTopicByForumId = (id: number) =>
     this.postValueForJson<TopicEntity[]>("list-topic-by-forum-id", id);
 
-  getForumByForumId = (id: number) =>
-    this.postValueForJson<ForumsEntity>("get-forum-by-forum-id", id);
+  listPostsByTopicId = (id: number) =>
+    this.postValueForJson<PostsEntity[]>("list-posts-by-topic-id", id);
+
+  getTopicById = (id: number) =>
+    this.postValueForJson<TopicEntity>("get-topic-by-id", id);
+
+  getForumById = (id: number) =>
+    this.postValueForJson<ForumsEntity>("get-forum-by-id", id);
 }

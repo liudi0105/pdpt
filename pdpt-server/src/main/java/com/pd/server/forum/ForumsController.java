@@ -1,20 +1,16 @@
 package com.pd.server.forum;
 
 import com.pd.server.forum.forums.ForumsDTO;
-import com.pd.server.forum.forums.ForumsEntity;
-import com.pd.server.forum.forums.ForumsRepo;
 import com.pd.server.forum.overforums.OverForumsDTO;
-import com.pd.server.forum.overforums.OverForumsRepo;
+import com.pd.server.forum.post.PostsDTO;
 import com.pd.server.forum.topics.TopicDTO;
 import common.module.webmvc.Api;
 import common.module.webmvc.ApiGroup;
 import common.module.webmvc.ValueWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
-import java.util.function.UnaryOperator;
 
 @ApiGroup(path = "forums")
 public class ForumsController {
@@ -32,9 +28,18 @@ public class ForumsController {
         return forumsService.listTopicByForumId(id.getValue());
     }
 
+    @Api(path = "get-topic-by-id")
+    public TopicDTO getTopicByForumId(@RequestBody @ValueWrapper.NotNull ValueWrapper<Short> id) {
+        return forumsService.getTopicById(id.getValue());
+    }
+
     @Api(path = "get-forum-by-forum-id")
     public ForumsDTO getForumByForumId(@RequestBody @ValueWrapper.NotNull ValueWrapper<Short> id) {
         return forumsService.getForumById(id.getValue());
     }
 
+    @Api(path = "list-posts-by-topic-id")
+    public List<PostsDTO> listPostsByTopicId(@RequestBody @ValueWrapper.NotNull ValueWrapper<Integer> id) {
+        return forumsService.listPostsByTopicId(id.getValue());
+    }
 }
