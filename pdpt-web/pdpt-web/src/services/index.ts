@@ -105,7 +105,7 @@ export interface PostsEntity extends BaseEntity {
   userid: number;
   username: string;
   added: number;
-  body: number;
+  body: string;
   oriBody: string;
   editedby: number;
   editdate: string;

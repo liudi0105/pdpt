@@ -1,3 +1,4 @@
+import { render } from "@bbob/react";
 import { Ant, AntIcon, Button } from "@common-module/common-antd";
 import { styled, useParams } from "@common-module/common-react";
 import { ConfigProvider, Flex, theme } from "antd";
@@ -93,7 +94,7 @@ export const Posts = () => {
                 justify="stretch"
                 align="stretch"
               >
-                <div style={{ flexGrow: 1, padding: 16 }}>{v.body}</div>
+                <div style={{ flexGrow: 1, padding: 16 }}>{render(v.body)}</div>
                 <div
                   style={{
                     width: "100%",

@@ -13,8 +13,7 @@
   },
   "dependencies": {
     "@common-module/common-react": "workspace:*",
-    "@common-module/common-util": "workspace:*",
-    "@common-module/common-types": "workspace:*"
+    "@common-module/common-util": "workspace:*"
   },
   "peerDependencies": {
     "react": "^18.3.1",
