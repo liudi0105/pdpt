@@ -150,21 +150,11 @@ const AppRouter = createBrowserRouter([
 
 function App() {
   return (
-    <ConfigProvider
-      theme={{
-        algorithm: [],
-        token: {},
-        components: {
-          Button: {},
-        },
-      }}
-    >
-      <HappyProvider>
-        <RouterProvider router={AppRouter} />
-        <SGlobalStyle />
-        <FloatButtonGroup />
-      </HappyProvider>
-    </ConfigProvider>
+    <>
+      <RouterProvider router={AppRouter} />
+      <SGlobalStyle />
+      <FloatButtonGroup />
+    </>
   );
 }
 

@@ -71,7 +71,9 @@ public class ForumsService {
     }
 
     public List<TopicDTO> listTopicByForumId(Short id) {
-        List<TopicDTO> topicDTOS = topicRepo.listEq(TopicEntity::getForumid, id);
+        List<TopicDTO> topicDTOS = topicRepo.listQuery(v -> v
+                .asc()
+                .where(c -> c.eq(TopicEntity::getForumid, id)));
         List<Long> list = topicDTOS.stream().map(TopicDTO::getUserid).map(Long::valueOf).toList();
         Map<Integer, UserDTO> collect = userRepo.listIn(UserPO::getId, list).stream().collect(Collectors.toMap(v -> (int) (long) v.getId(), Function.identity()));
         topicDTOS.forEach(v -> v.setAuthor(collect.get(v.getUserid()).getUsername()));
