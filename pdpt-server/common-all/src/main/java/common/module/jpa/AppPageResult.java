@@ -38,6 +38,11 @@ public class AppPageResult<T> {
         return page;
     }
 
+    public AppPageResult<T> handle(Consumer<List<T>> consumer) {
+        consumer.accept(this.content);
+        return this;
+    }
+
     public <C> AppPageResult<C> map(Function<T, C> func) {
         AppPageResult<C> page = new AppPageResult<>();
         AppBeans.copyProperties(this, page);

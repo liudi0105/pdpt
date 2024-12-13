@@ -6,22 +6,24 @@ import {
   Navigate,
   RouterProvider,
 } from "@common-module/common-react";
+import { ConfigProvider } from "antd";
 import "./App.css";
 import { DetailPage } from "./pages/DetailPage";
+import { Entertain } from "./pages/Entertain";
 import { Forum } from "./pages/Forum";
 import { HomePage } from "./pages/HomePage";
 import { Layout } from "./pages/Layout";
+import { LoginLog } from "./pages/log/LoginLog";
+import { SiteLog } from "./pages/log/SiteLog";
 import { LoginPage } from "./pages/LoginPage";
 import { Posts } from "./pages/Posts";
+import { Publish } from "./pages/Publish";
+import { Subtitle } from "./pages/Subtitle";
+import { Top } from "./pages/Top";
 import { Topic } from "./pages/Topic";
 import { TorrentPage } from "./pages/TorrentPage";
 import { TorrentRequest } from "./pages/TorrentRequest";
-import { Subtitle } from "./pages/Subtitle";
-import { Publish } from "./pages/Publish";
-import { Entertain } from "./pages/Entertain";
-import { Top } from "./pages/Top";
 import { Log } from "./pages/Log";
-import { ConfigProvider } from "antd";
 
 const SGlobalStyle = createGlobalStyle`
   html, body, #root {
@@ -109,6 +111,18 @@ export const routers: RouterMenuItem[] = [
     path: "log",
     name: "日志",
     element: <Log />,
+    children: [
+      {
+        path: "login-log",
+        name: "登录日志",
+        element: <LoginLog />,
+      },
+      {
+        path: "site-log",
+        name: "站点日志",
+        element: <SiteLog />,
+      },
+    ],
   },
   {
     path: "help",

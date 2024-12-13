@@ -5,6 +5,10 @@ export function joinPath(...path: string[]) {
     .join("/");
 }
 
+export function lastElement<T>(arr: T[]) {
+  return arr[arr.length - 1];
+}
+
 export function deepCopy<T>(obj: T): T {
   return JSON.parse(JSON.stringify(obj));
 }

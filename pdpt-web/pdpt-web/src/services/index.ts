@@ -129,3 +129,37 @@ export class ForumsService extends BaseService<never> {
   getForumById = (id: number) =>
     this.postValueForJson<ForumsEntity>("get-forum-by-id", id);
 }
+
+export interface LoginLogEntity extends BaseEntity {
+  id: number;
+  uid: number;
+  ip: string;
+  country: string;
+  city: string;
+  client: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface SiteLogEntity extends BaseEntity {
+  id: number;
+  added: string;
+  txt: string;
+  securityLevel: string;
+}
+
+export class LogService extends BaseService<never> {
+  group = "log";
+
+  listSiteLogPaged = (params: AppPageParam) =>
+    this.postJsonForJson<AppPageResult<SiteLogEntity>>(
+      "list-site-log-paged",
+      params
+    );
+
+  listLoginLogPaged = (params: AppPageParam) =>
+    this.postJsonForJson<AppPageResult<LoginLogEntity>>(
+      "list-login-log-paged",
+      params
+    );
+}
