@@ -177,7 +177,7 @@ export const TorrentPage = () => {
               );
             },
           },
-          { title: "添加时间", dataIndex: "added", width: 160, ellipsis: true },
+          { title: "添加时间", dataIndex: "added", width: 170, ellipsis: true },
           {
             title: "大小",
             dataIndex: "size",
@@ -186,8 +186,8 @@ export const TorrentPage = () => {
             },
             width: 70,
           },
-          { title: "下载", dataIndex: "leechers", width: 40 },
-          { title: "做种", dataIndex: "seeders", width: 40 },
+          { title: "下载", dataIndex: "leechers", width: 48 },
+          { title: "做种", dataIndex: "seeders", width: 48 },
           {
             title: "上传者",
             dataIndex: "ownerName",
