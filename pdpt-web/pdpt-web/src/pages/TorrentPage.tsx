@@ -160,7 +160,7 @@ export const TorrentPage = () => {
           },
           {
             title: "操作",
-            width: 40,
+            width: 48,
             align: "center",
             render: () => {
               return (

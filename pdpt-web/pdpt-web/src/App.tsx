@@ -21,6 +21,7 @@ import { Publish } from "./pages/Publish";
 import { Entertain } from "./pages/Entertain";
 import { Top } from "./pages/Top";
 import { Log } from "./pages/Log";
+import { ConfigProvider } from "antd";
 
 const SGlobalStyle = createGlobalStyle`
   html, body, #root {
@@ -154,11 +155,11 @@ const AppRouter = createBrowserRouter([
 
 function App() {
   return (
-    <>
+    <ConfigProvider>
       <RouterProvider router={AppRouter} />
       <SGlobalStyle />
       <FloatButtonGroup />
-    </>
+    </ConfigProvider>
   );
 }
 
