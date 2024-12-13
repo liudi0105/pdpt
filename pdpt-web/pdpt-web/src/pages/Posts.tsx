@@ -1,4 +1,5 @@
-import { render } from "@bbob/react";
+import bbobHTML from "@bbob/html";
+import presetHTML5 from "@bbob/preset-html5";
 import { Ant, AntIcon, Button } from "@common-module/common-antd";
 import { styled, useParams } from "@common-module/common-react";
 import { ConfigProvider, Flex, theme } from "antd";
@@ -94,7 +95,12 @@ export const Posts = () => {
                 justify="stretch"
                 align="stretch"
               >
-                <div style={{ flexGrow: 1, padding: 16 }}>{render(v.body)}</div>
+                <pre
+                  style={{ flexGrow: 1, padding: 16 }}
+                  dangerouslySetInnerHTML={{
+                    __html: bbobHTML(v.body, presetHTML5()),
+                  }}
+                ></pre>
                 <div
                   style={{
                     width: "100%",

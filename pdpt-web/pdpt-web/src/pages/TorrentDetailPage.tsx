@@ -2,12 +2,21 @@ import { Button, Card, Space } from "antd";
 import { useEffect, useState } from "react";
 import { TorrentEntity, TorrentsService } from "../services";
 import { SBox } from "./TorrentPage";
-import { useParams } from "@common-module/common-react";
+import { styled, useParams } from "@common-module/common-react";
 import { Table } from "@common-module/common-antd";
+import { render } from "@bbob/react";
+import presetReact from "@bbob/preset-react";
 
 const torrentService = new TorrentsService();
+const plugins = [presetReact()];
 
-export const DetailPage = () => {
+const SDescription = styled.div`
+  img {
+    max-width: 800px;
+  }
+`;
+
+export const TorrentDetailPage = () => {
   const [torrent, setTorrent] = useState<TorrentEntity>();
 
   const params = useParams<{ id: string }>();
@@ -32,6 +41,7 @@ export const DetailPage = () => {
       <Table
         pagination={false}
         search={false}
+        tableLayout="fixed"
         size="small"
         showHeader={false}
         columns={[
@@ -45,19 +55,31 @@ export const DetailPage = () => {
           },
           {
             dataIndex: "value",
-            width: 1080,
             render: (dom, entity) => {
               if (entity.name == "简介") {
-                return <pre style={{ textWrap: "wrap" }}>{dom}</pre>;
+                const v = entity.value as string;
+                return v ? (
+                  <SDescription>
+                    <pre
+                      style={{
+                        textWrap: "wrap",
+                      }}
+                    >
+                      {render(v, plugins)}
+                    </pre>
+                  </SDescription>
+                ) : (
+                  "-"
+                );
               }
-              return entity.value;
+              return dom;
             },
           },
         ]}
         dataSource={[
           { name: "下载", value: torrent?.filename },
           { name: "副标题", value: torrent?.smallDescr },
-          { name: "标签", value: torrent?.tags },
+          { name: "标签", value: torrent?.tags.length ? torrent?.tags : "-" },
           {
             name: "基本信息",
             value: (

@@ -8,7 +8,7 @@ import {
 } from "@common-module/common-react";
 import { ConfigProvider } from "antd";
 import "./App.css";
-import { DetailPage } from "./pages/DetailPage";
+import { TorrentDetailPage } from "./pages/TorrentDetailPage";
 import { Entertain } from "./pages/Entertain";
 import { Faq } from "./pages/Faq";
 import { Forum } from "./pages/Forum";
@@ -153,7 +153,7 @@ export const routers: RouterMenuItem[] = [
   },
   {
     path: "torrent/detail/:id",
-    element: <DetailPage />,
+    element: <TorrentDetailPage />,
     hidden: true,
   },
 ];

@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@ant-design/happy-work-theme": "^1.0.0",
+    "@bbob/html": "^4.2.0",
+    "@bbob/preset-html5": "^4.2.0",
     "@bbob/preset-react": "^4.2.0",
     "@bbob/react": "^4.2.0",
     "@common-module/common-antd": "workspace:*",
