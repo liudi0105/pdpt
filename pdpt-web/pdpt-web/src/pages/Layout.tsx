@@ -67,7 +67,7 @@ export const Layout = () => {
       <SHomeBox>
         <SImg></SImg>
         <Ant.Menu
-          style={{ background: "#294d7f" }}
+          style={{ justifyContent: "center", background: "#294d7f" }}
           activeKey={key}
           theme="dark"
           selectedKeys={path}
