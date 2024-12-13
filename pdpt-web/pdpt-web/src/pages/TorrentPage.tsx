@@ -107,7 +107,6 @@ export const TorrentPage = () => {
             data: data.content,
           };
         }}
-        size="small"
         search={false}
         columns={[
           {

@@ -42,7 +42,6 @@ export const TorrentDetailPage = () => {
         pagination={false}
         search={false}
         tableLayout="fixed"
-        size="small"
         showHeader={false}
         columns={[
           {
