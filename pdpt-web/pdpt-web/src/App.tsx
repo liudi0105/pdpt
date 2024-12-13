@@ -10,9 +10,11 @@ import { ConfigProvider } from "antd";
 import "./App.css";
 import { DetailPage } from "./pages/DetailPage";
 import { Entertain } from "./pages/Entertain";
+import { Faq } from "./pages/Faq";
 import { Forum } from "./pages/Forum";
 import { HomePage } from "./pages/HomePage";
 import { Layout } from "./pages/Layout";
+import { Log } from "./pages/Log";
 import { LoginLog } from "./pages/log/LoginLog";
 import { SiteLog } from "./pages/log/SiteLog";
 import { LoginPage } from "./pages/LoginPage";
@@ -23,7 +25,6 @@ import { Top } from "./pages/Top";
 import { Topic } from "./pages/Topic";
 import { TorrentPage } from "./pages/TorrentPage";
 import { TorrentRequest } from "./pages/TorrentRequest";
-import { Log } from "./pages/Log";
 
 const SGlobalStyle = createGlobalStyle`
   html, body, #root {
@@ -127,7 +128,13 @@ export const routers: RouterMenuItem[] = [
   {
     path: "help",
     name: "帮助",
-    element: <TorrentPage />,
+    children: [
+      {
+        path: "faq",
+        name: "常见问题",
+        element: <Faq />,
+      },
+    ],
   },
   {
     path: "contact-us",

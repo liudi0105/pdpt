@@ -5,6 +5,7 @@ import { Vote } from "./home/Vote";
 import { HappyBox } from "./home/HappyBox";
 import { ChatRoom } from "./home/ChatRoom";
 import { Disclaimers } from "./home/Disclaimers";
+import { Links } from "./home/Links";
 
 const SBox = styled.div`
   display: flex;
@@ -31,7 +32,9 @@ export const HomePage = () => {
       <Ant.Card title="免责条款">
         <Disclaimers />
       </Ant.Card>
-      <Ant.Card title="友情链接"></Ant.Card>
+      <Ant.Card title="友情链接">
+        <Links />
+      </Ant.Card>
     </SBox>
   );
 };

@@ -163,3 +163,21 @@ export class LogService extends BaseService<never> {
       params
     );
 }
+
+export interface FaqEntity extends BaseEntity {
+  id: number;
+  linkeId: number;
+  langId: number;
+  type: string;
+  question: string;
+  answer: string;
+  flag: number;
+  categ: number;
+  order: number;
+}
+
+export class HelpService extends BaseService<never> {
+  group = "help";
+
+  listFaq = () => this.postJsonForJson<FaqEntity[]>("list-faq");
+}
