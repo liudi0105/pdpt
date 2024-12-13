@@ -27,21 +27,25 @@ export const Faq = () => {
         </Ant.Typography.Paragraph>
       </Ant.Card>
       <Ant.Card>
-        <Ant.List>
-          {faq.map((v, idx) => (
-            <Ant.List.Item key={v.id}>
-              <Ant.Typography.Link href={`#${v.id}`}>
-                {idx + 1 + ". " + v.question}
-              </Ant.Typography.Link>
-            </Ant.List.Item>
-          ))}
-        </Ant.List>
+        <Ant.Anchor
+          style={{ maxHeight: "unset" }}
+          affix={false}
+          items={faq.map((v, idx) => ({
+            key: v.id,
+            href: `#anchor-${v.id}`,
+            title: (
+              <span id={`index-${v.id}`}>
+                {idx}. {v.question}
+              </span>
+            ),
+          }))}
+        />
       </Ant.Card>
       <Ant.Card>
         <Ant.List>
           {faq.map((v, idx) => (
             <Ant.List.Item
-              id={v.id + ""}
+              id={`anchor-${v.id}`}
               key={v.id}
               style={{
                 flexDirection: "column",
@@ -49,8 +53,13 @@ export const Faq = () => {
                 alignItems: "start",
               }}
             >
-              <div style={{ fontWeight: "bold" }}>
-                {idx + 1 + ". " + v.question}
+              <div style={{ fontWeight: "bold", cursor: "pointer" }}>
+                <Ant.Typography.Link
+                  style={{ color: "black" }}
+                  href={`#index-${v.id}`}
+                >
+                  {idx + 1 + ". " + v.question}
+                </Ant.Typography.Link>
               </div>
               <div dangerouslySetInnerHTML={{ __html: v.answer }}></div>
             </Ant.List.Item>
