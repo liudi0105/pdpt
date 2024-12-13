@@ -35,7 +35,7 @@ export const Faq = () => {
             href: `#anchor-${v.id}`,
             title: (
               <span id={`index-${v.id}`}>
-                {idx}. {v.question}
+                {idx + 1}. {v.question}
               </span>
             ),
           }))}
