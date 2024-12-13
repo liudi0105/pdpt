@@ -181,3 +181,29 @@ export class HelpService extends BaseService<never> {
 
   listFaq = () => this.postJsonForJson<FaqEntity[]>("list-faq");
 }
+
+export interface RequestsEntity extends BaseEntity {
+  id: number;
+}
+
+export class RequestsService extends BaseService<RequestsEntity> {
+  group = "requests";
+}
+
+export interface SubtitleEntity extends BaseEntity {
+  id: number;
+  torrentId: number;
+  langId: number;
+  title: string;
+  filename: string;
+  added: string;
+  uppedby: number;
+  uploadUsername: string;
+  hits: number;
+  size: number;
+  ext: string;
+}
+
+export class SubtitleService extends BaseService<SubtitleEntity> {
+  group = "subtitle";
+}
