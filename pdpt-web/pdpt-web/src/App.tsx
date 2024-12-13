@@ -26,6 +26,7 @@ import { Topic } from "./pages/Topic";
 import { TorrentPage } from "./pages/TorrentPage";
 import { TorrentRequest } from "./pages/TorrentRequest";
 import { ContactUs } from "./pages/ContactUs";
+import { HappyProvider } from "@ant-design/happy-work-theme";
 
 const SGlobalStyle = createGlobalStyle`
   html, body, #root {
@@ -178,9 +179,11 @@ const AppRouter = createBrowserRouter([
 function App() {
   return (
     <ConfigProvider>
-      <RouterProvider router={AppRouter} />
-      <SGlobalStyle />
-      <FloatButtonGroup />
+      <HappyProvider>
+        <RouterProvider router={AppRouter} />
+        <SGlobalStyle />
+        <FloatButtonGroup />
+      </HappyProvider>
     </ConfigProvider>
   );
 }
