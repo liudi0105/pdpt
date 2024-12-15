@@ -25,7 +25,7 @@ export const Subtitle = () => {
           {
             title: "语言",
             dataIndex: "language",
-            width: 80,
+            width: "6em",
           },
           {
             title: "标题",
@@ -34,18 +34,22 @@ export const Subtitle = () => {
           },
           {
             title: "时间",
+            width: "12em",
             search: false,
+            ellipsis: true,
             dataIndex: "added",
           },
           {
             title: "上传者",
             search: false,
+            width: "8em",
             dataIndex: "uploadUsername",
             ellipsis: true,
           },
           {
             title: "大小",
             search: false,
+            width: "6em",
             dataIndex: "size",
             render: (_, entity) =>
               new FileSizeConverter(entity.size).kb() + "KB",

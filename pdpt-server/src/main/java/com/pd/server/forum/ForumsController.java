@@ -33,7 +33,7 @@ public class ForumsController {
         return forumsService.getTopicById(id.getValue());
     }
 
-    @Api(path = "get-forum-by-forum-id")
+    @Api(path = "get-forum-by-id")
     public ForumsDTO getForumByForumId(@RequestBody @ValueWrapper.NotNull ValueWrapper<Short> id) {
         return forumsService.getForumById(id.getValue());
     }

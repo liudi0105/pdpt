@@ -30,6 +30,7 @@ const SMainMenuBox = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  gap: 8px;
   padding: 8px;
 `;
 
@@ -83,7 +84,7 @@ export const Layout = () => {
           ></Ant.Menu>
         </Ant.Affix>
         <SMainMenuBox>
-          <Ant.Card style={{ marginBottom: 8 }}>
+          <Ant.Card>
             <div>
               欢迎回来, bluegemld开站纪念 [ 控制面板 ] [收藏] 魔力值 [使用]:
               104,760.5 [签到得魔力] [勋章] 邀请 [发送]: 0(0)
@@ -93,6 +94,13 @@ export const Layout = () => {
               seeding9 Torrents leeching1 可连接:是 连接数：无限制 H&R: [0/0/]
               认领: [0/5000]
             </div>
+          </Ant.Card>
+          <Ant.Card>
+            <p style={{ textAlign: "center" }}>
+              <div>Telegram 官方交流群</div>
+              <div>长期招聘官方web组发布成员 | Tracker异常反馈专贴</div>
+              <div>官方求种区</div>
+            </p>
           </Ant.Card>
           <Outlet />
         </SMainMenuBox>

@@ -192,12 +192,6 @@ importers:
       '@bbob/preset-html5':
         specifier: ^4.2.0
         version: 4.2.0
-      '@bbob/preset-react':
-        specifier: ^4.2.0
-        version: 4.2.0(react@18.3.1)
-      '@bbob/react':
-        specifier: ^4.2.0
-        version: 4.2.0(react@18.3.1)
       '@common-module/common-antd':
         specifier: workspace:*
         version: link:../common-module/common-antd
@@ -482,18 +476,8 @@ packages:
   '@bbob/preset-html5@4.2.0':
     resolution: {integrity: sha512-X2EIeb2vqTz/n34KWQXEL5IC0SuB6i2/ltRpEaMTyK7IoDEs0XGIWcqVpenb7Z2d4eNA3gTWhkoUUkKlZmfQRQ==}
 
-  '@bbob/preset-react@4.2.0':
-    resolution: {integrity: sha512-f6VoTaFVxtx4dVWCYjbSkeK2roYgjj/mMc7TJtPOReSjLZqxk0sV0LUcNfbEeNdCcygASjKZAX5FOhDZ4qADng==}
-    peerDependencies:
-      react: '> 15.0'
-
   '@bbob/preset@4.2.0':
     resolution: {integrity: sha512-IA+kxlrRcYBXE634B8W6uU2DO7VvrxeOqWUzIDKV2CgzTMpmCG875ihGp+Q3T+QxGwzG5S0L4GdmCIULTbzC4A==}
-
-  '@bbob/react@4.2.0':
-    resolution: {integrity: sha512-gmcTg3vrN5Qc6Epp91f4pU4rf8GCb9AO8CGaTgdvmLMYH4LWoAyZdTGn4J0m3QKAhTdUWvnZjG9YOkI4zXw94A==}
-    peerDependencies:
-      react: '> 15.0'
 
   '@bbob/types@4.2.0':
     resolution: {integrity: sha512-bSCZnNg0VrPosBBUVkjBDYVKNEqwT0jTNuzvAuNrZkuILgUKtLYI9GHuT8rY4lZecCb7UqGDsHsYt0YJO36eJg==}
@@ -2409,24 +2393,10 @@ snapshots:
       '@bbob/preset': 4.2.0
       '@bbob/types': 4.2.0
 
-  '@bbob/preset-react@4.2.0(react@18.3.1)':
-    dependencies:
-      '@bbob/preset-html5': 4.2.0
-      '@bbob/types': 4.2.0
-      react: 18.3.1
-
   '@bbob/preset@4.2.0':
     dependencies:
       '@bbob/plugin-helper': 4.2.0
       '@bbob/types': 4.2.0
-
-  '@bbob/react@4.2.0(react@18.3.1)':
-    dependencies:
-      '@bbob/core': 4.2.0
-      '@bbob/html': 4.2.0
-      '@bbob/plugin-helper': 4.2.0
-      '@bbob/types': 4.2.0
-      react: 18.3.1
 
   '@bbob/types@4.2.0': {}
 

@@ -1,18 +1,17 @@
-import { Button, Card, Space } from "antd";
+import bbobHTML from "@bbob/html";
+import presetHTML5 from "@bbob/preset-html5";
+import { Ant, Table } from "@common-module/common-antd";
+import { styled, useParams } from "@common-module/common-react";
+import { Button, Space } from "antd";
 import { useEffect, useState } from "react";
 import { TorrentEntity, TorrentsService } from "../services";
 import { SBox } from "./TorrentView";
-import { styled, useParams } from "@common-module/common-react";
-import { Table } from "@common-module/common-antd";
-import { render } from "@bbob/react";
-import presetReact from "@bbob/preset-react";
 
 const torrentService = new TorrentsService();
-const plugins = [presetReact()];
 
 const SDescription = styled.div`
   img {
-    max-width: 800px;
+    max-width: 1000px;
   }
 `;
 
@@ -30,15 +29,12 @@ export const TorrentDetailPage = () => {
 
   return (
     <SBox>
-      <Card>
-        <p style={{ textAlign: "center" }}>
-          <div>Telegram 官方交流群</div>
-          <div>长期招聘官方web组发布成员 | Tracker异常反馈专贴</div>
-          <div>官方求种区</div>
-        </p>
-      </Card>
-      <div>{torrent?.name}</div>
       <Table
+        title={() => (
+          <Ant.Typography.Title level={2} ellipsis title={torrent?.name}>
+            {torrent?.name}
+          </Ant.Typography.Title>
+        )}
         pagination={false}
         search={false}
         tableLayout="fixed"
@@ -63,9 +59,10 @@ export const TorrentDetailPage = () => {
                       style={{
                         textWrap: "wrap",
                       }}
-                    >
-                      {render(v, plugins)}
-                    </pre>
+                      dangerouslySetInnerHTML={{
+                        __html: bbobHTML(v, presetHTML5()),
+                      }}
+                    ></pre>
                   </SDescription>
                 ) : (
                   "-"
