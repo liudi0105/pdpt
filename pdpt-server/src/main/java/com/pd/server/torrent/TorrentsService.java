@@ -2,9 +2,9 @@ package com.pd.server.torrent;
 
 import com.pd.server.category.CategoryDTO;
 import com.pd.server.category.CategoryRepo;
-import com.pd.server.user_info.UserDTO;
-import com.pd.server.user_info.UserPO;
-import com.pd.server.user_info.UserRepo;
+import com.pd.server.auth.user_info.UsersDTO;
+import com.pd.server.auth.user_info.UsersPO;
+import com.pd.server.auth.user_info.UsersRepo;
 import common.module.dto.AppPageParam;
 import common.module.jpa.AppPageResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class TorrentsService {
     private TorrentsRepo torrentsRepo;
 
     @Autowired
-    private UserRepo userRepo;
+    private UsersRepo usersRepo;
 
     @Autowired
     private CategoryRepo categoryRepo;
@@ -53,7 +53,7 @@ public class TorrentsService {
 
         Set<Long> userId = torrentsDTOAppPageResult.getContent().stream().map(TorrentsDTO::getOwner).collect(Collectors.toSet());
 
-        Map<Long, String> collect = userRepo.listIn(UserPO::getId, userId).stream().collect(Collectors.toMap(UserDTO::getId, UserDTO::getUsername));
+        Map<Long, String> collect = usersRepo.listIn(UsersPO::getId, userId).stream().collect(Collectors.toMap(UsersDTO::getId, UsersDTO::getUsername));
 
         torrentsDTOAppPageResult.getContent().forEach(v -> v.setOwnerName(collect.get(v.getOwner())));
         setCategoryCode(torrentsDTOAppPageResult.getContent());

@@ -37,6 +37,10 @@ public interface GeneralJpaRepo<E, D, I> extends Repository<E, I> {
 
     void deleteOne(D collection);
 
+    Optional<E> findPo(ConditionBuilder<E> condition);
+
+    Optional<E> findPo(QueryBuilder<E> condition);
+
     AppPageResult<D> pageQuery(AppPageParam pageParam, UnaryOperator<QueryBuilder<E>> condition);
 
     @Transactional
@@ -54,6 +58,10 @@ public interface GeneralJpaRepo<E, D, I> extends Repository<E, I> {
     <V> int deleteEq(SerializableFunction<E, V> func, V value);
 
     <V> Optional<D> findEq(SerializableFunction<E, V> func, V value);
+
+    <V> Optional<E> findPoEq(SerializableFunction<E, V> func, V value);
+
+    <V> E getPoEq(SerializableFunction<E, V> func, V value);
 
     <V> D getEq(SerializableFunction<E, V> func, V value);
 

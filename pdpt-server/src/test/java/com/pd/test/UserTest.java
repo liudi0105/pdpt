@@ -1,6 +1,6 @@
 package com.pd.test;
 
-import com.pd.server.auth_user.AuthUserDTO;
+import com.pd.server.auth.auth_user.AuthUserDTO;
 import common.module.dto.AppPageParam;
 import common.module.jpa.AppPageResult;
 import common.module.test.ApiTestClient;

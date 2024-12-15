@@ -1,4 +1,4 @@
-package com.pd.server.auth_user;
+package com.pd.server.auth.auth_user;
 
 import common.module.dto.AppPageParam;
 import common.module.jpa.AppPageResult;

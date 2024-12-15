@@ -1,9 +1,8 @@
 package com.pd.server.requests;
 
-import com.pd.server.log.login.LoginLogDTO;
-import com.pd.server.user_info.UserDTO;
-import com.pd.server.user_info.UserPO;
-import com.pd.server.user_info.UserRepo;
+import com.pd.server.auth.user_info.UsersDTO;
+import com.pd.server.auth.user_info.UsersPO;
+import com.pd.server.auth.user_info.UsersRepo;
 import common.module.dto.AppPageParam;
 import common.module.jpa.AppPageResult;
 import common.module.webmvc.Api;
@@ -24,7 +23,7 @@ public class RequestsController {
     private RequestsRepo requestsRepo;
 
     @Autowired
-    private UserRepo userRepo;
+    private UsersRepo usersRepo;
 
     @Api("list-paged")
     public AppPageResult<RequestsDTO> listPaged(@RequestBody AppPageParam pageParam) {
@@ -34,7 +33,7 @@ public class RequestsController {
 
     private void setUser(List<RequestsDTO> postsDTOS) {
         Set<Long> list = postsDTOS.stream().map(RequestsDTO::getUserid).map(Long::valueOf).collect(Collectors.toSet());
-        Map<Long, UserDTO> collect = userRepo.listIn(UserPO::getId, list).stream().collect(Collectors.toMap(UserDTO::getId, Function.identity()));
+        Map<Long, UsersDTO> collect = usersRepo.listIn(UsersPO::getId, list).stream().collect(Collectors.toMap(UsersDTO::getId, Function.identity()));
         postsDTOS.stream().filter(v -> collect.containsKey(v.getUserid().longValue()))
                 .forEach(v -> v.setUsername(collect.get(v.getUserid().longValue()).getUsername()));
     }

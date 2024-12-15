@@ -13,9 +13,9 @@ import com.pd.server.forum.post.PostsRepo;
 import com.pd.server.forum.topics.TopicDTO;
 import com.pd.server.forum.topics.TopicEntity;
 import com.pd.server.forum.topics.TopicRepo;
-import com.pd.server.user_info.UserDTO;
-import com.pd.server.user_info.UserPO;
-import com.pd.server.user_info.UserRepo;
+import com.pd.server.auth.user_info.UsersDTO;
+import com.pd.server.auth.user_info.UsersPO;
+import com.pd.server.auth.user_info.UsersRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -41,7 +41,7 @@ public class ForumsService {
     private TopicRepo topicRepo;
 
     @Autowired
-    private UserRepo userRepo;
+    private UsersRepo usersRepo;
 
     @Autowired
     private PostsRepo postsRepo;
@@ -57,7 +57,7 @@ public class ForumsService {
 
     private void setPostsUser(List<PostsDTO> postsDTOS) {
         List<Long> list = postsDTOS.stream().map(PostsDTO::getUserid).map(Long::valueOf).toList();
-        Map<Long, UserDTO> collect = userRepo.listIn(UserPO::getId, list).stream().collect(Collectors.toMap(UserDTO::getId, Function.identity()));
+        Map<Long, UsersDTO> collect = usersRepo.listIn(UsersPO::getId, list).stream().collect(Collectors.toMap(UsersDTO::getId, Function.identity()));
         postsDTOS.forEach(v -> v.setUsername(collect.get(v.getUserid().longValue()).getUsername()));
     }
 
@@ -75,7 +75,7 @@ public class ForumsService {
                 .asc()
                 .where(c -> c.eq(TopicEntity::getForumid, id)));
         List<Long> list = topicDTOS.stream().map(TopicDTO::getUserid).map(Long::valueOf).toList();
-        Map<Integer, UserDTO> collect = userRepo.listIn(UserPO::getId, list).stream().collect(Collectors.toMap(v -> (int) (long) v.getId(), Function.identity()));
+        Map<Integer, UsersDTO> collect = usersRepo.listIn(UsersPO::getId, list).stream().collect(Collectors.toMap(v -> (int) (long) v.getId(), Function.identity()));
         topicDTOS.forEach(v -> v.setAuthor(collect.get(v.getUserid()).getUsername()));
         return topicDTOS;
     }

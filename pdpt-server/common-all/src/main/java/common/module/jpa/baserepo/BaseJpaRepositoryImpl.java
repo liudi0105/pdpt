@@ -235,6 +235,20 @@ public class BaseJpaRepositoryImpl<E, D, I> extends AbstractBaseJpaRepoImpl<E, D
         return find(cb().eq(func, value));
     }
 
+    @Override
+    public <V> Optional<E> findPoEq(SerializableFunction<E, V> func, V value) {
+        if (value == null) {
+            return Optional.empty();
+        }
+        return findPo(cb().eq(func, value));
+    }
+
+    @Override
+    public <V> E getPoEq(SerializableFunction<E, V> func, V value) {
+        return findPoEq(func, value)
+                .orElseThrow(() -> new AppError(entityClass.getSimpleName() + " not found: " + AppReflections.getFieldName(func) + "=" + value));
+    }
+
     public <V> D getEq(SerializableFunction<E, V> func, V value) {
         return findEq(func, value)
                 .orElseThrow(() -> new AppError(entityClass.getSimpleName() + " not found: " + AppReflections.getFieldName(func) + "=" + value));
@@ -287,8 +301,19 @@ public class BaseJpaRepositoryImpl<E, D, I> extends AbstractBaseJpaRepoImpl<E, D
         return find(func.apply(cb()));
     }
 
+    @Override
+    public Optional<E> findPo(ConditionBuilder<E> condition) {
+        return findPo(condition.toQB());
+    }
+
     private Optional<D> find(ConditionBuilder<E> condition) {
         return find(condition.toQB());
+    }
+
+    @Override
+    public Optional<E> findPo(QueryBuilder<E> condition) {
+        preSelect(condition);
+        return simpleJpaRepository.findOne(condition.toSpecification());
     }
 
     private Optional<D> find(QueryBuilder<E> condition) {

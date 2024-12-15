@@ -3,9 +3,9 @@ package com.pd.server.subtitle;
 import com.pd.server.language.LanguageDTO;
 import com.pd.server.language.LanguageEntity;
 import com.pd.server.language.LanguageRepo;
-import com.pd.server.user_info.UserDTO;
-import com.pd.server.user_info.UserPO;
-import com.pd.server.user_info.UserRepo;
+import com.pd.server.auth.user_info.UsersDTO;
+import com.pd.server.auth.user_info.UsersPO;
+import com.pd.server.auth.user_info.UsersRepo;
 import common.module.dto.AppPageParam;
 import common.module.jpa.AppPageResult;
 import common.module.webmvc.Api;
@@ -26,7 +26,7 @@ public class SubtitleController {
     private SubTitleRepo subTitleRepo;
 
     @Autowired
-    private UserRepo userRepo;
+    private UsersRepo usersRepo;
 
     @Autowired
     private LanguageRepo languageRepo;
@@ -46,7 +46,7 @@ public class SubtitleController {
 
     private void setUser(List<SubtitleDTO> postsDTOS) {
         Set<Long> list = postsDTOS.stream().map(SubtitleDTO::getUppedby).map(Long::valueOf).collect(Collectors.toSet());
-        Map<Long, UserDTO> collect = userRepo.listIn(UserPO::getId, list).stream().collect(Collectors.toMap(UserDTO::getId, Function.identity()));
+        Map<Long, UsersDTO> collect = usersRepo.listIn(UsersPO::getId, list).stream().collect(Collectors.toMap(UsersDTO::getId, Function.identity()));
         postsDTOS.stream().filter(v -> collect.containsKey(v.getUppedby().longValue()))
                 .forEach(v -> v.setUploadUsername(collect.get(v.getUppedby().longValue()).getUsername()));
     }

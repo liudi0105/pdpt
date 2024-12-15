@@ -1,4 +1,4 @@
-package com.pd.server.user_info;
+package com.pd.server.auth.user_info;
 
 
 import lombok.Getter;
@@ -8,7 +8,7 @@ import lombok.experimental.Accessors;
 @Getter
 @Setter
 @Accessors(chain = true)
-public class UserDTO {
+public class UsersDTO {
     private Long id;
     private String username;
 }

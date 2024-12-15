@@ -140,6 +140,7 @@ export const TorrentPage = () => {
             title: "名称",
             dataIndex: "name",
             ellipsis: true,
+            width: "50%",
             render: (dom, entity) => {
               return (
                 <div>

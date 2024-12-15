@@ -1,15 +1,14 @@
 package com.pd.server.log;
 
-import com.pd.server.forum.post.PostsDTO;
 import com.pd.server.log.login.LoginLogDTO;
 import com.pd.server.log.login.LoginLogEntity;
 import com.pd.server.log.login.LoginLogRepo;
 import com.pd.server.log.site.SiteLogDTO;
 import com.pd.server.log.site.SiteLogEntity;
 import com.pd.server.log.site.SiteLogRepo;
-import com.pd.server.user_info.UserDTO;
-import com.pd.server.user_info.UserPO;
-import com.pd.server.user_info.UserRepo;
+import com.pd.server.auth.user_info.UsersDTO;
+import com.pd.server.auth.user_info.UsersPO;
+import com.pd.server.auth.user_info.UsersRepo;
 import common.module.dto.AppPageParam;
 import common.module.jpa.AppPageResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ import java.util.stream.Collectors;
 public class LogService {
 
     @Autowired
-    private UserRepo userRepo;
+    private UsersRepo usersRepo;
 
     @Autowired
     private SiteLogRepo siteLogRepo;
@@ -43,7 +42,7 @@ public class LogService {
 
     private void setUser(List<LoginLogDTO> postsDTOS) {
         List<Long> list = postsDTOS.stream().map(LoginLogDTO::getUid).map(Long::valueOf).toList();
-        Map<Long, UserDTO> collect = userRepo.listIn(UserPO::getId, list).stream().collect(Collectors.toMap(UserDTO::getId, Function.identity()));
+        Map<Long, UsersDTO> collect = usersRepo.listIn(UsersPO::getId, list).stream().collect(Collectors.toMap(UsersDTO::getId, Function.identity()));
         postsDTOS.forEach(v -> v.setUsername(collect.get(v.getUid().longValue()).getUsername()));
     }
 
