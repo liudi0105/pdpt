@@ -23,7 +23,7 @@ import { Publish } from "./pages/Publish";
 import { Subtitle } from "./pages/Subtitle";
 import { Top } from "./pages/Top";
 import { Topic } from "./pages/Topic";
-import { TorrentPage } from "./pages/TorrentPage";
+import { TorrentPage } from "./pages/TorrentView";
 import { TorrentRequest } from "./pages/TorrentRequest";
 import { ContactUs } from "./pages/ContactUs";
 import { HappyProvider } from "@ant-design/happy-work-theme";

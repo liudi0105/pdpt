@@ -1,7 +1,7 @@
 import { Button, Card, Space } from "antd";
 import { useEffect, useState } from "react";
 import { TorrentEntity, TorrentsService } from "../services";
-import { SBox } from "./TorrentPage";
+import { SBox } from "./TorrentView";
 import { styled, useParams } from "@common-module/common-react";
 import { Table } from "@common-module/common-antd";
 import { render } from "@bbob/react";

@@ -27,6 +27,9 @@ export const TorrentPage = () => {
 
   const navigate = useNavigate();
 
+  const [simpleSearchForm] = Pro.ProForm.useForm();
+  const [searchForm] = Pro.ProForm.useForm();
+
   useEffect(() => {
     categoryService.listAllCategory().then(setAllCat);
   }, []);
@@ -42,8 +45,8 @@ export const TorrentPage = () => {
             key: "simple",
             label: "简单搜索",
             children: (
-              <Pro.ProForm layout="inline">
-                <Pro.ProFormText width="md" />
+              <Pro.ProForm layout="inline" form={simpleSearchForm}>
+                <Pro.ProFormText width="md" name="keyWord" />
               </Pro.ProForm>
             ),
           },
@@ -52,6 +55,7 @@ export const TorrentPage = () => {
             label: "搜索工具箱",
             children: (
               <Pro.ProForm
+                form={searchForm}
                 layout="horizontal"
                 labelAlign="left"
                 labelCol={{
@@ -63,6 +67,7 @@ export const TorrentPage = () => {
               >
                 <Pro.ProFormCheckbox.Group
                   label="分类"
+                  name="category"
                   options={allCat?.categories.map((v) => ({
                     label: v.name,
                     value: v.id,
@@ -70,6 +75,7 @@ export const TorrentPage = () => {
                 />
                 <Pro.ProFormCheckbox.Group
                   label="音频编码"
+                  name="audioEncoding"
                   options={allCat?.audioEncodings.map((v) => ({
                     label: v.name,
                     value: v.id,
@@ -77,6 +83,7 @@ export const TorrentPage = () => {
                 />
                 <Pro.ProFormCheckbox.Group
                   label="编码"
+                  name="encoding"
                   options={allCat?.encodings.map((v) => ({
                     label: v.name,
                     value: v.id,
@@ -84,6 +91,7 @@ export const TorrentPage = () => {
                 />
                 <Pro.ProFormCheckbox.Group
                   label="分辨率"
+                  name="resolution"
                   options={allCat?.resolutions.map((v) => ({
                     label: v.name,
                     value: v.id,
@@ -96,10 +104,14 @@ export const TorrentPage = () => {
         ]}
       ></Ant.Collapse>
       <Table<TorrentEntity, TorrentEntity>
-        pagination={{ defaultPageSize: 10, showLessItems: true }}
+        pagination={{
+          defaultPageSize: 50,
+          pageSizeOptions: [20, 50, 100],
+          showLessItems: true,
+        }}
         request={async (params) => {
           const data = await torrentService.listPaged({
-            pageSize: params.pageSize ?? 10,
+            pageSize: params.pageSize ?? 50,
             pageIndex: params.current ?? 1,
           });
           return {
@@ -111,20 +123,19 @@ export const TorrentPage = () => {
         columns={[
           {
             title: "类别",
+            width: "7.5em",
             render: (_, entity) => {
               return (
-                <img src={`/icons/category/${entity.categoryCode}.svg`}></img>
+                <Ant.Flex>
+                  <img src={`/icons/category/${entity.categoryCode}.svg`}></img>
+                  <img src={`/icons/source/${entity.source}.svg`}></img>
+                </Ant.Flex>
               );
             },
           },
           {
-            title: "来源",
-            render: (_, entity) => {
-              return <img src={`/icons/source/${entity.source}.svg`}></img>;
-            },
-          },
-          {
             title: "封面",
+            width: "4.5em",
             dataIndex: "cover",
             render: (_, entity) => {
               return (
@@ -140,7 +151,6 @@ export const TorrentPage = () => {
             title: "名称",
             dataIndex: "name",
             ellipsis: true,
-            width: "50%",
             render: (dom, entity) => {
               return (
                 <div>
@@ -150,13 +160,16 @@ export const TorrentPage = () => {
                   >
                     {dom}
                   </div>
-                  <div>{entity.smallDescr}</div>
+                  <Ant.Typography.Text ellipsis>
+                    {entity.smallDescr}
+                  </Ant.Typography.Text>
                 </div>
               );
             },
           },
           {
             title: "操作",
+            width: "4em",
             align: "center",
             render: () => {
               return (
@@ -173,9 +186,10 @@ export const TorrentPage = () => {
               );
             },
           },
-          { title: "时间", dataIndex: "added", ellipsis: true },
+          { title: "时间", dataIndex: "added", ellipsis: true, width: "8em" },
           {
             title: "大小",
+            width: "5em",
             dataIndex: "size",
             render: (_, entity) => {
               return FileSizeConverter.ofByte(entity.size).gb() + "GB";
@@ -183,6 +197,7 @@ export const TorrentPage = () => {
           },
           {
             title: "下载",
+            width: "3em",
             dataIndex: "leechers",
             render: (dom) => (
               <Ant.Flex>
@@ -192,6 +207,7 @@ export const TorrentPage = () => {
           },
           {
             title: "做种",
+            width: "3em",
             dataIndex: "seeders",
             render: (dom) => (
               <Ant.Flex>
@@ -201,6 +217,7 @@ export const TorrentPage = () => {
           },
           {
             title: "上传者",
+            width: "6em",
             dataIndex: "ownerName",
             ellipsis: true,
           },
