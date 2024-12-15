@@ -160,9 +160,11 @@ export const TorrentPage = () => {
                   >
                     {dom}
                   </div>
-                  <Ant.Typography.Text ellipsis>
-                    {entity.smallDescr}
-                  </Ant.Typography.Text>
+                  <Ant.Tooltip title={entity.smallDescr}>
+                    <Ant.Typography.Text ellipsis>
+                      {entity.smallDescr}
+                    </Ant.Typography.Text>
+                  </Ant.Tooltip>
                 </div>
               );
             },
