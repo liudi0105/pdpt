@@ -180,7 +180,7 @@ export const TorrentPage = () => {
                     />
                   </div>
                   <div>
-                    <AntIcon.HeartOutlined style={{ cursor: "pointer" }} />
+                    <AntIcon.StarOutlined style={{ cursor: "pointer" }} />
                   </div>
                 </div>
               );
