@@ -6,7 +6,7 @@ import {
   Navigate,
   RouterProvider,
 } from "@common-module/common-react";
-import { ConfigProvider } from "antd";
+import { ConfigProvider, theme } from "antd";
 import "./App.css";
 import { TorrentDetailPage } from "./pages/TorrentDetailPage";
 import { Entertain } from "./pages/Entertain";
@@ -178,7 +178,7 @@ const AppRouter = createBrowserRouter([
 
 function App() {
   return (
-    <ConfigProvider>
+    <ConfigProvider theme={{ algorithm: [theme.compactAlgorithm] }}>
       <HappyProvider>
         <RouterProvider router={AppRouter} />
         <SGlobalStyle />

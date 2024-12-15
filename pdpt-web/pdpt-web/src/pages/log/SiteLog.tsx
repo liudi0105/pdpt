@@ -23,12 +23,10 @@ export const SiteLog = () => {
         columns={[
           {
             title: "时间",
-            width: 180,
             dataIndex: "added",
           },
           {
             title: "安全等级",
-            width: 80,
             dataIndex: "securityLevel",
           },
           {

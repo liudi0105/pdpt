@@ -62,7 +62,7 @@ export const Topic = () => {
               {
                 title: "回复/查看",
                 width: 100,
-                render: (dom, entity) =>
+                render: (_, entity) =>
                   ` ${entity.lastpost} / ${entity.views}`,
               },
               {

@@ -27,7 +27,14 @@ export const Table = <
   props: TableProps<DataType, ParamType>
 ) => {
   const { rowKey = "id", options = false } = props;
-  return <ProTable {...props} rowKey={rowKey} options={options}></ProTable>;
+  return (
+    <ProTable
+      size="small"
+      {...props}
+      rowKey={rowKey}
+      options={options}
+    ></ProTable>
+  );
 };
 
 export type CrudTableProps<

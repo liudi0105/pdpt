@@ -13,14 +13,14 @@ import { routers } from "../App";
 type MenuItem = Required<MenuProps>["items"][number];
 
 const SBackground = styled.div`
-  padding: 0 24px 24px 24px;
   box-sizing: content-box;
   display: flex;
   justify-content: center;
 `;
 
 const SHomeBox = styled.div`
-  width: 80%;
+  width: 100%;
+  max-width: 1280px;
   height: 100%;
   border-radius: 8px;
   background-color: #d8e2ef;
@@ -66,18 +66,22 @@ export const Layout = () => {
     <SBackground>
       <SHomeBox>
         <SImg></SImg>
-        <Ant.Menu
-          style={{ justifyContent: "center", background: "#294d7f" }}
-          activeKey={key}
-          theme="dark"
-          selectedKeys={path}
-          onClick={(p) => {
-            const s = ["/", ...p.keyPath.reverse()];
-            naviate(joinPath(...s));
-          }}
-          mode="horizontal"
-          items={items}
-        ></Ant.Menu>
+        <Ant.Affix>
+          <Ant.Menu
+            style={{ justifyContent: "center", background: "#294d7f" }}
+            activeKey={key}
+            theme="dark"
+            selectedKeys={path}
+            onClick={(p) => {
+              const s = ["/", ...p.keyPath.reverse()].filter(
+                (v) => "rc-menu-more" !== v
+              );
+              naviate(joinPath(...s));
+            }}
+            mode="horizontal"
+            items={items}
+          ></Ant.Menu>
+        </Ant.Affix>
         <SMainMenuBox>
           <Ant.Card style={{ marginBottom: 8 }}>
             <div>

@@ -36,22 +36,19 @@ export const Subtitle = () => {
             title: "时间",
             search: false,
             dataIndex: "added",
-            width: 160,
           },
           {
             title: "上传者",
             search: false,
             dataIndex: "uploadUsername",
-            width: 160,
             ellipsis: true,
           },
           {
             title: "大小",
             search: false,
             dataIndex: "size",
-            render: (dom, entity) =>
+            render: (_, entity) =>
               new FileSizeConverter(entity.size).kb() + "KB",
-            width: 100,
           },
         ]}
       />

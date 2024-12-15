@@ -20,7 +20,7 @@ export const Forum = () => {
       <Ant.Flex vertical gap={8}>
         {forums?.map((v) => {
           return (
-            <Ant.Card>
+            <Ant.Card key={v.id}>
               <Table<ForumsEntity, ForumsEntity>
                 pagination={false}
                 search={false}
@@ -28,7 +28,7 @@ export const Forum = () => {
                 columns={[
                   {
                     title: v.name,
-                    render: (dom, entity) => {
+                    render: (_, entity) => {
                       return (
                         <div>
                           <div>

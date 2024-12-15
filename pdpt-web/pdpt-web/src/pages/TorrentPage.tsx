@@ -96,7 +96,7 @@ export const TorrentPage = () => {
         ]}
       ></Ant.Collapse>
       <Table<TorrentEntity, TorrentEntity>
-        pagination={{ defaultPageSize: 10 }}
+        pagination={{ defaultPageSize: 10, showLessItems: true }}
         request={async (params) => {
           const data = await torrentService.listPaged({
             pageSize: params.pageSize ?? 10,
@@ -111,7 +111,6 @@ export const TorrentPage = () => {
         columns={[
           {
             title: "类别",
-            width: 48,
             render: (_, entity) => {
               return (
                 <img src={`/icons/category/${entity.categoryCode}.svg`}></img>
@@ -120,14 +119,12 @@ export const TorrentPage = () => {
           },
           {
             title: "来源",
-            width: 48,
             render: (_, entity) => {
               return <img src={`/icons/source/${entity.source}.svg`}></img>;
             },
           },
           {
             title: "封面",
-            width: 60,
             dataIndex: "cover",
             render: (_, entity) => {
               return (
@@ -159,7 +156,6 @@ export const TorrentPage = () => {
           },
           {
             title: "操作",
-            width: 48,
             align: "center",
             render: () => {
               return (
@@ -176,21 +172,35 @@ export const TorrentPage = () => {
               );
             },
           },
-          { title: "添加时间", dataIndex: "added", width: 170, ellipsis: true },
+          { title: "时间", dataIndex: "added", ellipsis: true },
           {
             title: "大小",
             dataIndex: "size",
             render: (_, entity) => {
               return FileSizeConverter.ofByte(entity.size).gb() + "GB";
             },
-            width: 70,
           },
-          { title: "下载", dataIndex: "leechers", width: 48 },
-          { title: "做种", dataIndex: "seeders", width: 48 },
+          {
+            title: "下载",
+            dataIndex: "leechers",
+            render: (dom) => (
+              <Ant.Flex>
+                {dom} <AntIcon.ArrowDownOutlined />
+              </Ant.Flex>
+            ),
+          },
+          {
+            title: "做种",
+            dataIndex: "seeders",
+            render: (dom) => (
+              <Ant.Flex>
+                {dom} <AntIcon.ArrowUpOutlined />
+              </Ant.Flex>
+            ),
+          },
           {
             title: "上传者",
             dataIndex: "ownerName",
-            width: 100,
             ellipsis: true,
           },
         ]}
