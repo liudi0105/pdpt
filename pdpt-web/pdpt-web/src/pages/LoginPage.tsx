@@ -92,7 +92,7 @@ export const LoginPage = () => {
                         addonAfter="15分钟后自动登出"
                       />
                       <Pro.ProFormCheckbox
-                        name="autoLogout"
+                        name="onlyThisIp"
                         addonAfter="限制只能使用本IP登录"
                       />
                     </Pro.ProFormGroup>
@@ -106,7 +106,12 @@ export const LoginPage = () => {
                     >
                       登录
                     </MenuButton>
-                    <MenuButton type="default">重置</MenuButton>
+                    <MenuButton
+                      type="default"
+                      onClick={() => form.resetFields()}
+                    >
+                      重置
+                    </MenuButton>
                   </Pro.ProForm>
                 ),
               },
