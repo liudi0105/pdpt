@@ -1,6 +1,6 @@
 import bbobHTML from "@bbob/html";
 import presetHTML5 from "@bbob/preset-html5";
-import { Ant, Table } from "@common-module/common-antd";
+import { Ant, AntIcon, Table } from "@common-module/common-antd";
 import { styled, useParams } from "@common-module/common-react";
 import { Button, Space } from "antd";
 import { useEffect, useState } from "react";
@@ -32,7 +32,14 @@ export const TorrentDetailPage = () => {
       <Table
         title={() => (
           <Ant.Typography.Title level={2} ellipsis title={torrent?.name}>
-            {torrent?.name}
+            <Ant.Space>
+              {torrent?.name}
+              <AntIcon.StarOutlined
+                style={{
+                  cursor: "pointer",
+                }}
+              />
+            </Ant.Space>
           </Ant.Typography.Title>
         )}
         pagination={false}
