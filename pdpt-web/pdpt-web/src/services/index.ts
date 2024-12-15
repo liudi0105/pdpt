@@ -207,3 +207,10 @@ export interface SubtitleEntity extends BaseEntity {
 export class SubtitleService extends BaseService<SubtitleEntity> {
   group = "subtitle";
 }
+
+export class AuthService extends BaseService<never> {
+  group = "auth";
+
+  login = (param: { username: string; password: string }) =>
+    this.postJsonForJson("login", param);
+}
