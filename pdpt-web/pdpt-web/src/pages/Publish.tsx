@@ -21,7 +21,7 @@ export const Publish = () => {
         layout="horizontal"
         labelCol={{ span: 4 }}
         submitter={{
-          render: (props, doms) => {
+          render: (_, doms) => {
             return (
               <Flex justify="center">
                 <Ant.Space>{doms}</Ant.Space>
