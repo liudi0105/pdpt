@@ -2,6 +2,7 @@ import { MenuButton, Pro } from "@common-module/common-antd";
 import { Form, styled } from "@common-module/common-react";
 import { Tabs } from "antd";
 import { useForm } from "antd/es/form/Form";
+import { AuthService } from "../services";
 
 const SBack = styled.div`
   height: 100%;
@@ -46,7 +47,9 @@ const SFuncArea = styled.div`
   }
 `;
 
-export const LoginPage = () => {
+const authService = new AuthService();
+
+export const Login = () => {
   const [form] = useForm();
 
   return (
@@ -101,7 +104,7 @@ export const LoginPage = () => {
                       type="primary"
                       onClick={async () => {
                         const v = await form.validateFields();
-                        console.log(v);
+                        authService.login(v);
                       }}
                     >
                       登录
