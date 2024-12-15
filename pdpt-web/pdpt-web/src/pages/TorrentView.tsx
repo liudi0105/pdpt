@@ -55,6 +55,15 @@ export const TorrentPage = () => {
             label: "搜索工具箱",
             children: (
               <Pro.ProForm
+                submitter={{
+                  render: (_, doms) => {
+                    return (
+                      <Ant.Flex justify="center">
+                        <Ant.Space>{doms}</Ant.Space>
+                      </Ant.Flex>
+                    );
+                  },
+                }}
                 form={searchForm}
                 layout="horizontal"
                 labelAlign="left"
