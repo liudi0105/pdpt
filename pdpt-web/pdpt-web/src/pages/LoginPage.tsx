@@ -61,17 +61,24 @@ export const LoginPage = () => {
                 key: "login",
                 label: "登录",
                 children: (
-                  <Pro.ProForm form={form}>
+                  <Pro.ProForm
+                    form={form}
+                    submitter={false}
+                    layout="horizontal"
+                    labelCol={{ span: 0 }}
+                  >
                     <Pro.ProFormText
                       name="username"
+                      label="账号"
                       placeholder="账号"
                       required
                       rules={[{ required: true }]}
                     />
                     <Pro.ProFormText
                       name="password"
+                      label="密码"
                       placeholder="密码"
-                      required
+                      rules={[{ required: true }]}
                     />
                     <Pro.ProFormField
                       fieldProps={{

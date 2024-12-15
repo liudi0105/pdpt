@@ -43,7 +43,7 @@ export const TorrentPage = () => {
             label: "简单搜索",
             children: (
               <Pro.ProForm layout="inline">
-                <Pro.ProFormText width="lg" />
+                <Pro.ProFormText width="md" />
               </Pro.ProForm>
             ),
           },
