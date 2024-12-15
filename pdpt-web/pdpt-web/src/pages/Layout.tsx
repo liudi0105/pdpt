@@ -46,9 +46,10 @@ function toMenu(router: RouterMenuItem): MenuItem {
 const SImg = styled.div`
   width: 100%;
   background-image: url("/images/top_bar.png");
-  height: 210px;
+  height: 140px;
   background-size: cover;
   background-repeat: no-repeat;
+  background-position-y: bottom;
 `;
 
 export const Layout = () => {
