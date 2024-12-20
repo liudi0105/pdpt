@@ -81,6 +81,12 @@ public class WebMvcConfiguration {
     }
 
     @Bean
+    @ConditionalOnMissingBean
+    public AppWebRequest appWebRequest() {
+        return new AppWebRequest();
+    }
+
+    @Bean
     @RequestScope
     @ConditionalOnMissingBean
     public CurrentUser currentUser() {

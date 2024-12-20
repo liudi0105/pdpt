@@ -17,7 +17,7 @@ import { Layout } from "./pages/Layout";
 import { Log } from "./pages/Log";
 import { LoginLog } from "./pages/log/LoginLog";
 import { SiteLog } from "./pages/log/SiteLog";
-import { Login } from "./pages/LoginPage";
+import { LoginView } from "./pages/LoginView";
 import { Posts } from "./pages/Posts";
 import { Publish } from "./pages/Publish";
 import { Subtitle } from "./pages/Subtitle";
@@ -160,10 +160,10 @@ export const routers: RouterMenuItem[] = [
   },
 ];
 
-const AppRouter = createBrowserRouter([
+export const AppRouter = createBrowserRouter([
   {
     path: "login",
-    element: <Login />,
+    element: <LoginView />,
   },
   {
     path: "/",

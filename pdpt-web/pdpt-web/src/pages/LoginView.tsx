@@ -1,7 +1,7 @@
-import { MenuButton, Pro } from "@common-module/common-antd";
-import { Form, styled } from "@common-module/common-react";
+import { Ant, MenuButton, Pro } from "@common-module/common-antd";
+import { Form, styled, useNavigate } from "@common-module/common-react";
+import { Strings } from "@common-module/common-util";
 import { Tabs } from "antd";
-import { useForm } from "antd/es/form/Form";
 import { AuthService } from "../services";
 
 const SBack = styled.div`
@@ -49,8 +49,8 @@ const SFuncArea = styled.div`
 
 const authService = new AuthService();
 
-export const Login = () => {
-  const [form] = useForm();
+export const LoginView = () => {
+  const navigate = useNavigate();
 
   return (
     <SBack>
@@ -64,26 +64,30 @@ export const Login = () => {
                 key: "login",
                 label: "登录",
                 children: (
-                  <Pro.ProForm
-                    form={form}
+                  <Pro.ProForm<{ username: string; password: string }>
                     submitter={false}
-                    layout="horizontal"
-                    labelCol={{ span: 0 }}
+                    onFinish={async (value) => {
+                      const { username, password } = value;
+                      if (Strings.isAnyEmpty([username, password])) {
+                        Ant.message.warning("请输入用户名和密码");
+                      } else {
+                        const r = await authService.login(value);
+                        if (r.username) {
+                          navigate("/");
+                        }
+                      }
+                    }}
                   >
                     <Pro.ProFormText
                       name="username"
-                      label="账号"
                       placeholder="账号"
                       required
-                      rules={[{ required: true }]}
+                    />
+                    <Pro.ProFormText.Password
+                      name="password"
+                      placeholder="密码"
                     />
                     <Pro.ProFormText
-                      name="password"
-                      label="密码"
-                      placeholder="密码"
-                      rules={[{ required: true }]}
-                    />
-                    <Pro.ProFormField
                       fieldProps={{
                         addonBefore: "二次验证",
                       }}
@@ -101,18 +105,12 @@ export const Login = () => {
                     </Pro.ProFormGroup>
                     <MenuButton
                       style={{ marginBottom: 8 }}
+                      htmlType="submit"
                       type="primary"
-                      onClick={async () => {
-                        const v = await form.validateFields();
-                        authService.login(v);
-                      }}
                     >
                       登录
                     </MenuButton>
-                    <MenuButton
-                      type="default"
-                      onClick={() => form.resetFields()}
-                    >
+                    <MenuButton htmlType="reset" type="default">
                       重置
                     </MenuButton>
                   </Pro.ProForm>

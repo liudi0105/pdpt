@@ -1,4 +1,4 @@
-import { Ant } from "@common-module/common-antd";
+import { Ant, AntIcon, Button } from "@common-module/common-antd";
 import { RouterMenuItem } from "@common-module/common-api";
 import {
   Outlet,
@@ -7,8 +7,10 @@ import {
   useNavigate,
 } from "@common-module/common-react";
 import { joinPath } from "@common-module/common-util";
-import { MenuProps } from "antd";
+import { ButtonProps, Flex, MenuProps } from "antd";
 import { routers } from "../App";
+import { AuthService, LoginResult } from "../services";
+import { useEffect, useState } from "react";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -52,6 +54,18 @@ const SImg = styled.div`
   background-position-y: bottom;
 `;
 
+const authService = new AuthService();
+
+const LogoButton = (props: { name: string } & ButtonProps) => {
+  return (
+    <Button
+      style={{ border: "none" }}
+      icon={<img src={`/icons/buttons/${props.name}.svg`} width={26} />}
+      {...props}
+    />
+  );
+};
+
 export const Layout = () => {
   const items: MenuItem[] = routers
     .filter((v) => !v.hidden)
@@ -63,6 +77,12 @@ export const Layout = () => {
 
   const path = location.pathname.split("/");
   const key = path[path.length - 1];
+
+  const [loginResult, setLoginResult] = useState<LoginResult>();
+
+  useEffect(() => {
+    authService.validate().then(setLoginResult);
+  }, []);
 
   return (
     <SBackground>
@@ -86,15 +106,40 @@ export const Layout = () => {
         </Ant.Affix>
         <SMainMenuBox>
           <Ant.Card>
-            <div>
-              欢迎回来, bluegemld开站纪念 [ 控制面板 ] [收藏] 魔力值 [使用]:
-              104,760.5 [签到得魔力] [勋章] 邀请 [发送]: 0(0)
-            </div>
-            <div>
-              分享率: 1.353 上传量: 3.509 TB 下载量: 2.594 TB 当前活动: Torrents
-              seeding9 Torrents leeching1 可连接:是 连接数：无限制 H&R: [0/0/]
-              认领: [0/5000]
-            </div>
+            <Ant.Flex gap={4} align="center">
+              <Flex align="center">
+                <Ant.Typography.Text
+                  style={{
+                    fontWeight: "bold",
+                    color: "#14598D",
+                    marginRight: 28,
+                  }}
+                >
+                  {loginResult?.username}
+                </Ant.Typography.Text>
+              </Flex>
+              <Button
+                style={{ backgroundColor: "#14598D" }}
+                type="primary"
+                iconPosition="end"
+                icon={<AntIcon.DownCircleFilled />}
+              >
+                我的数据
+              </Button>
+              <LogoButton name="1" />
+              <LogoButton name="2" />
+              <LogoButton name="3" />
+              <LogoButton name="4" />
+              <LogoButton name="5" />
+              <LogoButton name="6" />
+              <LogoButton name="7" />
+              <LogoButton name="8" />
+              <LogoButton name="9" />
+              <LogoButton name="10" />
+              <LogoButton name="11" />
+              <LogoButton name="12" />
+              <LogoButton name="13" />
+            </Ant.Flex>
           </Ant.Card>
           <Ant.Card>
             <p style={{ textAlign: "center" }}>

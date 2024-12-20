@@ -36,13 +36,12 @@ public class AppCookies {
         expireCookie(name, "/");
     }
 
-    public void setLongCookie(String name, String path) {
-        setCookie(name, path, Integer.MAX_VALUE);
+    public void setLongCookie(String name, String value) {
+        setCookie(name, value, Integer.MAX_VALUE);
     }
 
-    public void setCookie(String name, String path, Integer maxAge) {
-        Cookie cookie = new Cookie(name, null);
-        cookie.setPath(path);
+    public void setCookie(String name, String value, Integer maxAge) {
+        Cookie cookie = new Cookie(name, value);
         cookie.setMaxAge(maxAge);
         getCookie(name).ifPresent(v -> response.addCookie(cookie));
     }

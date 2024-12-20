@@ -6,34 +6,54 @@ export interface RequestConfig {
 }
 
 export type RequestProvider = {
-  request(config: RequestConfig): Promise<string>;
+  request(config: RequestConfig): Promise<ResponseEntity>;
 };
 
+export interface ResponseEntity {
+  httpStatus: number;
+  appSucceed: boolean;
+  appErrorMessage?: string;
+  appStatusCode?: string;
+  payloadText: string;
+  payload: any;
+}
+
 export class FetchRequestProvider implements RequestProvider {
-  request = (config: RequestConfig): Promise<string> => {
+  request = async (config: RequestConfig): Promise<ResponseEntity> => {
     config.headers = {
       ...config.headers,
     };
 
-    console.log(config.url)
+    console.log(config.url);
 
-    return fetch(config.url, {
+    const resp = await fetch(config.url, {
       method: config.method,
-      mode:"cors",
+      mode: "cors",
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
       body: config.body ? JSON.stringify(config.body) : undefined,
-    }).then((v) => v.text());
+    });
+    return {
+      httpStatus: resp.status,
+      appSucceed: resp.status < 400,
+      payloadText: await resp.text(),
+      payload: "",
+    };
   };
 }
 
-export class HttpClient {
-  constructor(private provider: RequestProvider = new FetchRequestProvider()) {}
+export type ApiErrorHandler = (v: ResponseEntity) => void;
 
-  postJsonForString(url: string, data?: object): Promise<string> {
-    return this.request({
+export class HttpClient {
+  constructor(
+    private provider: RequestProvider = new FetchRequestProvider(),
+    private apiErrorHandler: ApiErrorHandler = () => {}
+  ) {}
+
+  postJsonForString = async (url: string, data?: object): Promise<string> => {
+    const resp = await this.request({
       url: url,
       body: data,
       method: "POST",
@@ -41,7 +61,8 @@ export class HttpClient {
         "Content-Type": "application/json",
       },
     });
-  }
+    return resp.payloadText;
+  };
 
   postJsonForJson = async <T>(url: string, data?: object): Promise<T> => {
     const resp = await this.postJsonForString(url, data);
@@ -52,7 +73,9 @@ export class HttpClient {
     return text ? JSON.parse(text) : null;
   };
 
-  request = (config: RequestConfig): Promise<string> => {
-    return this.provider.request(config);
+  request = async (config: RequestConfig): Promise<ResponseEntity> => {
+    const resp = await this.provider.request(config);
+    this.apiErrorHandler(resp);
+    return resp;
   };
 }

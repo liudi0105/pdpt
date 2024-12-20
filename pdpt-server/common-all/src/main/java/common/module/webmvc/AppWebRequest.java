@@ -12,10 +12,6 @@ import org.springframework.http.HttpStatus;
 @Setter
 @Accessors(chain = true)
 public class AppWebRequest {
-    private String requestPath;
-    private String servletPath;
-    private String requestId;
-    private Object requestParam;
     @Autowired
     private HttpServletRequest request;
     @Autowired
@@ -26,6 +22,8 @@ public class AppWebRequest {
     }
 
     public void setResponseStatus(HttpStatus httpStatus) {
-        response.setStatus(httpStatus.value());
+        if (isHttpStatusOk()) {
+            response.setStatus(httpStatus.value());
+        }
     }
 }

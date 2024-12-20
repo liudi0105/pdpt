@@ -208,9 +208,17 @@ export class SubtitleService extends BaseService<SubtitleEntity> {
   group = "subtitle";
 }
 
+export interface LoginResult {
+  username: string;
+  email: string;
+  userId: string;
+}
+
 export class AuthService extends BaseService<never> {
   group = "auth";
 
   login = (param: { username: string; password: string }) =>
-    this.postJsonForJson("login", param);
+    this.postJsonForJson<LoginResult>("login", param);
+
+  validate = () => this.postJsonForJson<LoginResult>("validate");
 }

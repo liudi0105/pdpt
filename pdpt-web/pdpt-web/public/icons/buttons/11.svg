@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="37px" height="37px" viewBox="0 0 37 37" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>11</title>
+    <g id="web2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="候选区备份" transform="translate(-1581, -356)">
+            <g id="11" transform="translate(1581, 356.0294)">
+                <g id="编组-2备份" transform="translate(0, 0.9706)" fill="#E2EAF5" stroke="#14598D">
+                    <rect id="矩形备份-2" x="0.5" y="0.5" width="35" height="35" rx="6"></rect>
+                </g>
+                <g id="发送" transform="translate(20, 16.9706) rotate(-45) translate(-20, -16.9706)translate(8, 4.9706)" fill="#14598D" fill-rule="nonzero">
+                    <rect id="矩形" opacity="0" x="0" y="0" width="24" height="24"></rect>
+                    <path d="M23.4135,12.9919453 C24.1695,12.6469453 24.17175,12.0889453 23.4135,11.7431953 L2.88,2.37494531 C2.124,2.02994531 1.5105,2.42594531 1.509,3.24569531 L1.5,10.0076953 L18.1305,12.3671953 L1.5,14.7267187 L1.509,21.4894687 C1.5105,22.3152187 2.12175,22.7059687 2.88,22.3602187 L23.4135,12.9919687 L23.4135,12.9919453 Z" id="路径"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

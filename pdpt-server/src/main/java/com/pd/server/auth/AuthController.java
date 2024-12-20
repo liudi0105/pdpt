@@ -1,5 +1,6 @@
 package com.pd.server.auth;
 
+import com.pd.server.auth.vo.LoginResultVO;
 import common.module.webmvc.Api;
 import common.module.webmvc.ApiGroup;
 import lombok.Getter;
@@ -14,8 +15,13 @@ public class AuthController {
     private AuthService authService;
 
     @Api(path = "login")
-    public void login(@RequestBody LoginParam loginParam) {
-        authService.login(loginParam.username, loginParam.password);
+    public LoginResultVO login(@RequestBody LoginParam loginParam) {
+        return authService.login(loginParam.username, loginParam.password);
+    }
+
+    @Api(path = "validate")
+    public LoginResultVO validation() {
+        return authService.validate();
     }
 
     @Getter

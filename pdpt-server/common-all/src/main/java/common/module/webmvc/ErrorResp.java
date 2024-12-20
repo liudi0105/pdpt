@@ -9,30 +9,30 @@ import lombok.Setter;
 @Setter
 public class ErrorResp {
     private String code;
-    private String msg;
+    private String message;
 
     public ErrorResp(Throwable e) {
         if (e instanceof AppWarning) {
             AppWarning er = (AppWarning) e;
             this.code = er.getCode();
-            this.msg = er.getMsg();
+            this.message = er.getMsg();
         } else if (e instanceof AppError) {
             AppError er = (AppError) e;
             this.code = er.getCode();
-            this.msg = er.getMsg();
+            this.message = er.getMsg();
         } else {
             this.code = "UNKNOWN_ERROR";
-            this.msg = e.getMessage();
+            this.message = e.getMessage();
         }
     }
 
-    public ErrorResp(String msg) {
+    public ErrorResp(String message) {
         this.code = "UNKNOWN_ERROR";
-        this.msg = msg;
+        this.message = message;
     }
 
-    public ErrorResp(String code, String msg) {
+    public ErrorResp(String code, String message) {
         this.code = code;
-        this.msg = msg;
+        this.message = message;
     }
 }
