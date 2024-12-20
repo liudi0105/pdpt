@@ -132,13 +132,10 @@ export const TorrentPage = () => {
         columns={[
           {
             title: "类别",
-            width: "7.5em",
+            width: "4em",
             render: (_, entity) => {
               return (
-                <Ant.Flex>
-                  <img src={`/icons/category/${entity.categoryCode}.svg`}></img>
-                  <img src={`/icons/source/${entity.source}.svg`}></img>
-                </Ant.Flex>
+                <img src={`/icons/category/${entity.categoryCode}.svg`}></img>
               );
             },
           },
