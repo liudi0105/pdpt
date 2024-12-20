@@ -23,11 +23,11 @@ public class AppCookies {
     }
 
     public Optional<Cookie> getCookie(String name) {
-        List<Cookie> cookies = Arrays.stream(request.getCookies()).toList();
-        if (cookies == null || cookies.isEmpty()) {
+        Cookie[] cookies1 = request.getCookies();
+        if (cookies1 == null || cookies1.length == 0) {
             return Optional.empty();
         }
-        return cookies.stream()
+        return Arrays.stream(cookies1)
                 .filter(v -> Objects.equals(name, v.getName()))
                 .findAny();
     }
@@ -43,7 +43,7 @@ public class AppCookies {
     public void setCookie(String name, String value, Integer maxAge) {
         Cookie cookie = new Cookie(name, value);
         cookie.setMaxAge(maxAge);
-        getCookie(name).ifPresent(v -> response.addCookie(cookie));
+        response.addCookie(cookie);
     }
 
     public void expireCookie(String name, String path) {
