@@ -54,13 +54,28 @@ const SImg = styled.div`
   background-position-y: bottom;
 `;
 
+const UserInfoCard = styled(Ant.Card)`
+  position: relative;
+  .ant-card-body {
+    padding: 8px;
+    display: flex;
+    align-items: center;
+  }
+`;
+
 const authService = new AuthService();
 
 const LogoButton = (props: { name: string } & ButtonProps) => {
   return (
     <Button
       style={{ border: "none" }}
-      icon={<img src={`/icons/buttons/${props.name}.svg`} width={26} />}
+      icon={
+        <Ant.Image
+          preview={false}
+          src={`/icons/buttons/${props.name}.svg`}
+          width={26}
+        />
+      }
       {...props}
     />
   );
@@ -105,13 +120,26 @@ export const Layout = () => {
           ></Ant.Menu>
         </Ant.Affix>
         <SMainMenuBox>
-          <Ant.Card>
-            <Ant.Flex gap={4} align="center">
-              <Flex align="center">
+          <UserInfoCard>
+            <Ant.Flex gap={4}>
+              <Ant.Image
+                style={{
+                  position: "absolute",
+                  top: -7,
+                  left: 8,
+                  width: 42,
+                  height: 42,
+                }}
+                preview={false}
+                src="/icons/avatar.svg"
+              />
+              <Flex>
                 <Ant.Typography.Text
                   style={{
                     fontWeight: "bold",
                     color: "#14598D",
+                    marginTop: 4,
+                    marginLeft: 48,
                     marginRight: 28,
                   }}
                 >
@@ -119,7 +147,6 @@ export const Layout = () => {
                 </Ant.Typography.Text>
               </Flex>
               <Button
-                style={{ backgroundColor: "#14598D" }}
                 type="primary"
                 iconPosition="end"
                 icon={<AntIcon.DownCircleFilled />}
@@ -140,7 +167,7 @@ export const Layout = () => {
               <LogoButton name="12" />
               <LogoButton name="13" />
             </Ant.Flex>
-          </Ant.Card>
+          </UserInfoCard>
           <Ant.Card>
             <p style={{ textAlign: "center" }}>
               <div>Telegram 官方交流群</div>

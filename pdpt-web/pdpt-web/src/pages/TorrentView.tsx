@@ -157,14 +157,14 @@ export const TorrentPage = () => {
             title: "名称",
             dataIndex: "name",
             ellipsis: true,
-            render: (dom, entity) => {
+            render: (_, entity) => {
               return (
                 <Ant.Flex vertical align="start">
                   <span
                     style={{ fontWeight: "bold", cursor: "pointer" }}
                     onClick={() => navigate(`/torrent/detail/${entity.id}`)}
                   >
-                    {dom}
+                    <Ant.Tooltip title={entity.name}>{entity.name}</Ant.Tooltip>
                   </span>
                   <Ant.Tooltip title={entity.smallDescr}>
                     <Ant.Typography.Text ellipsis>

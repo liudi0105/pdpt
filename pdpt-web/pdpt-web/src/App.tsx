@@ -178,7 +178,14 @@ export const AppRouter = createBrowserRouter([
 
 function App() {
   return (
-    <ConfigProvider theme={{ algorithm: [theme.compactAlgorithm] }}>
+    <ConfigProvider
+      theme={{
+        algorithm: [theme.compactAlgorithm],
+        token: {
+          colorPrimary: "#14598D",
+        },
+      }}
+    >
       <HappyProvider>
         <RouterProvider router={AppRouter} />
         <SGlobalStyle />
