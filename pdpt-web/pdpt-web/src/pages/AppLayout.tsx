@@ -17,8 +17,8 @@ import {
 } from "antd";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
-import { AuthService, LoginResult } from "../services";
 import { routers } from "../router";
+import { AuthService, LoginResult } from "../services";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -271,7 +271,17 @@ export const AppLayout = () => {
               <LogoButton title="幸运大转盘" name="6" />
               <LogoButton title="地球仪" name="7" />
               <LogoButton title="心脏" name="8" />
-              <LogoButton title="签到" name="9" />
+              <Popover
+                trigger="click"
+                content={
+                  <Ant.Flex vertical align="end">
+                    <Button type="primary">签到</Button>
+                    <Ant.Calendar style={{ width: 300 }} fullscreen={false} />
+                  </Ant.Flex>
+                }
+              >
+                <LogoButton title="签到" name="9" />
+              </Popover>
               <LogoButton title="消息" name="10" />
               <LogoButton title="纸飞机" name="11" />
               <LogoButton title="好朋友" name="12" />

@@ -26,6 +26,7 @@ export const routers: RouterMenuItem[] = [
   {
     path: "*",
     element: <NotFound />,
+    hidden: true,
   },
   {
     path: "home",

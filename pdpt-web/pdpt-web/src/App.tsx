@@ -4,6 +4,7 @@ import { createGlobalStyle, RouterProvider } from "@common-module/common-react";
 import { ConfigProvider, theme } from "antd";
 import "./App.css";
 import { AppRouter } from "./router";
+import zhCN from "antd/locale/zh_CN";
 
 const SGlobalStyle = createGlobalStyle`
   html, body, #root {
@@ -22,6 +23,7 @@ const SGlobalStyle = createGlobalStyle`
 function App() {
   return (
     <ConfigProvider
+      locale={zhCN}
       theme={{
         algorithm: [theme.compactAlgorithm],
         token: {
