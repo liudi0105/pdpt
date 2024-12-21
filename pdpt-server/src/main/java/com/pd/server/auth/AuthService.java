@@ -49,13 +49,21 @@ public class AuthService {
         return new LoginResultVO().setUsername(eq.getUsername()).setUserId(eq.getId());
     }
 
+    public void logout() {
+        appCookies.expireCookie("c_secure_uid");
+        appCookies.expireCookie("c_secure_pass");
+    }
+
     public LoginResultVO login(String username, String password) {
         UsersPO eq = usersRepo.findPoEq(UsersPO::getUsername, username)
                 .orElseThrow(() -> {
                     appResponses.setResponseStatus(HttpStatus.FORBIDDEN);
                     return new AppWarning("对不起，请先注册");
                 });
-        if (DigestUtils.md5Hex(eq.getSecret() + password + eq.getSecret()).equals(eq.getPasshash())) {
+
+        String s = DigestUtils.md5Hex(eq.getSecret() + password + eq.getSecret());
+        // TODO: 密码验证逻辑
+        if (s.equals(eq.getPasshash())) {
             appResponses.setResponseStatus(HttpStatus.FORBIDDEN);
             throw new RuntimeException("验证失败，请重试");
         }

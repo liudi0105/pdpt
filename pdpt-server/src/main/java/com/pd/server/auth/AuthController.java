@@ -19,6 +19,11 @@ public class AuthController {
         return authService.login(loginParam.username, loginParam.password);
     }
 
+    @Api(path = "logout")
+    public void logout() {
+        authService.logout();
+    }
+
     @Api(path = "validate")
     public LoginResultVO validation() {
         return authService.validate();

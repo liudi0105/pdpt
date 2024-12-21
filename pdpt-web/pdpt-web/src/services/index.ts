@@ -221,4 +221,8 @@ export class AuthService extends BaseService<never> {
     this.postJsonForJson<LoginResult>("login", param);
 
   validate = () => this.postJsonForJson<LoginResult>("validate");
+
+  logout = () => {
+    return this.postJsonForJson("logout");
+  };
 }

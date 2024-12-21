@@ -7,8 +7,12 @@ import {
   ResponseEntity,
 } from "@common-module/common-util";
 import { createRoot } from "react-dom/client";
-import App, { AppRouter } from "./App.tsx";
 import "./index.css";
+import * as dayjs from "dayjs";
+import { AppRouter } from "./router";
+import App from "./App";
+
+dayjs.locale("zh-cn");
 
 registerConfig({
   httpClient: new HttpClient(

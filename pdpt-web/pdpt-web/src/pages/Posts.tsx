@@ -96,7 +96,7 @@ export const Posts = () => {
                 align="stretch"
               >
                 <pre
-                  style={{ flexGrow: 1, padding: 16 }}
+                  style={{ flexGrow: 1, padding: 16, textWrap: "wrap" }}
                   dangerouslySetInnerHTML={{
                     __html: bbobHTML(v.body, presetHTML5()),
                   }}
