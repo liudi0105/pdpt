@@ -1,5 +1,8 @@
 package com.pd.server.forum;
 
+import com.pd.server.auth.user_info.UsersDTO;
+import com.pd.server.auth.user_info.UsersPO;
+import com.pd.server.auth.user_info.UsersRepo;
 import com.pd.server.forum.forummods.ForumsModsRepo;
 import com.pd.server.forum.forums.ForumsDTO;
 import com.pd.server.forum.forums.ForumsEntity;
@@ -13,9 +16,9 @@ import com.pd.server.forum.post.PostsRepo;
 import com.pd.server.forum.topics.TopicDTO;
 import com.pd.server.forum.topics.TopicEntity;
 import com.pd.server.forum.topics.TopicRepo;
-import com.pd.server.auth.user_info.UsersDTO;
-import com.pd.server.auth.user_info.UsersPO;
-import com.pd.server.auth.user_info.UsersRepo;
+import com.pd.server.auth.roles.RolesDTO;
+import com.pd.server.auth.roles.RolesPO;
+import com.pd.server.auth.roles.RolesRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

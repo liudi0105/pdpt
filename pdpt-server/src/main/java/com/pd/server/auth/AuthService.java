@@ -1,8 +1,11 @@
 package com.pd.server.auth;
 
+import com.pd.server.auth.roles.RolesPO;
+import com.pd.server.auth.roles.RolesRepo;
 import com.pd.server.auth.user_info.UsersPO;
 import com.pd.server.auth.user_info.UsersRepo;
 import com.pd.server.auth.vo.LoginResultVO;
+import com.pd.server.config.CurrentUser;
 import common.module.errors.AppWarning;
 import common.module.util.AppEncodings;
 import common.module.webmvc.AppCookies;
@@ -25,10 +28,12 @@ public class AuthService {
     @Autowired
     private AppWebRequest appResponses;
 
-    public LoginResultVO validate() {
-        String cSecurePass = appCookies.getCookieValue("c_secure_pass").orElse(null);
-        String cSecureUid = appCookies.getCookieValue("c_secure_uid").orElse(null);
+    @Autowired
+    private CurrentUser currentUser;
 
+    public LoginResultVO validate() {
+        String cSecureUid = currentUser.getSecurityUidCookie();
+        String cSecurePass = currentUser.getSecurityPassCookie();
         if (StringUtils.isAnyBlank(cSecurePass, cSecureUid)) {
             appResponses.setResponseStatus(HttpStatus.FORBIDDEN);
             throw new AppWarning("请先登录");

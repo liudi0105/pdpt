@@ -86,12 +86,12 @@ public class WebMvcConfiguration {
         return new AppWebRequest();
     }
 
-    @Bean
-    @RequestScope
-    @ConditionalOnMissingBean
-    public CurrentUser currentUser() {
-        return new CurrentUser();
-    }
+//    @Bean
+//    @RequestScope
+//    @ConditionalOnMissingBean
+//    public CurrentUser currentUser() {
+//        return new CurrentUser();
+//    }
 
     @Bean
     public AppExceptionHandler appExceptionHandler() {
