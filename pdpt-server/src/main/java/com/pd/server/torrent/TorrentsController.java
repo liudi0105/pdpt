@@ -1,5 +1,7 @@
 package com.pd.server.torrent;
 
+import com.pd.server.torrent.torrent.TorrentsDTO;
+import com.pd.server.torrent.torrent.TorrentsRepo;
 import common.module.dto.AppPageParam;
 import common.module.jpa.AppPageResult;
 import common.module.webmvc.Api;

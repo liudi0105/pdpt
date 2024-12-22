@@ -290,9 +290,21 @@ export const AppLayout = () => {
               <LogoButton title="好朋友" name="12" />
               <Ant.Tooltip title="设置中心">
                 <Button
-                  icon={<AntIcon.SettingOutlined />}
+                  icon={
+                    <AntIcon.SettingOutlined style={{ fontSize: "1.5em" }} />
+                  }
                   onClick={() => {
-                    navigate("/control-center");
+                    navigate("/setting-center");
+                  }}
+                />
+              </Ant.Tooltip>
+              <Ant.Tooltip title="管理员设置">
+                <Button
+                  icon={
+                    <AntIcon.ControlOutlined style={{ fontSize: "1.5em" }} />
+                  }
+                  onClick={() => {
+                    navigate("/admin-setting");
                   }}
                 />
               </Ant.Tooltip>

@@ -1,5 +1,7 @@
 package com.pd.server.torrent;
 
+import com.pd.server.torrent.tag.TagDTO;
+import com.pd.server.torrent.tag.TagRepo;
 import common.module.webmvc.Api;
 import common.module.webmvc.ApiGroup;
 import org.springframework.beans.factory.annotation.Autowired;

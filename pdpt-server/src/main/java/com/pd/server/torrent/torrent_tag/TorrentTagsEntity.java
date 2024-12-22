@@ -1,4 +1,4 @@
-package com.pd.server.torrent;
+package com.pd.server.torrent.torrent_tag;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -11,9 +11,10 @@ import lombok.experimental.Accessors;
 @Setter
 @Accessors(chain = true)
 @Entity
-@Table(name = "tags")
-public class TagEntity {
+@Table(name = "torrent_tags")
+public class TorrentTagsEntity {
     @Id
     private Long id;
-    private String name;
+    private Integer torrentId;
+    private Integer tagId;
 }

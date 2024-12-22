@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @Entity
 @Table(name = "faq")
-public class FaqEntity {
+public class FaqPO {
     @Id
     private Short id;
     private Short linkId;

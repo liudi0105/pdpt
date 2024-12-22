@@ -40,6 +40,8 @@ spring:
       format_sql: true
       type: trace
 #    open-in-view: false
+app.accepted-urls:
+    - /auth/login
 logging:
   level:
     web: debug

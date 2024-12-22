@@ -1,8 +1,8 @@
 import { Ant, Card, Table } from "@common-module/common-antd";
 
-export const SettingCenter = () => {
+export const AdminSetting = () => {
   return (
-    <Card title="设置中心">
+    <Card title="管理员设置">
       <Ant.Tabs
         centered
         items={[

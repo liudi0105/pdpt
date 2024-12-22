@@ -99,15 +99,15 @@ public class WebMvcConfiguration {
     }
 
     // 解决RequestScope问题
-    @Bean
-    public RequestContextListener requestContextListener() {
-        return new RequestContextListener();
-    }
+//    @Bean
+//    public RequestContextListener requestContextListener() {
+//        return new RequestContextListener();
+//    }
 
-    @Bean
-    public RequestContextFilter requestContextFilter() {
-        return new RequestContextFilter();
-    }
+//    @Bean
+//    public RequestContextFilter requestContextFilter() {
+//        return new RequestContextFilter();
+//    }
 
     public static HttpComponentsClientHttpRequestFactory unsafeRequestFactory() {
         // https 访问解决

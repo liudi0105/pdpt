@@ -1,7 +1,7 @@
 package com.pd.server.help;
 
 import com.pd.server.help.faq.FaqDTO;
-import com.pd.server.help.faq.FaqEntity;
+import com.pd.server.help.faq.FaqPO;
 import com.pd.server.help.faq.FaqRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,8 +15,8 @@ public class HelpService {
     private FaqRepo faqRepo;
 
     public List<FaqDTO> listFaq() {
-        return faqRepo.listQuery(v -> v.orderBy(FaqEntity::getOrder)
-                .where(c -> c.eq(FaqEntity::getLangId, 25))
+        return faqRepo.listQuery(v -> v.orderBy(FaqPO::getOrder)
+                .where(c -> c.eq(FaqPO::getLangId, 25))
         );
     }
 

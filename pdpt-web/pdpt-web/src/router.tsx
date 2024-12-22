@@ -1,7 +1,7 @@
 import { RouterMenuItem } from "@common-module/common-api";
 import { createBrowserRouter, Navigate } from "@common-module/common-react";
 import { ContactUs } from "./pages/ContactUs";
-import { ControlCenter } from "./pages/ControlCenter";
+import { SettingCenter } from "./pages/ControlCenter";
 import { Entertain } from "./pages/Entertain";
 import { NotFound } from "./pages/errors/NotFound";
 import { Faq } from "./pages/Faq";
@@ -24,6 +24,7 @@ import { Invite } from "./pages/Invite";
 import { BambooShoot } from "./pages/BambooShoot";
 import { Medal } from "./pages/Medal";
 import { RSS } from "./pages/RSS";
+import { AdminSetting } from "./pages/AdminSetting";
 
 export const routers: RouterMenuItem[] = [
   {
@@ -43,23 +44,29 @@ export const routers: RouterMenuItem[] = [
   },
   {
     path: "torrents",
-    name: "综合",
-    element: <TorrentPage />,
-  },
-  {
-    path: "official",
-    name: "官方",
-    element: <TorrentPage />,
-  },
-  {
-    path: "dead-torrents",
-    name: "断种",
-    element: <TorrentPage />,
-  },
-  {
-    path: "offers",
-    name: "候选",
-    element: <TorrentPage />,
+    name: "种子",
+    children: [
+      {
+        path: "all",
+        name: "综合",
+        element: <TorrentPage />,
+      },
+      {
+        path: "official",
+        name: "官方",
+        element: <TorrentPage />,
+      },
+      {
+        path: "dead-torrents",
+        name: "断种",
+        element: <TorrentPage />,
+      },
+      {
+        path: "offers",
+        name: "候选",
+        element: <TorrentPage />,
+      },
+    ],
   },
   {
     path: "request",
@@ -140,8 +147,13 @@ export const routers: RouterMenuItem[] = [
     hidden: true,
   },
   {
-    path: "control-center",
-    element: <ControlCenter />,
+    path: "setting-center",
+    element: <SettingCenter />,
+    hidden: true,
+  },
+  {
+    path: "admin-setting",
+    element: <AdminSetting />,
     hidden: true,
   },
   {

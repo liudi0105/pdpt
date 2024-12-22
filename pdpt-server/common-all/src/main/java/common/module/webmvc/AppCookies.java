@@ -45,6 +45,7 @@ public class AppCookies {
 
     public void setCookie(String name, String value, Integer maxAge) {
         Cookie cookie = new Cookie(name, value);
+        cookie.setPath("/");
         cookie.setMaxAge(maxAge);
         response.addCookie(cookie);
     }

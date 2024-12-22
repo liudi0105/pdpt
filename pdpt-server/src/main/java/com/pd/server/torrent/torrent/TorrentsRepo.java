@@ -1,4 +1,4 @@
-package com.pd.server.torrent;
+package com.pd.server.torrent.torrent;
 
 import common.module.jpa.GeneralJpaRepo;
 
