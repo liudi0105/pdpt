@@ -224,7 +224,7 @@ export const AppLayout = () => {
                         value: "",
                       },
                       {
-                        title: "分析率",
+                        title: "分享率",
                         value: "",
                       },
                       {
@@ -263,10 +263,10 @@ export const AppLayout = () => {
                   我的数据
                 </Button>
               </Popover>
-              <LogoButton title="竹笋" name="1" />
-              <LogoButton title="勋章" name="2" />
+              <LogoButton title="竹笋" name="1" path="/bamboo-shoot" />
+              <LogoButton title="勋章" name="2" path="/medal" />
               <LogoButton title="邀请" name="3" path="/invite" />
-              <LogoButton title="RSS" name="4" />
+              <LogoButton title="RSS" name="4" path="/rss" />
               <LogoButton title="收藏夹" name="5" />
               <LogoButton title="幸运大转盘" name="6" />
               <LogoButton title="地球仪" name="7" />
@@ -275,7 +275,10 @@ export const AppLayout = () => {
                 trigger="click"
                 content={
                   <Ant.Flex vertical align="end">
-                    <Button type="primary">签到</Button>
+                    <Ant.Space>
+                      <Button type="primary">补签</Button>
+                      <Button type="primary">签到</Button>
+                    </Ant.Space>
                     <Ant.Calendar style={{ width: 300 }} fullscreen={false} />
                   </Ant.Flex>
                 }

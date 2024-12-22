@@ -21,6 +21,9 @@ import { TorrentRequest } from "./pages/TorrentRequest";
 import { TorrentPage } from "./pages/TorrentView";
 import { AppLayout } from "./pages/AppLayout";
 import { Invite } from "./pages/Invite";
+import { BambooShoot } from "./pages/BambooShoot";
+import { Medal } from "./pages/Medal";
+import { RSS } from "./pages/RSS";
 
 export const routers: RouterMenuItem[] = [
   {
@@ -139,6 +142,21 @@ export const routers: RouterMenuItem[] = [
   {
     path: "control-center",
     element: <ControlCenter />,
+    hidden: true,
+  },
+  {
+    path: "rss",
+    element: <RSS />,
+    hidden: true,
+  },
+  {
+    path: "medal",
+    element: <Medal />,
+    hidden: true,
+  },
+  {
+    path: "bamboo-shoot",
+    element: <BambooShoot />,
     hidden: true,
   },
 ];

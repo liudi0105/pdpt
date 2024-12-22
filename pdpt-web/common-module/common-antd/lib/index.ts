@@ -6,6 +6,8 @@ export * from "./MenuPage";
 export * from "./Table";
 export * from "./ConfigProvider";
 export * from "./FloatButton";
+export * from "./List";
+export * from "./Card";
 
 export * as AntIcon from "@ant-design/icons";
 export * as Ant from "antd";

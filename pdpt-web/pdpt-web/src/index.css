@@ -7,5 +7,5 @@ body #root {
 
 html {
   background-image: url("/images/background.png");
-  overflow: auto;
+  overflow: scroll;
 }

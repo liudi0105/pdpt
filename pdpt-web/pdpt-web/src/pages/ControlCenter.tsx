@@ -1,8 +1,8 @@
-import { Ant, Table } from "@common-module/common-antd";
+import { Ant, Card, Table } from "@common-module/common-antd";
 
 export const ControlCenter = () => {
   return (
-    <Ant.Card>
+    <Card title="设置中心">
       <Ant.Tabs
         centered
         items={[
@@ -52,6 +52,6 @@ export const ControlCenter = () => {
           },
         ]}
       ></Ant.Tabs>
-    </Ant.Card>
+    </Card>
   );
 };

@@ -1,8 +1,8 @@
-import { Ant, Table } from "@common-module/common-antd";
+import { Ant, Card, Table } from "@common-module/common-antd";
 
 export const Invite = () => {
   return (
-    <Ant.Card>
+    <Card title="邀请系统">
       <Ant.Tabs
         centered
         items={[
@@ -43,6 +43,6 @@ export const Invite = () => {
           { key: "temperal", label: "临时邀请状态", children: "" },
         ]}
       ></Ant.Tabs>
-    </Ant.Card>
+    </Card>
   );
 };
