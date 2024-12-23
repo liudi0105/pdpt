@@ -35,6 +35,7 @@ public class AppCookies {
     public void expireCookie(String name) {
         getCookie(name).ifPresent(v -> {
             v.setMaxAge(0);
+            v.setPath("/");
             response.addCookie(v);
         });
     }

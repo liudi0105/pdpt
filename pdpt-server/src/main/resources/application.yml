@@ -19,7 +19,7 @@ spring:
     #    url: jdbc:h2:mem:testdb
     #    driver-class-name: org.h2.Driver
 #    url: jdbc:mysql://152.67.204.212:3306/zmpt_cc?serverTimezone=Asia/Shanghai
-    url: jdbc:mysql://ds923plus:3306/pdpt?serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://ds923plus:3306/panda?serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: test123

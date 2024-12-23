@@ -180,7 +180,7 @@ export const AppRouter = createBrowserRouter([
   },
   {
     path: "/",
-    element: <Navigate to="/torrents" />,
+    element: <Navigate to="/torrents/all" />,
   },
   {
     path: "*",
