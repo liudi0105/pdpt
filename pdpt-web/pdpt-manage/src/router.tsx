@@ -43,14 +43,21 @@ export const routers: RouterMenuItem[] = [
   },
 ];
 
-export const AppRouter = createBrowserRouter([
+export const AppRouter = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Navigate to="/torrents/all" />,
+    },
+    {
+      path: "*",
+      children: routers,
+      element: (
+        <MenuPage routerMenuItems={routers} title="sss" userEmail="ss" />
+      ),
+    },
+  ],
   {
-    path: "/",
-    element: <Navigate to="/torrents/all" />,
-  },
-  {
-    path: "*",
-    children: routers,
-    element: <MenuPage routerMenuItems={routers} title="sss" userEmail="ss" />,
-  },
-]);
+    basename: import.meta.env.BASE_URL,
+  }
+);
