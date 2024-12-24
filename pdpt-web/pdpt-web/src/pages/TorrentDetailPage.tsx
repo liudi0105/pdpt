@@ -4,7 +4,7 @@ import { Ant, AntIcon, Table } from "@common-module/common-antd";
 import { styled, useParams } from "@common-module/common-react";
 import { Button, Space } from "antd";
 import { useEffect, useState } from "react";
-import { TorrentEntity, TorrentsService } from "../services";
+import { TorrentEntity, TorrentsService } from "@pdpt/lib";
 import { SBox } from "./TorrentView";
 
 const torrentService = new TorrentsService();

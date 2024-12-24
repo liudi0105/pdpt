@@ -1,5 +1,5 @@
 import { Table } from "@common-module/common-antd";
-import { LoginLogEntity, LogService } from "../../services";
+import { LoginLogEntity, LogService } from "@pdpt/lib";
 
 const logService = new LogService();
 

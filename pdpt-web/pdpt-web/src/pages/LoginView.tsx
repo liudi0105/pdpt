@@ -2,7 +2,7 @@ import { Ant, MenuButton, Pro } from "@common-module/common-antd";
 import { Form, styled, useNavigate } from "@common-module/common-react";
 import { Strings } from "@common-module/common-util";
 import { Tabs } from "antd";
-import { AuthService } from "../services";
+import { AuthService } from "@pdpt/lib";
 
 const SBack = styled.div`
   height: 100%;

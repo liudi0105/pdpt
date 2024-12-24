@@ -1,5 +1,5 @@
 import { Ant, Button, Table } from "@common-module/common-antd";
-import { SubtitleEntity, SubtitleService } from "../services";
+import { SubtitleEntity, SubtitleService } from "@pdpt/lib";
 import { FileSizeConverter } from "@common-module/common-util";
 
 const subtitleService = new SubtitleService();

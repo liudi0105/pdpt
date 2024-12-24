@@ -4,7 +4,7 @@ import { Ant, AntIcon, Button } from "@common-module/common-antd";
 import { styled, useParams } from "@common-module/common-react";
 import { ConfigProvider, Flex, theme } from "antd";
 import { useEffect, useState } from "react";
-import { ForumsService, PostsEntity, TopicEntity } from "../services";
+import { ForumsService, PostsEntity, TopicEntity } from "@pdpt/lib";
 
 const SAvatar = styled.div`
   width: 120px;

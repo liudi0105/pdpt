@@ -1,7 +1,7 @@
 import { Ant, Pro } from "@common-module/common-antd";
 import { Card, Flex } from "antd";
 import { useEffect, useState } from "react";
-import { CategoryEntity, CategoryService } from "../services";
+import { CategoryEntity, CategoryService } from "@pdpt/lib";
 
 const categoryService = new CategoryService();
 

@@ -22,8 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-*.xls
-*.xlsx
-*.doc
-*.docx
-*.gz

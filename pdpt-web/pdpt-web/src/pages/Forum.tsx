@@ -2,7 +2,7 @@ import { Ant, Table } from "@common-module/common-antd";
 import { useNavigate } from "@common-module/common-react";
 import { ConfigProvider, theme } from "antd";
 import { useEffect, useState } from "react";
-import { ForumsEntity, ForumsService, OverForumsEntity } from "../services";
+import { ForumsEntity, ForumsService, OverForumsEntity } from "@pdpt/lib";
 
 const forumsService = new ForumsService();
 

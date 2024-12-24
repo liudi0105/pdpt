@@ -18,7 +18,7 @@ import {
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { routers } from "../router";
-import { AuthService, LoginResult } from "../services";
+import { AuthService, LoginResult } from "@pdpt/lib";
 
 type MenuItem = Required<MenuProps>["items"][number];
 

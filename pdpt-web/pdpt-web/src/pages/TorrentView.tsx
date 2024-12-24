@@ -7,7 +7,7 @@ import {
   CategoryService,
   TorrentEntity,
   TorrentsService,
-} from "../services";
+} from "@pdpt/lib";
 
 export const SBox = styled.div`
   background-color: #fff;

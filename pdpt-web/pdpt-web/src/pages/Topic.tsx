@@ -1,5 +1,5 @@
 import { Ant, Table } from "@common-module/common-antd";
-import { ForumsEntity, ForumsService, TopicEntity } from "../services";
+import { ForumsEntity, ForumsService, TopicEntity } from "@pdpt/lib";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "@common-module/common-react";
 import { Card, ConfigProvider, Flex, theme } from "antd";

@@ -1,5 +1,5 @@
 import { Ant, Button, Table } from "@common-module/common-antd";
-import { RequestsEntity, RequestsService } from "../services";
+import { RequestsEntity, RequestsService } from "@pdpt/lib";
 
 const requestsService = new RequestsService();
 

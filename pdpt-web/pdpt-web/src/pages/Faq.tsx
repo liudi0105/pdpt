@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaqEntity, HelpService } from "../services";
+import { FaqEntity, HelpService } from "@pdpt/lib";
 import { Flex } from "antd";
 import { Ant } from "@common-module/common-antd";
 
