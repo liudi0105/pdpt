@@ -8,15 +8,7 @@ export const LoginLog = () => {
     <Table<LoginLogEntity, LoginLogEntity>
       pagination={{ defaultPageSize: 10 }}
       request={(params) => {
-        return logService
-          .listLoginLogPaged({
-            pageSize: params.pageSize ?? 10,
-            pageIndex: params.current ?? 1,
-          })
-          .then((d) => ({
-            total: d.totalElements,
-            data: d.content,
-          }));
+        return logService.listLoginLogPaged(params);
       }}
       search={false}
       columns={[

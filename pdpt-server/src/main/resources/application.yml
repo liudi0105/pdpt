@@ -1,10 +1,10 @@
----
-spring:
-  datasource:
-    url: jdbc:mysql://195.201.132.61:3306/pdpt?serverTimezone=Asia/Shanghai
-  config:
-    activate:
-      on-profile: dev
+#---
+#spring:
+#  datasource:
+#    url: jdbc:mysql://195.201.132.61:3306/panda?serverTimezone=Asia/Shanghai
+#  config:
+#    activate:
+#      on-profile: dev
 ---
 server:
   port: 8080

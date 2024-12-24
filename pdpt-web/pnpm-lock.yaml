@@ -181,7 +181,7 @@ importers:
         specifier: ^5.4.1
         version: 5.4.11(@types/node@20.12.14)
 
-  pdpt-lib:
+  lib:
     dependencies:
       '@common-module/common-antd':
         specifier: workspace:*
@@ -198,6 +198,9 @@ importers:
       '@common-module/common-util':
         specifier: workspace:*
         version: link:../common-module/common-util
+      dayjs:
+        specifier: ^1.11.13
+        version: 1.11.13
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -239,7 +242,7 @@ importers:
         specifier: ^6.0.5
         version: 6.0.5(@types/node@20.12.14)
 
-  pdpt-manage:
+  manage:
     dependencies:
       '@ant-design/happy-work-theme':
         specifier: ^1.0.0
@@ -261,7 +264,7 @@ importers:
         version: link:../common-module/common-util
       '@pdpt/lib':
         specifier: workspace:*
-        version: link:../pdpt-lib
+        version: link:../lib
       antd:
         specifier: ^5.22.1
         version: 5.22.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -312,7 +315,7 @@ importers:
         specifier: ^6.0.5
         version: 6.0.5(@types/node@20.12.14)
 
-  pdpt-web:
+  web:
     dependencies:
       '@ant-design/happy-work-theme':
         specifier: ^1.0.0
@@ -340,7 +343,7 @@ importers:
         version: link:../common-module/common-util
       '@pdpt/lib':
         specifier: workspace:*
-        version: link:../pdpt-lib
+        version: link:../lib
       antd:
         specifier: ^5.22.1
         version: 5.22.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -356,28 +359,28 @@ importers:
     devDependencies:
       '@eslint/js':
         specifier: ^9.13.0
-        version: 9.15.0
+        version: 9.17.0
       '@types/react':
         specifier: ^18.3.12
-        version: 18.3.12
+        version: 18.3.18
       '@types/react-dom':
         specifier: ^18.3.1
-        version: 18.3.1
+        version: 18.3.5(@types/react@18.3.18)
       '@vitejs/plugin-react':
         specifier: ^4.3.3
-        version: 4.3.3(vite@5.4.11(@types/node@20.12.14))
+        version: 4.3.4(vite@5.4.11(@types/node@20.12.14))
       eslint:
         specifier: ^9.13.0
-        version: 9.15.0
+        version: 9.17.0
       eslint-plugin-react-hooks:
         specifier: ^5.0.0
-        version: 5.0.0(eslint@9.15.0)
+        version: 5.1.0(eslint@9.17.0)
       eslint-plugin-react-refresh:
         specifier: ^0.4.14
-        version: 0.4.14(eslint@9.15.0)
+        version: 0.4.16(eslint@9.17.0)
       globals:
         specifier: ^15.11.0
-        version: 15.12.0
+        version: 15.14.0
       styled-components:
         specifier: ^6.1.8
         version: 6.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -386,7 +389,7 @@ importers:
         version: 5.6.3
       typescript-eslint:
         specifier: ^8.11.0
-        version: 8.15.0(eslint@9.15.0)(typescript@5.6.3)
+        version: 8.18.2(eslint@9.17.0)(typescript@5.6.3)
       vite:
         specifier: ^5.4.10
         version: 5.4.11(@types/node@20.12.14)
@@ -1356,12 +1359,6 @@ packages:
     peerDependencies:
       react: '*'
 
-  '@vitejs/plugin-react@4.3.3':
-    resolution: {integrity: sha512-NooDe9GpHGqNns1i8XDERg0Vsg5SSYRhRxxyTGogUdkdNt47jal+fbuYi+Yfq6pzRCKXyoPcWisfxE6RIM3GKA==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    peerDependencies:
-      vite: ^4.2.0 || ^5.0.0
-
   '@vitejs/plugin-react@4.3.4':
     resolution: {integrity: sha512-SCCPBJtYLdE8PX/7ZQAs1QAZ8Jqwih+0VBLum1EGqmCCQal+MIUqLCzj3ZUy8ufbC0cAM4LRlSTm7IQJwWT4ug==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -1521,12 +1518,6 @@ packages:
   escape-string-regexp@4.0.0:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
-
-  eslint-plugin-react-hooks@5.0.0:
-    resolution: {integrity: sha512-hIOwI+5hYGpJEc4uPRmz2ulCjAGD/N13Lukkh8cLV0i2IRk/bdZDYjgLVHj+U9Z704kLIdIO6iueGvxNur0sgw==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
 
   eslint-plugin-react-hooks@5.1.0:
     resolution: {integrity: sha512-mpJRtPgHN2tNAvZ35AMfqeB3Xqeo273QxrHJsbBEPWODRM4r0yB6jfoROqKEYrOn27UtRPpcpHc2UqyBSuUNTw==}
@@ -3446,7 +3437,7 @@ snapshots:
     dependencies:
       react: 18.3.1
 
-  '@vitejs/plugin-react@4.3.3(vite@5.4.11(@types/node@20.12.14))':
+  '@vitejs/plugin-react@4.3.4(vite@5.4.11(@types/node@20.12.14))':
     dependencies:
       '@babel/core': 7.26.0
       '@babel/plugin-transform-react-jsx-self': 7.25.9(@babel/core@7.26.0)
@@ -3702,10 +3693,6 @@ snapshots:
   escalade@3.2.0: {}
 
   escape-string-regexp@4.0.0: {}
-
-  eslint-plugin-react-hooks@5.0.0(eslint@9.15.0):
-    dependencies:
-      eslint: 9.15.0
 
   eslint-plugin-react-hooks@5.1.0(eslint@9.17.0):
     dependencies:

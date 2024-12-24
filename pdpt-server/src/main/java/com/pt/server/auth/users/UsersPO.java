@@ -1,12 +1,10 @@
-package com.pt.server.auth.user_info;
+package com.pt.server.auth.users;
 
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -16,6 +14,7 @@ import java.time.LocalDateTime;
 public class UsersPO {
     @Id
     private Long id;
+
     @Column(nullable = false, length = 40)
     private String username;
 
@@ -23,7 +22,7 @@ public class UsersPO {
     private String passhash;
 
     @Column(nullable = false)
-    private String secret;
+    private byte[] secret;
 
     @Column(nullable = false, length = 80)
     private String email;
@@ -51,10 +50,10 @@ public class UsersPO {
     private String title;
 
     @Column(nullable = false)
-    private int country;
+    private Short country;
 
     // Enum for user status
     public enum UserStatus {
-        PENDING,
-        CONFIRMED
+        pending,
+        confirmed
     }}

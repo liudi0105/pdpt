@@ -8,17 +8,21 @@ import {
   ProTable,
   ProTableProps,
 } from "@ant-design/pro-components";
-import { BaseEntity, BaseService } from "@common-module/common-api";
+import {
+  AppPageParam,
+  AppPageResult,
+  BaseEntity,
+  BaseService,
+} from "@common-module/common-api";
 import { Drawer, DrawerProps, message, Popconfirm, Space } from "antd";
 import { ReactNode, useRef, useState } from "react";
 import { Button } from "./Button";
 import { ButtonModalFrom } from "./Form";
 import { TriggerModal, TriggerModalProps } from "./Modal";
 
-export type TableProps<
-  DataType,
-  ParamType extends ParamsType
-> = {} & ProTableProps<DataType, ParamType>;
+export type TableProps<DataType, ParamType extends ParamsType> = {
+  request?: (param: AppPageParam) => Promise<AppPageResult<DataType>>;
+} & Omit<ProTableProps<DataType, ParamType>, "request">;
 
 export const Table = <
   DataType extends BaseEntity,
@@ -26,11 +30,38 @@ export const Table = <
 >(
   props: TableProps<DataType, ParamType>
 ) => {
-  const { rowKey = "id", options = false } = props;
+  const {
+    rowKey = "id",
+    options = false,
+    request,
+    pagination = { defaultCurrent: 1, defaultPageSize: 10 },
+    ...tableProps
+  } = props;
+
+  if (request) {
+    const t: ProTableProps<DataType, ParamType> = tableProps;
+    t.request = (params) => {
+      if (pagination) {
+        const {
+          current = pagination.defaultCurrent ?? 1,
+          pageSize = pagination.defaultPageSize ?? 10,
+          ...rest
+        } = params;
+        return request({
+          pageIndex: current,
+          pageSize,
+          ...rest,
+        }).then((v) => ({ total: v.totalElements, data: v.content }));
+      } else {
+        return request(params as any);
+      }
+    };
+  }
+
   return (
-    <ProTable
+    <ProTable<DataType, ParamType>
+      {...tableProps}
       size="small"
-      {...props}
       rowKey={rowKey}
       options={options}
     ></ProTable>
@@ -169,16 +200,7 @@ export const CrudTable = <
       size="small"
       actionRef={ref}
       columns={columns}
-      request={async (params) => {
-        const result = await service.listPaged({
-          pageIndex: params.current ?? 1,
-          pageSize: params.pageSize ?? 10,
-        });
-        return {
-          data: result.content,
-          total: result.totalElements,
-        };
-      }}
+      request={(params) => service.listPaged(params)}
       toolbar={{
         ...toolbar,
         actions: [

@@ -1,7 +1,7 @@
 package com.pt.server.auth;
 
-import com.pt.server.auth.user_info.UsersPO;
-import com.pt.server.auth.user_info.UsersRepo;
+import com.pt.server.auth.users.UsersPO;
+import com.pt.server.auth.users.UsersRepo;
 import com.pt.server.auth.vo.LoginResultVO;
 import com.pt.server.config.CurrentUser;
 import common.module.errors.AppWarning;
@@ -58,15 +58,32 @@ public class AuthService {
     }
 
     public LoginResultVO login(String username, String password) {
+//        mockValidate(username, password);
+//         TODO
+        return validateUser(username, password);
+    }
+
+    public LoginResultVO mockValidate(String username, String password) {
+        if ("admin".equals(username) && "338855".equals(password)) {
+            return new LoginResultVO().setUserId(0L).setUsername("admin");
+        } else {
+            appResponses.setResponseStatus(HttpStatus.FORBIDDEN);
+            throw new RuntimeException("验证失败，请重试");
+        }
+    }
+
+    public LoginResultVO validateUser(String username, String password) {
         UsersPO eq = usersRepo.findPoEq(UsersPO::getUsername, username)
                 .orElseThrow(() -> {
                     appResponses.setResponseStatus(HttpStatus.FORBIDDEN);
                     return new AppWarning("对不起，请先注册");
                 });
 
-        String s = DigestUtils.md5Hex(eq.getSecret() + password + eq.getSecret());
+        String s1 = new String(eq.getSecret());
+        String s = AppEncodings.md5(s1 + password + s1);
+        String passhash = eq.getPasshash();
         // TODO: 密码验证逻辑
-        if (s.equals(eq.getPasshash())) {
+        if (!s.equals(passhash)) {
             appResponses.setResponseStatus(HttpStatus.FORBIDDEN);
             throw new RuntimeException("验证失败，请重试");
         }
@@ -76,4 +93,11 @@ public class AuthService {
 
         return new LoginResultVO().setUsername(eq.getUsername()).setUserId(eq.getId());
     }
+
+    public static void main(String[] args) {
+        String passhash = "2cdfe9f7fb023f91ce50aea6745e6855";
+
+        String secret = "vipwuqgqwplpkgrwdmxf";
+    }
+
 }

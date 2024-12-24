@@ -1,8 +1,8 @@
 package com.pt.server.subtitle;
 
-import com.pt.server.auth.user_info.UsersDTO;
-import com.pt.server.auth.user_info.UsersPO;
-import com.pt.server.auth.user_info.UsersRepo;
+import com.pt.server.auth.users.UsersDTO;
+import com.pt.server.auth.users.UsersPO;
+import com.pt.server.auth.users.UsersRepo;
 import com.pt.server.language.LanguageDTO;
 import com.pt.server.language.LanguageEntity;
 import com.pt.server.language.LanguageRepo;

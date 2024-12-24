@@ -1,8 +1,8 @@
 package com.pt.server.torrent;
 
-import com.pt.server.auth.user_info.UsersDTO;
-import com.pt.server.auth.user_info.UsersPO;
-import com.pt.server.auth.user_info.UsersRepo;
+import com.pt.server.auth.users.UsersDTO;
+import com.pt.server.auth.users.UsersPO;
+import com.pt.server.auth.users.UsersRepo;
 import com.pt.server.category.CategoryDTO;
 import com.pt.server.category.CategoryRepo;
 import com.pt.server.torrent.tag.TagDTO;

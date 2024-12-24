@@ -1,8 +1,8 @@
 package com.pt.server.forum;
 
-import com.pt.server.auth.user_info.UsersDTO;
-import com.pt.server.auth.user_info.UsersPO;
-import com.pt.server.auth.user_info.UsersRepo;
+import com.pt.server.auth.users.UsersDTO;
+import com.pt.server.auth.users.UsersPO;
+import com.pt.server.auth.users.UsersRepo;
 import com.pt.server.forum.forummods.ForumsModsRepo;
 import com.pt.server.forum.forums.ForumsDTO;
 import com.pt.server.forum.forums.ForumsEntity;

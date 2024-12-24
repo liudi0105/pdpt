@@ -1,4 +1,4 @@
-package com.pt.server.auth.user_info;
+package com.pt.server.auth.users;
 
 import common.module.jpa.GeneralJpaRepo;
 

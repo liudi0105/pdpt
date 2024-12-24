@@ -10,15 +10,7 @@ export const TorrentRequest = () => {
         pagination={{ defaultPageSize: 10 }}
         toolBarRender={() => [<Button>添加求种</Button>]}
         request={(param) => {
-          return requestsService
-            .listPaged({
-              pageSize: param.pageSize ?? 10,
-              pageIndex: param.current ?? 1,
-            })
-            .then((v) => ({
-              data: v.content,
-              total: v.totalElements,
-            }));
+          return requestsService.listPaged(param);
         }}
         columns={[
           {

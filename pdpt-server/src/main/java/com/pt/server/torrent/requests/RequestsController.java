@@ -1,8 +1,8 @@
 package com.pt.server.torrent.requests;
 
-import com.pt.server.auth.user_info.UsersDTO;
-import com.pt.server.auth.user_info.UsersPO;
-import com.pt.server.auth.user_info.UsersRepo;
+import com.pt.server.auth.users.UsersDTO;
+import com.pt.server.auth.users.UsersPO;
+import com.pt.server.auth.users.UsersRepo;
 import common.module.dto.AppPageParam;
 import common.module.jpa.AppPageResult;
 import common.module.webmvc.Api;

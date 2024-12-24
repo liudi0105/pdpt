@@ -11,15 +11,7 @@ export const Subtitle = () => {
         pagination={{ defaultPageSize: 10 }}
         toolBarRender={() => [<Button>上传字幕</Button>]}
         request={(param) => {
-          return subtitleService
-            .listPaged({
-              pageSize: param.pageSize ?? 10,
-              pageIndex: param.current ?? 1,
-            })
-            .then((v) => ({
-              data: v.content,
-              total: v.totalElements,
-            }));
+          return subtitleService.listPaged(param);
         }}
         columns={[
           {

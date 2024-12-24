@@ -8,15 +8,7 @@ export const SiteLog = () => {
     <Table<SiteLogEntity, SiteLogEntity>
       pagination={{ defaultPageSize: 10, showSizeChanger: true }}
       request={(params) => {
-        return logService
-          .listSiteLogPaged({
-            pageSize: params.pageSize ?? 10,
-            pageIndex: params.current ?? 1,
-          })
-          .then((d) => ({
-            total: d.totalElements,
-            data: d.content,
-          }));
+        return logService.listSiteLogPaged(params);
       }}
       search={false}
       columns={[

@@ -226,3 +226,48 @@ export class AuthService extends BaseService<never> {
     return this.postJsonForJson("logout");
   };
 }
+
+export interface UserEntity extends BaseEntity {
+  id: number; // 用户ID
+  username: string; // 用户名
+  passhash: string; // 密码哈希
+  secret: Uint8Array; // 密码盐（使用 Uint8Array 表示 byte[]）
+  email: string; // 用户邮箱
+  status: string; // 用户状态（例如：pending, confirmed）
+  ip: string; // 用户IP地址
+  uploaded: number; // 上传量
+  downloaded: number; // 下载量
+  seedtime: number; // 上传时间（种子时间）
+  leechtime: number; // 下载时间（做种时间）
+  title: string; // 用户头衔
+  country: number; // 国家ID
+  notifs: string; // 通知设置
+  modcomment: string; // 管理员备注
+  avatar: string; // 用户头像
+  className: string; // 用户角色（权限级别）
+  maxClassOnce: string; // 最大角色（权限）一次性
+  privacy: string; // 隐私设置
+  stylesheet: string; // 样式表
+  caticon: string; // 图标
+  fontsize: string; // 字体大小
+  acceptpms: string; // 是否接受PM
+  commentpm: string; // 是否允许评论PM
+  lastLogin: string; // 最后登录时间
+  lastAccess: string; // 最后访问时间
+  forumAccess: string; // 最后论坛访问时间
+  lastStaffmsg: string; // 最后管理信息
+  lastPm: string; // 最后私信时间
+  lastComment: string; // 最后评论时间
+  lastPost: string; // 最后发帖时间
+  lastBrowse: string; // 最后浏览时间
+  lastMusic: string; // 最后听音乐时间
+  lastCatchup: string; // 最后刷新时间
+  editSecret: string; // 编辑密码盐
+  ipAddress: string; // 当前用户的IP地址
+  language: string; // 用户的语言设置
+  modcommentText: string; // 管理员备注文本
+}
+
+export class UserService extends BaseService<UserEntity> {
+  group = "users";
+}

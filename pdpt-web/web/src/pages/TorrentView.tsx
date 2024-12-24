@@ -118,15 +118,8 @@ export const TorrentPage = () => {
           pageSizeOptions: [20, 50, 100],
           showLessItems: true,
         }}
-        request={async (params) => {
-          const data = await torrentService.listPaged({
-            pageSize: params.pageSize ?? 50,
-            pageIndex: params.current ?? 1,
-          });
-          return {
-            total: data.totalElements,
-            data: data.content,
-          };
+        request={(params) => {
+          return torrentService.listPaged(params);
         }}
         search={false}
         columns={[

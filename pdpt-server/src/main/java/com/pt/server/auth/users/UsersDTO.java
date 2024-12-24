@@ -1,4 +1,4 @@
-package com.pt.server.auth.user_info;
+package com.pt.server.auth.users;
 
 
 import lombok.Getter;
@@ -12,7 +12,7 @@ public class UsersDTO {
     private Long id; // 用户ID
     private String username; // 用户名
     private String passhash; // 密码哈希
-    private String secret; // 密码盐
+    private byte[] secret; // 密码盐
     private String email; // 用户邮箱
     private String status; // 用户状态（例如：pending, confirmed）
     private String ip; // 用户IP地址
@@ -21,7 +21,7 @@ public class UsersDTO {
     private Long seedtime; // 上传时间（种子时间）
     private Long leechtime; // 下载时间（做种时间）
     private String title; // 用户头衔
-    private int country; // 国家ID
+    private Short country; // 国家ID
     private String notifs; // 通知设置
     private String modcomment; // 管理员备注
     private String avatar; // 用户头像
