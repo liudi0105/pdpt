@@ -1,6 +1,6 @@
 import { Ant, AntIcon, Pro, Table } from "@common-module/common-antd";
 import { styled, useNavigate } from "@common-module/common-react";
-import { FileSizeConverter } from "@common-module/common-util";
+import { Files } from "@common-module/common-util";
 import { useEffect, useState } from "react";
 import {
   AllCategory,
@@ -194,7 +194,7 @@ export const TorrentPage = () => {
             width: "5em",
             dataIndex: "size",
             render: (_, entity) => {
-              return FileSizeConverter.ofByte(entity.size).gb() + "GB";
+              return Files.formatFileSize(entity.size);
             },
           },
           {

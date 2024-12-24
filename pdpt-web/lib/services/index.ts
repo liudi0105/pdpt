@@ -268,6 +268,20 @@ export interface UserEntity extends BaseEntity {
   modcommentText: string; // 管理员备注文本
 }
 
+export interface PersonalInfoVO {
+  bambooShootAmount: number; // 竹笋金额
+  inviteAmount: number; // 邀请金额
+  medalAmount: number; // 勋章金额
+  shareRatio: number; // 分享比例
+  hitAndRunAmount: number; // Hit And Run 金额
+  uploadSize: number; // 上传大小
+  downloadSize: number; // 下载大小
+  currentDownloadAmount: number; // 当前下载金额
+  currentUploadAmount: number; // 当前上传金额
+  seedScore: number; // 做种积分
+}
+
 export class UserService extends BaseService<UserEntity> {
   group = "users";
+  personalInfo = () => this.postJsonForJson<PersonalInfoVO>("personal-info");
 }

@@ -11,8 +11,6 @@ import lombok.experimental.Accessors;
 public class UsersDTO {
     private Long id; // 用户ID
     private String username; // 用户名
-    private String passhash; // 密码哈希
-    private byte[] secret; // 密码盐
     private String email; // 用户邮箱
     private String status; // 用户状态（例如：pending, confirmed）
     private String ip; // 用户IP地址
@@ -43,7 +41,6 @@ public class UsersDTO {
     private String lastBrowse; // 最后浏览时间
     private String lastMusic; // 最后听音乐时间
     private String lastCatchup; // 最后刷新时间
-    private String editSecret; // 编辑密码盐
     private String ipAddress; // 当前用户的IP地址
     private String language; // 用户的语言设置
     private String modcommentText; // 管理员备注文本

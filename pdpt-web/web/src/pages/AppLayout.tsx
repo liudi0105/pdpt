@@ -1,4 +1,10 @@
-import { Ant, AntIcon, Button, Table } from "@common-module/common-antd";
+import {
+  Ant,
+  AntIcon,
+  Button,
+  GridList,
+  Table,
+} from "@common-module/common-antd";
 import { RouterMenuItem } from "@common-module/common-api";
 import {
   Outlet,
@@ -6,7 +12,7 @@ import {
   useLocation,
   useNavigate,
 } from "@common-module/common-react";
-import { joinPath } from "@common-module/common-util";
+import { Files, joinPath } from "@common-module/common-util";
 import {
   ButtonProps,
   ConfigProvider,
@@ -18,7 +24,12 @@ import {
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { routers } from "../router";
-import { AuthService, LoginResult } from "@pdpt/lib";
+import {
+  AuthService,
+  LoginResult,
+  PersonalInfoVO,
+  UserService,
+} from "@pdpt/lib";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -71,6 +82,7 @@ const UserInfoCard = styled(Ant.Card)`
 `;
 
 const authService = new AuthService();
+const userService = new UserService();
 
 const LogoButton = (
   props: { path?: string; title: string; name: string } & ButtonProps
@@ -145,8 +157,11 @@ export const AppLayout = () => {
 
   const [loginResult, setLoginResult] = useState<LoginResult>();
 
+  const [personalInfo, setPersonalInfo] = useState<PersonalInfoVO>();
+
   useEffect(() => {
     authService.validate().then(setLoginResult);
+    userService.personalInfo().then(setPersonalInfo);
   }, []);
 
   return (
@@ -199,60 +214,28 @@ export const AppLayout = () => {
                 overlayStyle={{ width: "16em" }}
                 placement="bottom"
                 content={
-                  <Table
-                    search={false}
-                    pagination={false}
-                    columns={[
-                      {
-                        dataIndex: "title",
-                      },
-                      {
-                        dataIndex: "value",
-                      },
+                  <GridList
+                    gutter={8}
+                    columnSpan={[16, 8]}
+                    items={[
+                      ["竹笋保有量", personalInfo?.bambooShootAmount],
+                      ["药品保有量", personalInfo?.inviteAmount],
+                      ["勋章保有量", personalInfo?.medalAmount],
+                      ["分享率", personalInfo?.shareRatio],
+                      ["H&R", personalInfo?.hitAndRunAmount],
+                      [
+                        "上传量",
+                        Files.formatFileSize(personalInfo?.uploadSize ?? 0),
+                      ],
+                      [
+                        "下载量",
+                        Files.formatFileSize(personalInfo?.downloadSize ?? 0),
+                      ],
+                      ["当前上传", personalInfo?.currentUploadAmount],
+                      ["当前下载", personalInfo?.currentDownloadAmount],
+                      ["做种积分", personalInfo?.seedScore],
                     ]}
-                    dataSource={[
-                      {
-                        title: "竹笋保有量",
-                        value: "",
-                      },
-                      {
-                        title: "药品保有量",
-                        value: "",
-                      },
-                      {
-                        title: "勋章保有量",
-                        value: "",
-                      },
-                      {
-                        title: "分享率",
-                        value: "",
-                      },
-                      {
-                        title: "H&R",
-                        value: "",
-                      },
-                      {
-                        title: "上传量",
-                        value: "",
-                      },
-                      {
-                        title: "下载量",
-                        value: "",
-                      },
-                      {
-                        title: "当前上传",
-                        value: "",
-                      },
-                      {
-                        title: "当前下载",
-                        value: "",
-                      },
-                      {
-                        title: "做种积分",
-                        value: "",
-                      },
-                    ]}
-                  ></Table>
+                  />
                 }
               >
                 <Button

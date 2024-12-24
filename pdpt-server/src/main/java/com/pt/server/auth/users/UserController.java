@@ -1,5 +1,7 @@
 package com.pt.server.auth.users;
 
+import com.pt.server.auth.users.vo.PersonalInfoVO;
+import com.pt.server.config.CurrentUser;
 import common.module.dto.AppPageParam;
 import common.module.jpa.AppPageResult;
 import common.module.webmvc.Api;
@@ -15,9 +17,17 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private CurrentUser currentUser;
+
     @Api("list-paged")
     public AppPageResult<UsersDTO> listPaged(@RequestBody AppPageParam pageParam) {
         return userService.getUsersRepo().pageQuery(pageParam, UnaryOperator.identity());
+    }
+
+    @Api("personal-info")
+    public PersonalInfoVO personalInfo() {
+        return userService.personalInfo(currentUser.getUserId());
     }
 
 }

@@ -58,18 +58,7 @@ public class AuthService {
     }
 
     public LoginResultVO login(String username, String password) {
-//        mockValidate(username, password);
-//         TODO
         return validateUser(username, password);
-    }
-
-    public LoginResultVO mockValidate(String username, String password) {
-        if ("admin".equals(username) && "338855".equals(password)) {
-            return new LoginResultVO().setUserId(0L).setUsername("admin");
-        } else {
-            appResponses.setResponseStatus(HttpStatus.FORBIDDEN);
-            throw new RuntimeException("验证失败，请重试");
-        }
     }
 
     public LoginResultVO validateUser(String username, String password) {
@@ -93,11 +82,4 @@ public class AuthService {
 
         return new LoginResultVO().setUsername(eq.getUsername()).setUserId(eq.getId());
     }
-
-    public static void main(String[] args) {
-        String passhash = "2cdfe9f7fb023f91ce50aea6745e6855";
-
-        String secret = "vipwuqgqwplpkgrwdmxf";
-    }
-
 }

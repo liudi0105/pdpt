@@ -1,6 +1,6 @@
 import { Ant, Button, Table } from "@common-module/common-antd";
 import { SubtitleEntity, SubtitleService } from "@pdpt/lib";
-import { FileSizeConverter } from "@common-module/common-util";
+import { Files } from "@common-module/common-util";
 
 const subtitleService = new SubtitleService();
 
@@ -43,8 +43,7 @@ export const Subtitle = () => {
             search: false,
             width: "6em",
             dataIndex: "size",
-            render: (_, entity) =>
-              new FileSizeConverter(entity.size).kb() + "KB",
+            render: (_, entity) => Files.formatFileSize(entity.size),
           },
         ]}
       />
