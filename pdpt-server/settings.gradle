@@ -7,3 +7,8 @@ rootProject.name = 'pdpt'
 
 include "common-all"
 include "common-dependencies"
+include 'common-util'
+include 'common-jpa'
+include 'common-modal'
+include 'common-webmvc'
+

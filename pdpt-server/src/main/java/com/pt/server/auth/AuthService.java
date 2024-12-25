@@ -4,7 +4,7 @@ import com.pt.server.auth.users.UsersPO;
 import com.pt.server.auth.users.UsersRepo;
 import com.pt.server.auth.vo.LoginResultVO;
 import com.pt.server.config.CurrentUser;
-import common.module.errors.AppWarning;
+import common.module.util.errors.AppWarning;
 import common.module.util.AppEncodings;
 import common.module.webmvc.AppCookies;
 import common.module.webmvc.AppWebRequest;

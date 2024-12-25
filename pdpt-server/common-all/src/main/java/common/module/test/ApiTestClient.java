@@ -1,10 +1,9 @@
 package common.module.test;
 
-import common.module.util.AppPaths;
 import common.module.util.AppStrings;
 import common.module.util.AppYamls;
 import common.module.webmvc.AppWebClient;
-import common.module.webmvc.ValueWrapper;
+import common.module.dto.ValueWrapper;
 import org.springframework.core.ParameterizedTypeReference;
 
 public class ApiTestClient {
