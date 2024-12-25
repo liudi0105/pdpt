@@ -5,7 +5,7 @@ const logService = new LogService();
 
 export const LoginLog = () => {
   return (
-    <Table<LoginLogEntity, LoginLogEntity>
+    <Table<LoginLogEntity>
       pagination={{ defaultPageSize: 10 }}
       request={(params) => {
         return logService.listLoginLogPaged(params);

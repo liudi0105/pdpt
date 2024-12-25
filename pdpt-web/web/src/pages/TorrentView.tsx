@@ -112,7 +112,7 @@ export const TorrentPage = () => {
           },
         ]}
       ></Ant.Collapse>
-      <Table<TorrentEntity, TorrentEntity>
+      <Table<TorrentEntity>
         pagination={{
           defaultPageSize: 50,
           pageSizeOptions: [20, 50, 100],

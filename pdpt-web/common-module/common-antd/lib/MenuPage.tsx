@@ -3,7 +3,6 @@ import { routerMenu, RouterMenuItem } from "@common-module/common-api";
 import { Outlet, useNavigate } from "@common-module/common-react";
 import { Select } from "antd";
 import { Layout } from "./Layout";
-import { Ant } from ".";
 
 export type MenuPageProps = {
   routerMenuItems: RouterMenuItem[];
@@ -61,9 +60,7 @@ export const MenuPage = (props: MenuPageProps) => {
       {...props}
     >
       <PageContainer>
-        <Ant.Card>
-          <Outlet />
-        </Ant.Card>
+        <Outlet />
       </PageContainer>
     </Layout>
   );

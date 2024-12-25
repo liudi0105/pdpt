@@ -1,42 +1,36 @@
 import { Table } from "@common-module/common-antd";
-import { UserService } from "@pdpt/lib";
+import { Files } from "@common-module/common-util";
+import { dayjs, UserEntity, UserService } from "@pdpt/lib";
 
 const userService = new UserService();
 
 export const UsersView = () => {
   return (
-    <Table
+    <Table<UserEntity>
       scroll={{ x: 1280 }}
+      request={(params) => userService.listPaged(params)}
       columns={[
         {
           title: "用户ID",
           dataIndex: "id",
-          width: "8em",
+          width: "5em",
         },
         {
           title: "用户名",
           dataIndex: "username",
-          ellipsis: true,
-        },
-        {
-          title: "密码哈希",
-          dataIndex: "passhash",
-          ellipsis: true,
-        },
-        {
-          title: "密码盐",
-          dataIndex: "secret",
+          width: "8em",
           ellipsis: true,
         },
         {
           title: "邮箱",
           dataIndex: "email",
           ellipsis: true,
+          width: "12em",
         },
         {
           title: "用户状态",
           dataIndex: "status",
-          width: "10em",
+          width: "8em",
         },
         {
           title: "IP地址",
@@ -46,17 +40,21 @@ export const UsersView = () => {
         {
           title: "上传量",
           dataIndex: "uploaded",
-          width: "10em",
+          width: "8em",
+          render: (_, entity) => Files.formatFileSize(entity.uploaded),
         },
         {
           title: "下载量",
           dataIndex: "downloaded",
-          width: "10em",
+          width: "8em",
+          render: (_, entity) => Files.formatFileSize(entity.downloaded),
         },
         {
           title: "上传时间",
           dataIndex: "seedtime",
-          width: "10em",
+          width: "12em",
+          render: (_, entity) =>
+            dayjs.unix(entity.seedtime).format("YYYY-MM-DD HH:mm:ss"),
         },
         {
           title: "下载时间",
@@ -199,7 +197,6 @@ export const UsersView = () => {
           ellipsis: true,
         },
       ]}
-      request={(params) => userService.listPaged(params)}
     />
   );
 };

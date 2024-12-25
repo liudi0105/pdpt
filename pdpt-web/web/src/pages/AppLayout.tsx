@@ -1,10 +1,4 @@
-import {
-  Ant,
-  AntIcon,
-  Button,
-  GridList,
-  Table,
-} from "@common-module/common-antd";
+import { Ant, AntIcon, Button, GridList } from "@common-module/common-antd";
 import { RouterMenuItem } from "@common-module/common-api";
 import {
   Outlet,
@@ -13,6 +7,12 @@ import {
   useNavigate,
 } from "@common-module/common-react";
 import { Files, joinPath } from "@common-module/common-util";
+import {
+  AuthService,
+  LoginResult,
+  PersonalInfoVO,
+  UserService,
+} from "@pdpt/lib";
 import {
   ButtonProps,
   ConfigProvider,
@@ -24,12 +24,6 @@ import {
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { routers } from "../router";
-import {
-  AuthService,
-  LoginResult,
-  PersonalInfoVO,
-  UserService,
-} from "@pdpt/lib";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -215,8 +209,8 @@ export const AppLayout = () => {
                 placement="bottom"
                 content={
                   <GridList
-                    gutter={8}
-                    columnSpan={[16, 8]}
+                    gutter={0}
+                    columnSpan={[12, 12]}
                     items={[
                       ["竹笋保有量", personalInfo?.bambooShootAmount],
                       ["药品保有量", personalInfo?.inviteAmount],
@@ -283,12 +277,11 @@ export const AppLayout = () => {
               </Ant.Tooltip>
               <Ant.Tooltip title="管理员设置">
                 <Button
+                  href="/manage/"
+                  target="_blank"
                   icon={
                     <AntIcon.ControlOutlined style={{ fontSize: "1.5em" }} />
                   }
-                  onClick={() => {
-                    navigate("/admin-setting");
-                  }}
                 />
               </Ant.Tooltip>
               <ButtonsRight />

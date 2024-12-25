@@ -10,10 +10,7 @@ export const Invite = () => {
             key: "status",
             label: "被邀请者当前状态",
             children: (
-              <Table<
-                { title: string; value: string },
-                { title: string; value: string }
-              >
+              <Table<{ title: string; value: string }>
                 pagination={false}
                 search={false}
                 showHeader={false}

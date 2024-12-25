@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@ant-design/happy-work-theme": "^1.0.0",
-    "@common-module/common-antd": "workspace:*",
     "@pdpt/lib": "workspace:*",
+    "@common-module/common-antd": "workspace:*",
     "@common-module/common-api": "workspace:*",
     "@common-module/common-dev": "workspace:*",
     "@common-module/common-react": "workspace:*",

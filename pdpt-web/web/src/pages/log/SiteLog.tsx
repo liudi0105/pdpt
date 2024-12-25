@@ -5,7 +5,7 @@ const logService = new LogService();
 
 export const SiteLog = () => {
   return (
-    <Table<SiteLogEntity, SiteLogEntity>
+    <Table<SiteLogEntity>
       pagination={{ defaultPageSize: 10, showSizeChanger: true }}
       request={(params) => {
         return logService.listSiteLogPaged(params);
