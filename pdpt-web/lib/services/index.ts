@@ -285,3 +285,37 @@ export class UserService extends BaseService<UserEntity> {
   group = "users";
   personalInfo = () => this.postJsonForJson<PersonalInfoVO>("personal-info");
 }
+
+export interface ExamUsersEntity {
+  id: number; // 主键ID
+  uid: number; // 用户ID
+  examId: number; // 考核ID
+  status: 0 | 1 | 2; // 考核状态（0未开始，1进行中，2已完成）
+  begin: string; // 考核开始时间
+  end: string; // 考核结束时间
+  progress: string; // 考核进度
+  isDone: number; // 是否完成
+  createdAt: string; // 创建时间
+  updatedAt: string; // 更新时间
+}
+
+export class ExamUsersService extends BaseService<never> {
+  group = "exams";
+
+  listExamUsersPaged = (param: AppPageParam) =>
+    this.postJsonForJson<AppPageResult<ExamUsersEntity>>(
+      "list-exam-users-paged",
+      param
+    );
+}
+
+export interface RoleEntity {
+  id: number; // 角色ID
+  name: string; // 角色名称
+  createdAt: string; // 创建时间
+  updatedAt: string; // 更新时间
+}
+
+export class RoleService extends BaseService<RoleEntity> {
+  group = "role";
+}

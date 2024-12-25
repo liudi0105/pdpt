@@ -1,8 +1,10 @@
+import { MenuPage } from "@common-module/common-antd";
 import { RouterMenuItem } from "@common-module/common-api";
 import { createBrowserRouter, Navigate } from "@common-module/common-react";
 import { NotFound } from "@pdpt/lib";
 import { DashboardView } from "./views/DashboardView";
-import { MenuPage } from "@common-module/common-antd";
+import { ExamUsersView } from "./views/ExamUsersView";
+import { RolesView } from "./views/RolesView";
 import { UsersView } from "./views/UsersView";
 
 export const routers: RouterMenuItem[] = [
@@ -23,6 +25,7 @@ export const routers: RouterMenuItem[] = [
       {
         path: "exam-users",
         name: "用户考核",
+        element: <ExamUsersView />,
       },
       {
         path: "hit-and-runs",
@@ -91,6 +94,7 @@ export const routers: RouterMenuItem[] = [
       {
         path: "role",
         name: "角色",
+        element: <RolesView />,
       },
       {
         path: "permission",

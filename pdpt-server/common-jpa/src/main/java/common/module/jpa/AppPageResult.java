@@ -28,9 +28,9 @@ public class AppPageResult<T> {
     }
 
     public static <T> AppPageResult<T> of(Page<T> page) {
-        AppPageResult<T> appPageResult = new AppPageResult<>();
-        AppBeans.copyProperties(page, appPageResult);
-        return appPageResult;
+        return new AppPageResult<T>()
+                .setContent(page.getContent())
+                .setTotalElements(page.getTotalElements());
     }
 
     public <C> AppPageResult<C> convert(Class<C> tClass) {
