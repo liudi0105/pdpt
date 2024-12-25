@@ -6,7 +6,7 @@ import common.module.dto.AppPageParam;
 import common.module.jpa.AppPageResult;
 import common.module.webmvc.Api;
 import common.module.webmvc.ApiGroup;
-import common.module.webmvc.ValueWrapper;
+import common.module.dto.ValueWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 

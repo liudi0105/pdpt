@@ -6,7 +6,7 @@ import com.pt.server.forum.post.PostsDTO;
 import com.pt.server.forum.topics.TopicDTO;
 import common.module.webmvc.Api;
 import common.module.webmvc.ApiGroup;
-import common.module.webmvc.ValueWrapper;
+import common.module.dto.ValueWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 

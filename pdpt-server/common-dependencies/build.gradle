@@ -13,6 +13,8 @@ ext {
 dependencies {
     constraints {
         api project(":common-all")
+        api project(":common-util")
+        api 'commons-beanutils:commons-beanutils:1.9.4'
         api "org.projectlombok:lombok:1.18.34"
         api 'org.apache.commons:commons-lang3:3.12.0'
         api 'org.apache.commons:commons-io:1.3.2'
