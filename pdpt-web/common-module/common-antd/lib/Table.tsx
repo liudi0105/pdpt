@@ -1,11 +1,8 @@
-import {
-  ProTable,
-  ProTableProps
-} from "@ant-design/pro-components";
+import { ProTable, ProTableProps } from "@ant-design/pro-components";
 import {
   AppPageParam,
   AppPageResult,
-  BaseEntity
+  BaseEntity,
 } from "@common-module/common-api";
 import { ReactNode, useState } from "react";
 import { Ant } from ".";
@@ -53,7 +50,7 @@ export const Table = <DataType extends BaseEntity>(
   return (
     <ProTable<DataType, DataType, DataType>
       {...tableProps}
-      size="small"
+      tableLayout="auto"
       rowKey={rowKey}
       options={options}
       request={r}

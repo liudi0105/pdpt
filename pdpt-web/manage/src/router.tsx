@@ -6,6 +6,8 @@ import { DashboardView } from "./views/DashboardView";
 import { ExamUsersView } from "./views/ExamUsersView";
 import { RolesView } from "./views/RolesView";
 import { UsersView } from "./views/UsersView";
+import { TagsView } from "./views/TagsView";
+import { LoginLogView } from "./views/LoginLogsView";
 
 export const routers: RouterMenuItem[] = [
   {
@@ -50,6 +52,7 @@ export const routers: RouterMenuItem[] = [
       {
         path: "login-records",
         name: "登录记录",
+        element: <LoginLogView />,
       },
       {
         path: "magic-records",
@@ -76,6 +79,7 @@ export const routers: RouterMenuItem[] = [
       {
         path: "torrent-tags",
         name: "标签",
+        element: <TagsView />,
       },
       {
         path: "reject-reason",
