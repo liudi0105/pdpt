@@ -10,8 +10,8 @@ import lombok.Setter;
 @Setter
 public class FilesDTO {
 
-    private Long id; // 主键
-    private Long torrent; // 种子ID
+    private Integer id; // 主键
+    private Integer torrent; // 种子ID
     private String filename; // 文件名
     private Long size; // 文件大小，单位：字节
 }

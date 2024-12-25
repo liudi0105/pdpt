@@ -15,10 +15,10 @@ public class FilesPO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // 主键
+    private Integer id; // 主键
 
     @Column(nullable = false)
-    private Long torrent; // 种子ID
+    private Integer torrent; // 种子ID
 
     @Column(nullable = false, length = 255)
     private String filename; // 文件名

@@ -1,4 +1,4 @@
-package com.pt.server.torrents.torrents_custom_fields_values;
+package com.pt.server.torrents.torrents_custom_field_values;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,11 +10,10 @@ import java.time.LocalDateTime;
  */
 @Getter
 @Setter
-public class TorrentsCustomFieldsValuesDTO {
-
-    private Long id; // 主键
-    private Long torrentId; // 种子ID
-    private Long customFieldId; // 自定义字段ID
+public class TorrentsCustomFieldValuesDTO {
+    private Integer id; // 主键
+    private Integer torrentId; // 种子ID
+    private Integer customFieldId; // 自定义字段ID
     private String customFieldValue; // 自定义字段值
     private LocalDateTime createdAt; // 创建时间
     private LocalDateTime updatedAt; // 更新时间

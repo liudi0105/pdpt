@@ -1,4 +1,4 @@
-package com.pt.server.torrents.torrents_custom_fields_values;
+package com.pt.server.torrents.torrents_custom_field_values;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -12,20 +12,19 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "torrents_custom_fields_values")
-public class TorrentsCustomFieldsValuesPO {
+@Table(name = "torrents_custom_field_values")
+public class TorrentsCustomFieldValuesPO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // 主键
+    private Integer id; // 主键
 
     @Column(nullable = false)
-    private Long torrentId; // 种子ID
+    private Integer torrentId; // 种子ID
 
     @Column(nullable = false)
-    private Long customFieldId; // 自定义字段ID
+    private Integer customFieldId; // 自定义字段ID
 
-    @Lob
     @Column
     private String customFieldValue; // 自定义字段值
 

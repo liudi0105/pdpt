@@ -11,8 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class TorrentSecretsDTO {
-
-    private Long id; // 主键
+    private Integer id; // 主键
     private Integer uid; // 用户ID
     private Integer torrentId; // 种子ID
     private String secret; // 种子密钥

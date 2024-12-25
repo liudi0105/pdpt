@@ -12,11 +12,11 @@ import java.time.LocalDateTime;
 @Setter
 public class TorrentsCustomFieldsDTO {
 
-    private Long id; // 主键
+    private Integer id; // 主键
     private String name; // 字段名称
     private String label; // 字段标签
     private String type; // 字段类型（例如：text, textarea, select）
-    private Boolean required; // 是否必填
+    private Byte required; // 是否必填
     private Integer isSingleRow; // 是否单行显示
     private String options; // 可选项
     private String help; // 帮助信息

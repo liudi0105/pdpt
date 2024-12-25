@@ -17,7 +17,7 @@ public class TorrentSecretsPO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // 主键
+    private Integer id; // 主键
 
     @Column(nullable = false)
     private Integer uid; // 用户ID

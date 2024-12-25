@@ -9,8 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ThanksDTO {
-
-    private Long id; // 主键
-    private Long torrentid; // 种子ID
-    private Long userid; // 用户ID
+    private Integer id; // 主键
+    private Integer torrentid; // 种子ID
+    private Integer userid; // 用户ID
 }
