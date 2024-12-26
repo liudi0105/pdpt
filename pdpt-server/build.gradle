@@ -20,9 +20,9 @@ allprojects {
 }
 
 dependencies {
-    implementation platform(project(":common-dependencies"))
-    annotationProcessor(platform(project(":common-dependencies")))
-    implementation(project(":common-all"))
+    implementation platform("common.module:common-dependencies")
+    annotationProcessor(platform("common.module:common-dependencies"))
+    implementation("common.module:common-all")
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
