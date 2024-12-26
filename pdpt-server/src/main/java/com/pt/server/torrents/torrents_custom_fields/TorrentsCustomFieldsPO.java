@@ -17,7 +17,7 @@ public class TorrentsCustomFieldsPO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // 主键
+    private Integer id; // 主键
 
     @Column(nullable = false, length = 255)
     private String name; // 字段名称
@@ -30,20 +30,17 @@ public class TorrentsCustomFieldsPO {
     private FieldType type; // 字段类型（例如：text, textarea, select）
 
     @Column(nullable = false)
-    private Boolean required; // 是否必填
+    private Byte required; // 是否必填
 
     @Column(nullable = false)
     private Integer isSingleRow; // 是否单行显示
 
-    @Lob
     @Column
     private String options; // 可选项（适用于select, radio, checkbox）
 
-    @Lob
     @Column
     private String help; // 帮助信息
 
-    @Lob
     @Column
     private String display; // 显示设置
 

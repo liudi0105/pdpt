@@ -39,7 +39,7 @@ export const Topic = () => {
           ></Ant.Breadcrumb>
         </Card>
         <Ant.Card>
-          <Table<TopicEntity, TopicEntity>
+          <Table<TopicEntity>
             dataSource={topics}
             search={false}
             columns={[

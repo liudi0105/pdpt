@@ -285,3 +285,57 @@ export class UserService extends BaseService<UserEntity> {
   group = "users";
   personalInfo = () => this.postJsonForJson<PersonalInfoVO>("personal-info");
 }
+
+export interface ExamUsersEntity {
+  id: number; // 主键ID
+  uid: number; // 用户ID
+  examId: number; // 考核ID
+  status: 0 | 1 | 2; // 考核状态（0未开始，1进行中，2已完成）
+  begin: string; // 考核开始时间
+  end: string; // 考核结束时间
+  progress: string; // 考核进度
+  isDone: number; // 是否完成
+  createdAt: string; // 创建时间
+  updatedAt: string; // 更新时间
+}
+
+export class ExamUsersService extends BaseService<never> {
+  group = "exams";
+
+  listExamUsersPaged = (param: AppPageParam) =>
+    this.postJsonForJson<AppPageResult<ExamUsersEntity>>(
+      "list-exam-users-paged",
+      param
+    );
+}
+
+export interface RoleEntity {
+  id: number; // 角色ID
+  name: string; // 角色名称
+  createdAt: string; // 创建时间
+  updatedAt: string; // 更新时间
+}
+
+export class RoleService extends BaseService<RoleEntity> {
+  group = "role";
+}
+
+export interface TagsEntity {
+  id: number; // 主键ID
+  name: string; // 标签名称
+  color: string; // 标签颜色
+  priority: number; // 标签优先级
+  createdAt: string; // 创建时间
+  updatedAt: string; // 更新时间
+  padding: string; // 标签的内边距
+  margin: string; // 标签的外边距
+  borderRadius: string; // 标签的圆角
+  fontSize: string; // 字体大小
+  fontColor: string; // 字体颜色
+  description: string; // 标签描述
+  mode: number; // 模式类型
+}
+
+export class Tagservice extends BaseService<TagsEntity> {
+  group = "tags";
+}

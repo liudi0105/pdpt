@@ -28,16 +28,15 @@ public class AppPageResult<T> {
     }
 
     public static <T> AppPageResult<T> of(Page<T> page) {
-        AppPageResult<T> appPageResult = new AppPageResult<>();
-        AppBeans.copyProperties(page, appPageResult);
-        return appPageResult;
+        return new AppPageResult<T>()
+                .setContent(page.getContent())
+                .setTotalElements(page.getTotalElements());
     }
 
     public <C> AppPageResult<C> convert(Class<C> tClass) {
-        AppPageResult<C> page = new AppPageResult<>();
-        AppBeans.copyProperties(this, page);
-        page.content = AppJsons.convertList(this.content, tClass);
-        return page;
+        return new AppPageResult<C>()
+                .setContent(AppJsons.convertList(this.content, tClass))
+                .setTotalElements(totalElements);
     }
 
     public AppPageResult<T> handle(Consumer<List<T>> consumer) {
@@ -46,10 +45,10 @@ public class AppPageResult<T> {
     }
 
     public <C> AppPageResult<C> map(Function<T, C> func) {
-        AppPageResult<C> page = new AppPageResult<>();
-        AppBeans.copyProperties(this, page);
-        page.content = this.content.stream().map(func).collect(Collectors.toList());
-        return page;
+        List<C> collect = this.content.stream().map(func).collect(Collectors.toList());
+        return new AppPageResult<C>()
+                .setContent(collect)
+                .setTotalElements(totalElements);
     }
 
     public static <C> AppPageResult<C> empty() {

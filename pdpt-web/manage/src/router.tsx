@@ -1,9 +1,13 @@
+import { MenuPage } from "@common-module/common-antd";
 import { RouterMenuItem } from "@common-module/common-api";
 import { createBrowserRouter, Navigate } from "@common-module/common-react";
 import { NotFound } from "@pdpt/lib";
 import { DashboardView } from "./views/DashboardView";
-import { MenuPage } from "@common-module/common-antd";
+import { ExamUsersView } from "./views/ExamUsersView";
+import { RolesView } from "./views/RolesView";
 import { UsersView } from "./views/UsersView";
+import { TagsView } from "./views/TagsView";
+import { LoginLogView } from "./views/LoginLogsView";
 
 export const routers: RouterMenuItem[] = [
   {
@@ -23,6 +27,7 @@ export const routers: RouterMenuItem[] = [
       {
         path: "exam-users",
         name: "用户考核",
+        element: <ExamUsersView />,
       },
       {
         path: "hit-and-runs",
@@ -47,6 +52,7 @@ export const routers: RouterMenuItem[] = [
       {
         path: "login-records",
         name: "登录记录",
+        element: <LoginLogView />,
       },
       {
         path: "magic-records",
@@ -73,6 +79,7 @@ export const routers: RouterMenuItem[] = [
       {
         path: "torrent-tags",
         name: "标签",
+        element: <TagsView />,
       },
       {
         path: "reject-reason",
@@ -91,6 +98,7 @@ export const routers: RouterMenuItem[] = [
       {
         path: "role",
         name: "角色",
+        element: <RolesView />,
       },
       {
         path: "permission",

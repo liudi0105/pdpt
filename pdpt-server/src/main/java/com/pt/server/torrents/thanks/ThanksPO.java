@@ -15,11 +15,11 @@ public class ThanksPO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // 主键
+    private Integer id; // 主键
 
     @Column(nullable = false)
-    private Long torrentid; // 种子ID
+    private Integer torrentid; // 种子ID
 
     @Column(nullable = false)
-    private Long userid; // 用户ID
+    private Integer userid; // 用户ID
 }

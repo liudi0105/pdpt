@@ -1,4 +1,4 @@
-package com.pt.server.torrents.torrent_secrets;
+package com.pt.server.torrents.torrents_custom_field_values;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,15 +6,15 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 /**
- * 数据传输对象，传输种子密钥信息。
+ * 数据传输对象，传输种子自定义字段的值。
  */
 @Getter
 @Setter
-public class TorrentSecretsDTO {
+public class TorrentsCustomFieldValuesDTO {
     private Integer id; // 主键
-    private Integer uid; // 用户ID
     private Integer torrentId; // 种子ID
-    private String secret; // 种子密钥
+    private Integer customFieldId; // 自定义字段ID
+    private String customFieldValue; // 自定义字段值
     private LocalDateTime createdAt; // 创建时间
     private LocalDateTime updatedAt; // 更新时间
 }

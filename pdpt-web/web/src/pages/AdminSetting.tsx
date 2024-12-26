@@ -10,10 +10,7 @@ export const AdminSetting = () => {
             key: "home",
             label: "设定首页",
             children: (
-              <Table<
-                { title: string; value: string },
-                { title: string; value: string }
-              >
+              <Table<{ title: string; value: string }>
                 pagination={false}
                 search={false}
                 showHeader={false}

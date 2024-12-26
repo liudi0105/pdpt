@@ -1,18 +1,15 @@
 import { Ant, Button, Table } from "@common-module/common-antd";
-import { SubtitleEntity, SubtitleService } from "@pdpt/lib";
 import { Files } from "@common-module/common-util";
+import { SubtitleEntity, SubtitleService } from "@pdpt/lib";
 
 const subtitleService = new SubtitleService();
 
 export const Subtitle = () => {
   return (
     <Ant.Card>
-      <Table<SubtitleEntity, SubtitleEntity>
-        pagination={{ defaultPageSize: 10 }}
+      <Table<SubtitleEntity>
         toolBarRender={() => [<Button>上传字幕</Button>]}
-        request={(param) => {
-          return subtitleService.listPaged(param);
-        }}
+        request={(param) => subtitleService.listPaged(param)}
         columns={[
           {
             title: "语言",

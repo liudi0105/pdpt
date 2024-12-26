@@ -21,7 +21,7 @@ export const Forum = () => {
         {forums?.map((v) => {
           return (
             <Ant.Card key={v.id}>
-              <Table<ForumsEntity, ForumsEntity>
+              <Table<ForumsEntity>
                 pagination={false}
                 search={false}
                 dataSource={v.forums}

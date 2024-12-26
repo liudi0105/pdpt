@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 /**
  * 用户签到表
  */
@@ -30,5 +33,5 @@ public class AttendancePO {
     private Integer totalDays; // 总签到天数
 
     @Column(nullable = false)
-    private String added; // 签到时间（格式：YYYY-MM-DD HH:mm:ss）
+    private LocalDateTime added; // 签到时间（格式：YYYY-MM-DD HH:mm:ss）
 }

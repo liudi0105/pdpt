@@ -6,7 +6,7 @@ const requestsService = new RequestsService();
 export const TorrentRequest = () => {
   return (
     <Ant.Card>
-      <Table<RequestsEntity, RequestsEntity>
+      <Table<RequestsEntity>
         pagination={{ defaultPageSize: 10 }}
         toolBarRender={() => [<Button>添加求种</Button>]}
         request={(param) => {

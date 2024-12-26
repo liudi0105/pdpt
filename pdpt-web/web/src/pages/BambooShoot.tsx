@@ -9,7 +9,7 @@ type BambooTableEntity = {
 export const BambooShoot = () => {
   return (
     <Card title="竹笋系统">
-      <Table<BambooTableEntity, BambooTableEntity>
+      <Table<BambooTableEntity>
         search={false}
         pagination={false}
         columns={[

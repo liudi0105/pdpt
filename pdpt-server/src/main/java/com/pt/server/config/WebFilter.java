@@ -1,5 +1,6 @@
 package com.pt.server.config;
 
+import com.pt.server.auth.users.UsersRepo;
 import common.module.util.AppEncodings;
 import common.module.webmvc.AppCookies;
 import common.module.webmvc.AppResponses;
@@ -32,6 +33,9 @@ public class WebFilter extends OncePerRequestFilter {
     @Autowired
     private AppProperties appProperties;
 
+    @Autowired
+    private UsersRepo usersRepo;
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
@@ -50,6 +54,8 @@ public class WebFilter extends OncePerRequestFilter {
             AppResponses.respJson(response, new ErrorResp("请先登录"));
             return;
         }
+
+        // TODO 校验 cookie
 
         String s = AppEncodings.decodeBase64(cSecureUid);
 
